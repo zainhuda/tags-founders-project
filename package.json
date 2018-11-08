@@ -1,0 +1,22 @@
+{
+  "name": "founders-student-housing",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zainhuda/founders-student-housing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zainhuda/founders-student-housing/issues"
+  },
+  "homepage": "https://github.com/zainhuda/founders-student-housing#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
