@@ -9,7 +9,7 @@ req: object representing incoming request
 res: object representing the outgoing response
 */
 app.get('/', (req, res) => {
-  res.send({ request: 'result'});
+  res.send({ founders: 'housing'});
 });
 
 
