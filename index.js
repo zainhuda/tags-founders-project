@@ -1,18 +1,29 @@
 const express = require('express');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const keys = require('./config/keys');
 const app = express();
 
-/*
-app: express app to register route with
-get: watch for incoming requests
-'/': watch for requests trying to access '/' -> this is a route
-req: object representing incoming request
-res: object representing the outgoing response
-*/
-app.get('/', (req, res) => {
-  res.send({ founders: 'housing'});
-});
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
+      callbackURL: '/auth/google/callback'
+    },
+    (accessToken, refreshToken, profile, done) => {
+      console.log('accessToken', accessToken);
+      console.log('refresh token', refreshToken);
+      console.log('profile:', profile);
+    }
+  )
+);
 
+app.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
 
+app.get('/auth/google/callback', passport.authenticate('google'));
 // this sets our dynamic PORT, from underlying environment
 const PORT =  process.env.PORT || 5000;
 // tells express to tell node to listen to port
