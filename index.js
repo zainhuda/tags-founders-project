@@ -1,18 +1,9 @@
 const express = require('express');
+require('./services/passport');
+
 const app = express();
 
-/*
-app: express app to register route with
-get: watch for incoming requests
-'/': watch for requests trying to access '/' -> this is a route
-req: object representing incoming request
-res: object representing the outgoing response
-*/
-app.get('/', (req, res) => {
-  res.send({ founders: 'housing'});
-});
-
-
+require('./routes/authRoutes')(app);
 // this sets our dynamic PORT, from underlying environment
 const PORT =  process.env.PORT || 5000;
 // tells express to tell node to listen to port
