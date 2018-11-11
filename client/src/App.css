@@ -1,6 +1,13 @@
 .App {
   text-align: center;
+  padding: 0;
 }
+
+html {
+  overflow: hidden;
+  max-height: 100vh;
+}
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -29,4 +36,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.sidebar {
+  background-color: #34495e;
+  height: 100%;
+}
+
+.listingContent {
+  background-color: #ecf0f1;
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+
+.contentHeader {
+  background-color: #16a085
+}
+
+.headerTitle {
+  margin: 0;
+  color: white;
+  padding: 4vh
 }
