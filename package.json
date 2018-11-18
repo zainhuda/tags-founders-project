@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/zainhuda/founders-student-housing#readme",
   "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
+    "mongoose": "^5.3.12",
     "nodemon": "^1.18.6",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0"
