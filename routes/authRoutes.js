@@ -17,4 +17,3 @@ module.exports = (app) => {
   })
 };
 
-//PLease do not worry Im learning how to use J.S at the momment and make changes in git hup. Squad. 
