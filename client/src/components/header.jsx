@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Listing from "./listing";
 
 class Header extends Component {
   render() {

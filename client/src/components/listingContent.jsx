@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import {Col} from "react-bootstrap";
-import Listing from "./listing";
+import {Col, Button} from "react-bootstrap";
+import ProfileSummary from "./profileSummary";
 
 class ListingContent extends Component {
   render() {
-    const items = [...Array(100)].map((val, i) => <Listing number={i}/>);
+    const items = [...Array(100)].map((val, i) => <ProfileSummary number={i}/>);
 
     return (
       <Col lg={9} className="listingContent">
         <b> Listing Content </b>
         {items}
+
+
       </Col>
     );
   }

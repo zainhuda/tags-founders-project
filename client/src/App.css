@@ -39,7 +39,8 @@ html {
 }
 
 .sidebar {
-  background-color: #34495e;
+  /*background-color: #34495e;*/
+  border-right: 1px grey solid;
   height: 100%;
 }
 

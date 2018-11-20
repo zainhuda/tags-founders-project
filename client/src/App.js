@@ -9,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <Grid className="App" fluid>
-        <Header />
         <Sidebar />
         <ListingContent />
       </Grid>
