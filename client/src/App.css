@@ -45,7 +45,7 @@ html {
 
 .listingContent {
   background-color: #ecf0f1;
-  overflow-y: scroll; 
+  overflow-y: scroll;
   /*max-height: 100%;*/
 }
 
