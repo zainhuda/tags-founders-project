@@ -3,14 +3,14 @@ import "./App.css";
 import { Button, Col, Grid } from "react-bootstrap";
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
-import ListingContent from "./components/listingContent";
+import EmployeeDirectory from "./components/employeeDirectory";
 
 class App extends Component {
   render() {
     return (
       <Grid className="App" fluid>
         <Sidebar />
-        <ListingContent />
+        <EmployeeDirectory />
       </Grid>
     );
   }
