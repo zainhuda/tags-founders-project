@@ -4,7 +4,6 @@
 }
 
 html {
-  overflow: hidden;
   max-height: 100vh;
 }
 
@@ -39,14 +38,12 @@ html {
 }
 
 .sidebar {
-    border-right: 1px grey solid;
     height: 100%;
 }
 
 .listingContent {
+    border-left: 1px lightgrey solid;
     background-color: #FFFFFF;
-    overflow-y: scroll;
-    /*max-height: 100%;*/
     padding: 0 30px 30px 30px;
 }
 

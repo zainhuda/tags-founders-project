@@ -11,12 +11,9 @@ class EmployeeDirectory extends Component {
       </Col>);
 
     return (
-      <Col lg={9}>
-        <div className="listingContent">
-
+      <Col lg={9} className="listingContent">
         <Header/>
         <Row> {items} </Row>
-        </div>
       </Col>
     );
   }
