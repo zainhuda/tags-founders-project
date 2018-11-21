@@ -5,7 +5,11 @@ module.exports = (app) => {
     scope: ['profile', 'email']
   }));
 
-  app.get('/auth/slack', passport.authorize('Slack'));
+  app.get('/auth/slack', passport.authorize('Slack', {
+      scope: ['identity.basic', 'identity.avatar', 'identity.email']
+  }));
+
+
   app.get('/auth/google/callback', passport.authenticate('google'));
 
   app.get('/auth/slack/callback', passport.authenticate('Slack', { failureRedirect: '/login'}), (req,res) => res.redirect('/'));

@@ -46,8 +46,8 @@ passport.use(
         clientID: keys.slackClientID,
         clientSecret: keys.slackClientSecret,
         skipUserProfile: false,
-        scope: ['identity.basic', 'identity.avatar', 'identity.email']
-    }, (accessToken, refreshToken, profile, done) => {
+    }, (accessToken, refreshToken, done) => {
         done(null, profile);
+        console.log('accessToken', accessToken);
     }
 ));
