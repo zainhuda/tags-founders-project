@@ -39,14 +39,15 @@ html {
 }
 
 .sidebar {
-  border-right: 1px grey solid;
-  height: 100%;
+    border-right: 1px grey solid;
+    height: 100%;
 }
 
 .listingContent {
-  background-color: #ecf0f1;
-  overflow-y: scroll;
-  /*max-height: 100%;*/
+    background-color: #FFFFFF;
+    overflow-y: scroll;
+    /*max-height: 100%;*/
+    padding: 0 30px 30px 30px;
 }
 
 
@@ -97,6 +98,7 @@ html {
 
 
 .profileSummaryDescription {
+    text-align: left;
     padding: 15px 10px 8px;
     bottom: 4px;
     left: 4px;
@@ -106,4 +108,10 @@ html {
     background-image: linear-gradient(-174deg, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.9) 100%);
     /*opacity: 0;*/
     transition: opacity 0.15s ease-in-out;
+}
+
+.searchBar {
+    float: left;
+    padding-left: 5vw
+
 }
