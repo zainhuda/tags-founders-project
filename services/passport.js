@@ -1,6 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const SlackStrategy = require('passport-slack-oath2').Strategy;
+const SlackStrategy = require('passport-slack-oauth2').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -39,8 +39,7 @@ passport.use(
             console.log('refresh token', refreshToken);
             console.log('profile', profile);
         }
-    )
-);
+));
 
 passport.use(
     new SlackStrategy({
@@ -48,6 +47,7 @@ passport.use(
         clientSecret: keys.slackClientSecret,
         skipUserProfile: false,
         scope: ['identity.basic', 'identity.avatar', 'identity.email']
-    }, () => { }
-    )
-);
+    }, (accessToken, refreshToken, profile, done) => {
+        done(null, profile);
+    }
+));
