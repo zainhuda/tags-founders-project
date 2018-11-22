@@ -37,11 +37,14 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <Col>
           <Sidebar/>
-          <Route exact path="/" component={EmployeeDirectory} />
-          <Route path="/profile" component={ProfilePage} />
-        </div>
+          <Col lg={9} className="content">
+            <Header/>
+            <Route exact path="/" component={EmployeeDirectory} />
+            <Route path="/profile" component={ProfilePage} />
+          </Col>
+        </Col>
       </BrowserRouter>
 
     );

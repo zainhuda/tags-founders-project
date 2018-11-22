@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import { Panel } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
-class ProfileSummary extends Component {
+class ProfileThumbnail extends Component {
   render() {
     return (
       <Panel className="profileSummary">
-        <a href={""} style={{display: "block", position: "relative"}}>
+        <Link to={"/profile"} style={{display: "block", position: "relative"}}>
           <img src={require("./../assets/ripped_img.jpeg")} className="summaryThumbnail"/>
-        </a>
+        </Link>
         <div className={"profileSummaryDescription"}>
         <h5> {this.props.name} </h5>
         <h6> {this.props.position} </h6>
@@ -17,4 +18,4 @@ class ProfileSummary extends Component {
   }
 }
 
-export default ProfileSummary;
+export default ProfileThumbnail;

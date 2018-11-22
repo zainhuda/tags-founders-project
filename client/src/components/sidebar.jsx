@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Col, Panel, PanelGroup, Row} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class Sidebar extends Component {
 
@@ -10,7 +11,7 @@ class Sidebar extends Component {
 
     return (
       <Col lg={3} className="sidebar">
-        <h1> Project <b> X </b> </h1>
+        <Link to={"/"} style={{color: "black", textDecoration: "none"}}> <h1 style={{textAlign: "center"}}> Project <b> X </b> </h1> </Link>
         <Panel onClick={handleClick}>
           <Panel.Title>All People</Panel.Title>
         </Panel>
