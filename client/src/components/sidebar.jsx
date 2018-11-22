@@ -38,6 +38,34 @@ class Sidebar extends Component {
                 </Col>
               </Panel.Body>
             </Panel>
+                <Panel eventkey={"2"}>
+                <Panel.Heading>
+                    <Panel.Title toggle>By Office</Panel.Title>
+                    </Panel.Heading>
+                <Panel.Body collapsible>
+                        <Row> <a href={""}> London </a> </Row>
+                        <Row> <a href={""}> Calgary </a> </Row>
+                        <Row> <a href={""}> Toronto </a> </Row>
+                        <Row> <a href={""}> Vancouver </a> </Row>
+                        <Row> <a href={""}> Waterloo </a> </Row>
+                        <Row> <a href={""}> Ottawa </a> </Row>
+                        <Row> <a href={""}> Edmonton </a> </Row>
+                </Panel.Body>
+                </Panel>
+             <Panel eventkey={"3"}>
+                <Panel.Heading>
+                    <Panel.Title toggle>By Region</Panel.Title>
+                    </Panel.Heading>
+                <Panel.Body collapsible>
+                        <Row> <a href={""}> Alberta </a> </Row>
+                        <Row> <a href={""}> Ontario </a> </Row>
+                        <Row> <a href={""}> British Columbia </a> </Row>
+                        <Row> <a href={""}> Quebec </a> </Row>
+                        <Row> <a href={""}> Nova Scotia </a> </Row>
+                        <Row> <a href={""}> Manitoba </a> </Row>
+                        <Row> <a href={""}> Saskatchewan </a> </Row>
+                </Panel.Body>
+                </Panel>
         </PanelGroup>
       </Col>
     );
