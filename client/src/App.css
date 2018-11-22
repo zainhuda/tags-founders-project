@@ -39,6 +39,8 @@ html {
 
 .sidebar {
     height: 100%;
+    width: 19vw;
+    padding: 1vw 3vw;
 }
 
 .content {
@@ -130,4 +132,8 @@ html {
     line-height: 21px;
     color: #373739;
     font-size: 16px;
+}
+
+.sidebarCollapse .panel-heading {
+  background-color: white;
 }

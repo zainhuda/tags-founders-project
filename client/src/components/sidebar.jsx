@@ -17,7 +17,7 @@ class Sidebar extends Component {
         </Panel>
 
         <PanelGroup accordian id={"Collapse Links"}>
-            <Panel eventkey="1">
+            <Panel eventkey="1" className="sidebarCollapse">
                 <Panel.Heading>
                     <Panel.Title toggle>By Department</Panel.Title>
                   </Panel.Heading>
@@ -38,7 +38,7 @@ class Sidebar extends Component {
                 </Col>
               </Panel.Body>
             </Panel>
-                <Panel eventkey={"2"}>
+                <Panel eventkey={"2"} className="sidebarCollapse">
                 <Panel.Heading>
                     <Panel.Title toggle>By Office</Panel.Title>
                     </Panel.Heading>
