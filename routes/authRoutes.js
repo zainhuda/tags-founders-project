@@ -6,13 +6,13 @@ module.exports = (app) => {
   }));
 
   app.get('/auth/slack', passport.authorize('Slack', {
-      scope: ['identity.basic', 'identity.avatar', 'identity.email']
+      scope: ['users:read']
   }));
 
 
   app.get('/auth/google/callback', passport.authenticate('google'));
 
-  app.get('/auth/slack/callback', passport.authenticate('Slack', { failureRedirect: '/login'}), (req,res) => res.redirect('/'));
+  app.get('/auth/slack/callback', passport.authenticate('Slack'));
 
   app.get('/api/logout', (req, res) => {
      req.logout();

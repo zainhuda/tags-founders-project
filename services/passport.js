@@ -23,7 +23,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: '/auth/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
         User.findOne({ googleID: profile.id }).then((existingUser) => {
@@ -41,13 +41,19 @@ passport.use(
         }
 ));
 
-passport.use(
-    new SlackStrategy({
-        clientID: keys.slackClientID,
-        clientSecret: keys.slackClientSecret,
-        skipUserProfile: false,
-    }, (accessToken, refreshToken, done) => {
-        done(null, profile);
-        console.log('accessToken', accessToken);
-    }
+
+passport.use(new SlackStrategy({
+    clientID: keys.slackClientID,
+    clientSecret: keys.slackClientSecret,
+    skipUserProfile: false,
+    callbackURL: '/auth/slack/callback',
+  },
+  (accessToken, refreshToken, profile, done) => {
+    done(null, profile);
+
+    console.log('acecssToken', accessToken);
+    console.log('refreshtoken', refreshToken);
+    console.log('profile', profile);
+  }
+
 ));
