@@ -137,3 +137,7 @@ html {
 .sidebarCollapse .panel-heading {
   background-color: white;
 }
+
+.panelTitle {
+  font-size: 13px
+}
