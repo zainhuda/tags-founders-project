@@ -25,7 +25,7 @@ class Header extends Component {
               margin: 0
             }}
           >
-            All People
+            All people
           </h3>
           <FormGroup controlId="formInlineName" className={"searchBar"}>
             <FormControl

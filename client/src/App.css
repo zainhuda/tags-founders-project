@@ -41,7 +41,7 @@ html {
     height: 100%;
     width: 19vw;
     padding: 1vw 3vw;
-}
+  }
 
 .content {
     border-left: 1px lightgrey solid;
@@ -136,8 +136,22 @@ html {
 
 .sidebarCollapse .panel-heading {
   background-color: white;
+  padding: 0px;
+  line-height: 2.1;
 }
 
+#Panels {
+  position: relative;
+  top: 40px;
+}
+
+
 .panelTitle {
-  font-size: 13px
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.panel {
+  border: none;
 }

@@ -12,12 +12,14 @@ class Sidebar extends Component {
     return (
       <Col lg={3} className="sidebar">
         <Link to={"/"} style={{color: "black", textDecoration: "none"}}> <h1 style={{textAlign: "center"}}> Project <b> X </b> </h1> </Link>
-        <Panel onClick={handleClick}>
-          <Panel.Title className="panelTitle">All People</Panel.Title>
-        </Panel>
 
-        <PanelGroup accordian id={"Collapse Links"}>
-            <Panel eventkey="1" className="sidebarCollapse">
+        <PanelGroup accordian id={"Panels"}>
+        <Panel eventkey="1" className="sidebarCollapse" onClick={handleClick}>
+          <Panel.Heading>
+            <Panel.Title className="panelTitle">All people</Panel.Title>
+          </Panel.Heading>
+        </Panel>
+            <Panel eventkey="2" className="sidebarCollapse">
                 <Panel.Heading>
                     <Panel.Title toggle className="panelTitle">By Department</Panel.Title>
                   </Panel.Heading>
@@ -38,7 +40,7 @@ class Sidebar extends Component {
                 </Col>
               </Panel.Body>
             </Panel>
-                <Panel eventkey={"2"} className="sidebarCollapse">
+                <Panel eventkey={"3"} className="sidebarCollapse">
                 <Panel.Heading>
                     <Panel.Title toggle className="panelTitle">By Office</Panel.Title>
                     </Panel.Heading>
@@ -52,7 +54,7 @@ class Sidebar extends Component {
                         <Row> <a href={""}> Edmonton </a> </Row>
                 </Panel.Body>
                 </Panel>
-             <Panel eventkey={"3"}>
+             <Panel eventkey={"4"} className="sidebarCollapse">
                 <Panel.Heading>
                     <Panel.Title toggle className="panelTitle">By Region</Panel.Title>
                     </Panel.Heading>
