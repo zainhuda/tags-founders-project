@@ -25,18 +25,18 @@ class Sidebar extends Component {
                   </Panel.Heading>
               <Panel.Body collapsible>
                 <Col>
-                  <Row> <a href={""}> Account Management </a>  </Row>
-                  <Row> <a href={""}> Administration </a> </Row>
-                  <Row> <a href={""}> Creative </a> </Row>
-                  <Row> <a href={""}> Digital & Social </a> </Row>
-                  <Row> <a href={""}> DTP </a> </Row>
-                  <Row> <a href={""}> Finance </a> </Row>
-                  <Row> <a href={""}> HR </a> </Row>
-                  <Row> <a href={""}> IT </a> </Row>
-                  <Row> <a href={""}> Management </a> </Row>
-                  <Row> <a href={""}> Media </a> </Row>
-                  <Row> <a href={""}> Prodcution </a> </Row>
-                  <Row> <a href={""}> Strategy </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Account Management </a>  </Row>
+                  <Row> <a href={""} className="collapseLinks"> Administration </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Creative </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Digital & Social </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> DTP </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Finance </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> HR </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> IT </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Management </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Media </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Prodcution </a> </Row>
+                  <Row> <a href={""} className="collapseLinks"> Strategy </a> </Row>
                 </Col>
               </Panel.Body>
             </Panel>
@@ -45,13 +45,13 @@ class Sidebar extends Component {
                     <Panel.Title toggle className="panelTitle">By Office</Panel.Title>
                     </Panel.Heading>
                 <Panel.Body collapsible>
-                        <Row> <a href={""}> London </a> </Row>
-                        <Row> <a href={""}> Calgary </a> </Row>
-                        <Row> <a href={""}> Toronto </a> </Row>
-                        <Row> <a href={""}> Vancouver </a> </Row>
-                        <Row> <a href={""}> Waterloo </a> </Row>
-                        <Row> <a href={""}> Ottawa </a> </Row>
-                        <Row> <a href={""}> Edmonton </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> London </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Calgary </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Toronto </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Vancouver </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Waterloo </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Ottawa </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Edmonton </a> </Row>
                 </Panel.Body>
                 </Panel>
              <Panel eventkey={"4"} className="sidebarCollapse">
@@ -59,13 +59,13 @@ class Sidebar extends Component {
                     <Panel.Title toggle className="panelTitle">By Region</Panel.Title>
                     </Panel.Heading>
                 <Panel.Body collapsible>
-                        <Row> <a href={""}> Alberta </a> </Row>
-                        <Row> <a href={""}> Ontario </a> </Row>
-                        <Row> <a href={""}> British Columbia </a> </Row>
-                        <Row> <a href={""}> Quebec </a> </Row>
-                        <Row> <a href={""}> Nova Scotia </a> </Row>
-                        <Row> <a href={""}> Manitoba </a> </Row>
-                        <Row> <a href={""}> Saskatchewan </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Alberta </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Ontario </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> British Columbia </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Quebec </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Nova Scotia </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Manitoba </a> </Row>
+                        <Row> <a href={""} className="collapseLinks"> Saskatchewan </a> </Row>
                 </Panel.Body>
                 </Panel>
         </PanelGroup>

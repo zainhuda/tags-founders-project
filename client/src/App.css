@@ -148,10 +148,27 @@ html {
 
 .panelTitle {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 }
 
 .panel {
   border: none;
+}
+
+.collapseLinks:link {
+  color: black;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 2;
+  text-decoration: none;
+  position: relative;
+  left: 30px;
+}
+
+.collapseLinks:hover {
+  color: green;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font size: 17px;
+  text-decoration: none
 }
