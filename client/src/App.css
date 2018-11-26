@@ -176,10 +176,3 @@ a{
   font size: 17px;
   text-decoration: none
 }
-
-
-
-
-.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
-    border: none;
-}
