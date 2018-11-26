@@ -26,13 +26,13 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
-        User.findOne({ googleID: profile.id }).then((existingUser) => {
+        User.findOne({ id: profile.id }).then((existingUser) => {
             if (existingUser) {
                 //user already exists
                 done(null, existingUser);
             }
             else {  //create new user
-                new User({googleID: profile.id}).save().then(user => done(null, user));
+                new User({id: profile.id}).save().then(user => done(null, user));
             }
         })
             console.log('accessToken', accessToken);
@@ -49,11 +49,17 @@ passport.use(new SlackStrategy({
     callbackURL: '/auth/slack/callback',
   },
   (accessToken, refreshToken, profile, done) => {
-    done(null, profile);
-
-    console.log('acecssToken', accessToken);
-    console.log('refreshtoken', refreshToken);
-    console.log('profile', profile);
-  }
-
+      User.findOne({ id: profile.id}).then((existingUser) => {
+          if (existingUser) {
+              //user already exists
+              done(null, existingUser);
+          }
+          else {
+              new User({id: profile.id}).save().then(user => done(null, user));
+          }
+      })
+        console.log('acecssToken', accessToken);
+        console.log('refreshtoken', refreshToken);
+        console.log('profile', profile);
+    }
 ));
