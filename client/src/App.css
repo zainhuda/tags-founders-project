@@ -143,6 +143,7 @@ html {
 #Panels {
   position: relative;
   top: 40px;
+  border-bottom: none;
 }
 
 
@@ -156,8 +157,11 @@ html {
   border: none;
 }
 
-.collapseLinks:link {
+a{
   color: black;
+}
+
+.collapseLinks:link {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 15px;
   line-height: 2;
@@ -171,4 +175,11 @@ html {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font size: 17px;
   text-decoration: none
+}
+
+
+
+
+.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: none;
 }
