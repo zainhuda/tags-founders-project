@@ -3,13 +3,19 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const app = express();
 
 require('./models/User');
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI);
-
-const app = express();
+mongoose.connect(keys.mongoURI, {
+    auth: {
+      user: keys.mongoUser,
+      password: keys.mongoPassword
+    }, useNewUrlParser: true
+  })
+  .then(() => console.log('mongo connection successful'))
+  .catch((err) => console.error(err));
 
 
 app.use(cookieSession({
