@@ -3,8 +3,10 @@
 The deployed project resides at this link: https://murmuring-fortress-60967.herokuapp.com/
 
 ## Deploy on local computer  
-The following command runs both the frontend and backend server, allowing you to have an easier time coding.
+The following command runs both the frontend and backend server, allowing you to have an easier time coding. 
+*Every time you pull please run npm install*
 ```
+npm install
 npm run build
 ```
 
