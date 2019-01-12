@@ -45,7 +45,6 @@ passport.use(new SlackStrategy({
     clientID: keys.slackClientID,
     clientSecret: keys.slackClientSecret,
     skipUserProfile: false,
-    callbackURL: '/auth/slack/callback',
   },
   (accessToken, refreshToken, profile, done) => {
     //passport callback function
