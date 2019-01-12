@@ -173,6 +173,6 @@ a{
 .collapseLinks:hover {
   color: green;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font size: 17px;
-  text-decoration: none
+  font-size: 17px;
+  text-decoration: none;
 }

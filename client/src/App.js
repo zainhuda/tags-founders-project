@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Col } from "react-bootstrap";
-import Sidebar from "./components/sidebar";
+import { BrowserRouter, Route } from "react-router-dom";
+
+// import components
+import Showcase from './components/showcase' // Page that features product
+const Directory = () => <h2>Directory</h2>;  // Shows the directory
+const Profile = () => <h2>Profile</h2>;
+/*import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import EmployeeDirectory from "./components/employeeDirectory";
-import { Route, BrowserRouter } from "react-router-dom";
-import ProfilePage from "./components/profilePage";
+import ProfilePage from "./components/profilePage";*/
 
 class App extends Component {
   constructor(props) {
@@ -15,17 +20,29 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Col>
-          <Sidebar />
-          <Col lg={9} className="content">
-            <Header />
-            <Route exact path="/" component={EmployeeDirectory} />
-            <Route path="/profile" component={ProfilePage} />
-          </Col>
-        </Col>
+        <div>
+          <Route exact={true} path="/" component={Showcase} />
+          <Route path="/directory" component={Directory} />
+          <Route path="/profile" component={Profile} />
+
+
+
+        </div>
       </BrowserRouter>
     );
   }
 }
 
 export default App;
+
+
+
+{/*
+<Col>
+  <Sidebar />
+  <Col lg={9} className="content">
+    <Header />
+    <Route exact path="/" component={EmployeeDirectory} />
+    <Route path="/profile" component={ProfilePage} />
+  </Col>
+</Col>*/}
