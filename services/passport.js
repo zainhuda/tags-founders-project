@@ -34,7 +34,7 @@ passport.use(
             else {  //create new user
                 new User({googleId: profile.id}).save().then(user => done(null, user));
             }
-        })
+        });
             console.log('accessToken', accessToken);
             console.log('refresh token', refreshToken);
             console.log('profile', profile);
@@ -56,7 +56,7 @@ passport.use(new SlackStrategy({
           else {
               new User({ slackId : profile.id }).save().then(user => done(null, user));
           }
-      })
+      });
         console.log('accessToken', accessToken);
         console.log('refreshToken', refreshToken);
         console.log('profile', profile);
