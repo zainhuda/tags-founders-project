@@ -15,16 +15,14 @@ module.exports = (app) => {
 
     //slack routes
     app.get('/auth/slack', passport.authenticate('Slack', {
-        // scope: ['identity.basic', 'identity.email', 'identity.avatar', 'identity.team']
-        scope: ['users:read']
+        scope: ['identity.basic', 'identity.email', 'identity.avatar', 'identity.team']
+        // scope: ['users:read']
     }));
 
     app.get('/auth/slack/callback', passport.authenticate('Slack', {
         successRedirect: '/auth/slack/success',
         failureRedirect: '/auth/slack/failure'
     }));
-
-
 
     //login/logout functions
     app.get('/api/logout', (req, res) => {
