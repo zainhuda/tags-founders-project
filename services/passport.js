@@ -48,6 +48,7 @@ passport.use(new SlackStrategy({
     callbackURL: '/auth/slack/callback',
   },
   (accessToken, refreshToken, profile, done) => {
+    //passport callback function
       User.findOne({ slackId : profile.id}).then((existingUser) => {
           if (existingUser) {
               //user already exists
