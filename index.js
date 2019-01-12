@@ -1,18 +1,32 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 const app = express();
 
-/*
-app: express app to register route with
-get: watch for incoming requests
-'/': watch for requests trying to access '/' -> this is a route
-req: object representing incoming request
-res: object representing the outgoing response
-*/
-app.get('/', (req, res) => {
-  res.send({ founders: 'housing'});
-});
+require('./models/User');
+require('./services/passport');
+
+mongoose.connect(keys.mongoURI, {
+    auth: {
+      user: keys.mongoUser,
+      password: keys.mongoPassword
+    }, useNewUrlParser: true
+  })
+  .then(() => console.log('mongo connection successful'))
+  .catch((err) => console.error(err));
 
 
+app.use(cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+require('./routes/authRoutes')(app);
 // this sets our dynamic PORT, from underlying environment
 const PORT =  process.env.PORT || 5000;
 // tells express to tell node to listen to port
