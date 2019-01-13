@@ -1,1 +1,1 @@
-// this is where our componenets reside
+// this is where our components reside
