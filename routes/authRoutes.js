@@ -59,7 +59,7 @@ module.exports = (app) => {
 
 
     const getSlackResponse = (code, res) => {
-      var options = {
+      const options = {
           uri: 'https://slack.com/api/oauth.access?code='
               +code+
               '&client_id='+keys.slackClientID+
@@ -69,7 +69,7 @@ module.exports = (app) => {
           method: 'GET'
       };
       return requestPromise(options, (error, response, body) => {
-          var JSONresponse = JSON.parse(body)
+          const JSONresponse = JSON.parse(body);
           if (!JSONresponse.ok){
               console.log(JSONresponse)
               res.send("Error encountered: \n"+JSON.stringify(JSONresponse)).status(200).end()
