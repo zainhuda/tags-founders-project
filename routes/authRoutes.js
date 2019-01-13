@@ -3,6 +3,8 @@ const path = require('path');
 const requestPromise = require('request-promise');
 const async = require("async");
 const keys = require('../config/keys');
+const slackImporter = require("../services/slack_importer");
+
 
 module.exports = (app) => {
     // google oauth
@@ -50,7 +52,7 @@ module.exports = (app) => {
             // res.redirect("/slack/import")
             res.redirect("/auth/slack/import")
         } else {
-            res.send("Great Success, Scopes: " + scopes)
+            slackImporter.importSlack(jsonRes.access_token, res);
         }
 
     });
