@@ -8,3 +8,13 @@ module.exports = {
   slackClientID: '484756884274.486265867267',
   slackClientSecret: 'df4bb49ced45a3771f1a1be3bb66fecc',
 };
+
+// for mlab.com
+// USER: bigdev
+// PASSWORD: bigpassword1
+
+// for the data base "bigusers"
+// you shouldnt need to use these ever, these are just needed to access the database"bigusers"
+// its already included in the MONGOURI, MONGOUSER, and MONGOPASSWORD keys
+// user: bigdeveloper
+// password: bigpassword1
