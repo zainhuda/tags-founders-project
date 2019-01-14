@@ -1,6 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const SlackStrategy = require('passport-slack-oauth2').Strategy;
+const SlackStrategy = require("passport-slack").Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -54,7 +54,7 @@ passport.use(new SlackStrategy({
               done(null, existingUser);
           }
           else {
-              new User({ slackId : profile.id }).save().then(user => done(null, user));
+              new User({ slackId : profile.id, accessToken: accessToken}).save().then(user => done(null, user));
           }
       });
         console.log('accessToken', accessToken);

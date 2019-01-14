@@ -20,72 +20,45 @@ module.exports = (app) => {
     }));
 
 
-    app.get('/auth/slack/', passport.authenticate('Slack', {
+    app.get('/auth/slack/', passport.authenticate('slack', {
             scope: ['identity.basic', 'identity.email', 'identity.avatar', 'identity.team'],
             callbackURL: '/auth/slack/callback',
+            state: "identity"
         })
-    );;
+    );
 
 
-    app.get("/auth/slack/import", passport.authenticate('Slack', {
-        scope: ['users:read'],
-        callbackURL: '/auth/slack/callback',
-    }));
+  app.get("/auth/slack/import", passport.authenticate('slack', {
+      scope: ['users:read'],
+      callbackURL: '/auth/slack/callback',
+      state: "read"
+  }));
 
 
+  app.get("/auth/slack/callback",passport.authenticate('slack'), (req, res) => {
+      const state = req.query.state;
 
-    app.get("/auth/slack/callback", async (req, res) => {
-        const code = req.query.code;
+      if (state === "identity"){
+        // we know this was the first authenticate, and so probably does not have the users:read scope
+
+        // redirect the user to be authed for the users:read scope
+
+        res.redirect("/auth/slack/import")
 
 
-        const response = await getSlackResponse(code, res);
-        const jsonRes = JSON.parse(response);
-        const scopes = jsonRes.scope;
-
-        console.log("THE SCOPES", scopes);
-
-
-        // check for users:read in scopes
-
-        if (!scopes.includes("users:read")){
-            console.log("NO USERS:READ SCOPE");
-            // res.redirect("/slack/import")
-            res.redirect("/auth/slack/import")
-        } else {
-            slackImporter.importSlack(jsonRes.access_token, res);
-        }
-
+      } else if (state ==="read"){
+        // we know this was the second authenticate, and the token SHOULD have the users:read scope
+        slackImporter.importSlack( req.user.accessToken ,res)
+      }
     });
-
-
-    const getSlackResponse = (code, res) => {
-      const options = {
-          uri: 'https://slack.com/api/oauth.access?code='
-              +code+
-              '&client_id='+keys.slackClientID+
-              '&client_secret='+keys.slackClientSecret+
-              '&redirect_uri='+"http://localhost:5000/auth/slack/callback"+
-              '&state='+"login",
-          method: 'GET'
-      };
-      return requestPromise(options, (error, response, body) => {
-          const JSONresponse = JSON.parse(body);
-          if (!JSONresponse.ok){
-              console.log(JSONresponse)
-              res.send("Error encountered: \n"+JSON.stringify(JSONresponse)).status(200).end()
-          }else{
-              console.log(JSONresponse);
-
-              console.log("SCOPES:", JSONresponse.scope);
-
-              return JSONresponse.scope;
-          }
-      })
-    };
 
 
     app.get("/slack", (req, res) => {
         res.sendFile(path.resolve('./views/slack_auth.html'));
+    });
+
+    app.get("/login", (req, res) => {
+        res.sendFile(path.resolve('./views/login.html'));
     });
 
     //login/logout functions
