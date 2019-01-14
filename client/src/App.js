@@ -5,7 +5,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 // import components
 import Showcase from './components/showcase' // Page that features product
-const Directory = () => <h2>Directory</h2>;  // Shows the directory
+import Explore from './components/explore';
 const Profile = () => <h2>Profile</h2>;
 /*import Sidebar from "./components/sidebar";
 import Header from "./components/header";
@@ -22,8 +22,8 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={Showcase} />
-          <Route path="/directory" component={Directory} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/explore" component={Explore} />
+          <Route path="/my_profile" component={Profile} />
 
 
 

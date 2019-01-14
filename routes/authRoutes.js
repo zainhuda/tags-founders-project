@@ -24,7 +24,7 @@ module.exports = (app) => {
             scope: ['identity.basic', 'identity.email', 'identity.avatar', 'identity.team'],
             callbackURL: '/auth/slack/callback',
         })
-    );;
+    );
 
 
     app.get("/auth/slack/import", passport.authenticate('Slack', {
@@ -96,5 +96,7 @@ module.exports = (app) => {
 
     app.get('/api/current_user', (req, res) => {
         res.send(req.user);
-    })
+    });
+
+
 };

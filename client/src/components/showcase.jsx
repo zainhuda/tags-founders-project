@@ -1,3 +1,6 @@
+// this is the landing page that shows off our product and what not
+// access through the root path
+
 import React, { Component } from 'react';
 
 class Showcase extends Component {
