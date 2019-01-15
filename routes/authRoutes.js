@@ -44,10 +44,9 @@ module.exports = (app) => {
         // redirect the user to be authed for the users:read scope
 
         res.redirect("/auth/slack/import")
-
-
       } else if (state ==="read"){
         // we know this was the second authenticate, and the token SHOULD have the users:read scope
+
         slackImporter.importSlack( req.user.accessToken ,res)
       }
     });
