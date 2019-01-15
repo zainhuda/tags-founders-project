@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     googleId: String,
     slackId: String,
-    accessToken: String
-
+    accessToken: String,
+    teamId: String,
 });
 
 mongoose.model('users', userSchema);

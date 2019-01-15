@@ -54,7 +54,7 @@ passport.use(new SlackStrategy({
               done(null, existingUser);
           }
           else {
-              new User({ slackId : profile.id, accessToken: accessToken}).save().then(user => done(null, user));
+              new User({ slackId : profile.id, accessToken: accessToken, teamId: profile.team.id}).save().then(user => done(null, user));
           }
       });
         console.log('accessToken', accessToken);
