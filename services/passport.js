@@ -51,6 +51,19 @@ passport.use(new SlackStrategy({
       User.findOne({ slackId : profile.id}).then((existingUser) => {
           if (existingUser) {
               //user already exists
+
+              // if User access token is different than the new one, update the record
+
+              if (existingUser.accessToken !== accessToken) {
+                const condition = {slackId: profile.id};
+                const update = {accessToken: accessToken};
+
+                User.updateOne(condition, update, () => {
+                  console.log("update done")
+                });
+              }
+
+
               done(null, existingUser);
           }
           else {
@@ -60,5 +73,6 @@ passport.use(new SlackStrategy({
         console.log('accessToken', accessToken);
         console.log('refreshToken', refreshToken);
         console.log('profile', profile);
+
     }
 ));
