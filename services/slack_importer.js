@@ -29,7 +29,7 @@ module.exports.importSlack = (accessToken, res) => {
         let User;
         try {
           User = mongoose.model(team_id);
-        } catch {
+        } catch(error) {
           console.log("Model for", team_id, "did not exist, creating.");
           User = mongoose.model(team_id, mongooseUserSchema, team_id);
         }
