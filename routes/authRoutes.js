@@ -42,7 +42,7 @@ module.exports = (app) => {
         // we know this was the first authenticate, and so probably does not have the users:read scope
 
         // redirect the user to be authed for the users:read scope
-
+        console.log("Redirecting to /auth/slack/import");
         res.redirect("/auth/slack/import")
       } else if (state ==="read"){
         // we know this was the second authenticate, and the token SHOULD have the users:read scope
