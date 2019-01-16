@@ -17,7 +17,7 @@ mongoose.connect(keys.mongoURI, {
   .then(() => console.log('mongo connection successful'))
   .catch((err) => console.error(err));
 
-
+app.enable('trust proxy');
 app.use(cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey]
@@ -25,7 +25,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+require('./routes/subdomain')(app);
 require('./routes/authRoutes')(app);
 // this sets our dynamic PORT, from underlying environment
 const PORT =  process.env.PORT || 5000;

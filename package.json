@@ -36,6 +36,7 @@
     "passport-slack": "git+https://github.com/mdanics/passport-slack.git",
     "passport-slack-oauth2": "^1.0.2",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "wildcard-subdomains": "^1.1.0"
   }
 }
