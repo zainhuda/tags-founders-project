@@ -35,14 +35,11 @@ class App extends Component {
 
 export default App;
 
-
-
-{/*
-<Col>
-  <Sidebar />
-  <Col lg={9} className="content">
-    <Header />
-    <Route exact path="/" component={EmployeeDirectory} />
-    <Route path="/profile" component={ProfilePage} />
-  </Col>
-</Col>*/}
+{/*          <Col>
+            <Sidebar />
+            <Col lg={9} className="content">
+              <Header />
+              <Route exact path="/" component={EmployeeDirectory} />
+              <Route path="/profile" component={ProfilePage} />
+            </Col>
+          </Col>*/}

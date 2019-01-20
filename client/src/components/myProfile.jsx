@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 
-class Profile extends Component {
+class MyProfile extends Component {
     render() {
         return(
             <div>
