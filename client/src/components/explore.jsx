@@ -6,7 +6,6 @@ import EmployeeDirectory from './employeeDirectory';
 import Header from './header';
 import Sidebar from './sidebar';
 
-
 import React, {Component} from 'react';
 
 class Explore extends Component {
