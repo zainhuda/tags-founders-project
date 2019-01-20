@@ -4,7 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "engines": {
-    "node": "8.12.0",
+    "node": "10.15.0",
     "npm": "6.4.1"
   },
   "scripts": {
@@ -27,6 +27,7 @@
     "axios": "^0.18.0",
     "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "generate-schema": "^2.6.0",
     "mongoose": "^5.3.12",

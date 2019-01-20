@@ -6,4 +6,5 @@ const userSchema = new Schema({
     slackId: String,
 });
 
-mongoose.model('users', userSchema);
+// FIX TSHI HARD CODE
+module.exports = mongoose.model('users', userSchema, 't25mt190a');

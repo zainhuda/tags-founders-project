@@ -2,26 +2,21 @@
 // access through the root path
 
 import React, { Component } from 'react';
+import Button from "./button.jsx";
+import Header from "./headerLP.jsx";
+import Footer from "./footer.jsx";
+import HomePage from "./homePage.jsx"
+import styles from "../App.css";
 
 class Showcase extends Component {
 	render() {
 		return(
 			<div>
-				<nav>
-					<a className="left">
-						Project X
-					</a>
-					<ul className="right">
-						<li>How it works</li>
-						<li>About us</li>
-						<li>FAQ</li>
-						<li>Get in touch</li>
-						<li><a>Login</a></li>
-						<li><a>Sign Up</a></li>
-					</ul>
-				</nav>
+				<Header />
 				<div className="landing">
-
+					<HomePage />
+					<Button className={"ui primary basic button"} msg={"VIEW DEMO"}/>
+					<Button className={"ui primary button"} msg={"LEARN MORE"}/>
 				</div>
 
 				<div className="features">
@@ -37,6 +32,8 @@ class Showcase extends Component {
 				</div>
 
 				<div className="footer">
+
+					<Footer />
 
 				</div>
 

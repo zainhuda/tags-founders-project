@@ -1,3 +1,5 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css");
+
 .App {
   text-align: center;
   padding: 0;
@@ -175,4 +177,87 @@ a{
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 17px;
   text-decoration: none;
+}
+
+.ui.primary.basic.button {
+  border-radius: 2px;
+  cursor: pointer;
+  color: rgba(154,220,255,.6);
+  font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
+  transition: all .2s cubic-bezier(.645,.045,.355,1);
+  padding: 12 27;
+}
+
+.ui.primary.button {
+  border-radius: 2px;
+  cursor: pointer;
+  color: white;
+  background-color: rgba(154,220,255,1);
+  font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
+}
+
+.features {
+  background-color: #cccccc;
+}
+
+.headerLP {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: white;
+  color: #3c4858;
+  font-weight: bold;
+  height: 40px;
+}
+
+.headerLP a {
+  color: #3c4858;
+  font-size: 12;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+  font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
+}
+
+nav,
+nav ul,
+nav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+}
+
+ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 15px;
+  padding: 10px !important;
+}
+
+.signup {
+  border: 1px solid;
+  border-color: rgba(154,220,255,.6);
+  background-color: transparent;
+  color: #3c4858;
+  border-radius: 4px;
+  padding: 2px 6px;
+  border-width: 1.5px;
+  font-weight: 505;
+  font-size: 12;
+}
+
+button:hover {
+  background-color: rgba(154,220,255,.6);
+  color: white;
+  font-weight: bold;
 }

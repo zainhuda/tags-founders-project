@@ -2,13 +2,20 @@
 // should also include the brains to sort by department or soemting
 // accessed through the path: /explore
 
+import EmployeeDirectory from './employeeDirectory';
+import Header from './header';
+import Sidebar from './sidebar';
+
+
 import React, {Component} from 'react';
 
 class Explore extends Component {
 	render() {
 		return(
 			<div>
-				<h2>explore page</h2>
+				<Header/>
+				<Sidebar/>
+				<EmployeeDirectory/>
 			</div>
 		);
 	}
