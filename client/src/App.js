@@ -1,16 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Col } from "react-bootstrap";
+import { BrowserRouter, Route } from "react-router-dom";
+
+// import components
+import Showcase from './components/showcase' // Page that features product
+import Explore from './components/explore';
+const Profile = () => <h2>Profile</h2>;
+/*import Sidebar from "./components/sidebar";
+import Header from "./components/header";
+import EmployeeDirectory from "./components/employeeDirectory";
+import ProfilePage from "./components/profilePage";*/
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <div>
-        <h1>welcome to a billion dollars</h1>
-        <a href="/auth/google">sign in with google here</a>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path="/" component={Showcase} />
+          <Route path="/explore" component={Explore} />
+          <Route path="/my_profile" component={Profile} />
+
+
+
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
 export default App;
+
+
+
+{/*
+<Col>
+  <Sidebar />
+  <Col lg={9} className="content">
+    <Header />
+    <Route exact path="/" component={EmployeeDirectory} />
+    <Route path="/profile" component={ProfilePage} />
+  </Col>
+</Col>*/}
