@@ -86,7 +86,9 @@ module.exports = app => {
           req.query.state === "import" &&
           response.data.scope.includes("users:read")
         ) {
-          res.send("IMPORT SHOULD BE GOOD - TODO CALL IMPORT SLACK FUNCTION");
+
+            slackImporter.importSlack(response.data.access_token, res);
+
         }
       }
     });
