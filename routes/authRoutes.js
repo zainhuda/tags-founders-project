@@ -8,6 +8,10 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 
+// const DOMAIN = "http://localhost:5000/auth/slack/callback";
+const DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
+const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
+
 module.exports = app => {
   // google oauth
   app.get(
@@ -29,12 +33,14 @@ module.exports = app => {
   app.get("/auth/slack/", (req, res) => {
     res.redirect(
       "https://slack.com/oauth/authorize?client_id=484756884274.486265867267&scope=identity.basic,identity.email,identity.avatar,identity.team&state=login"
+       + REDIRECT_URI_PARAM
     );
   });
 
   app.get("/auth/slack/import", (req, res) => {
     res.redirect(
       "https://slack.com/oauth/authorize?client_id=484756884274.486265867267&scope=users:read&state=import"
+      + REDIRECT_URI_PARAM
     );
   });
 
@@ -46,7 +52,8 @@ module.exports = app => {
       "&client_id=" +
       keys.slackClientID +
       "&client_secret=" +
-      keys.slackClientSecret;
+      keys.slackClientSecret
+      + REDIRECT_URI_PARAM;
 
     axios.get(url).then(response => {
       if (!response.data.ok) {
