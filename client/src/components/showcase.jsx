@@ -15,8 +15,6 @@ class Showcase extends Component {
 				<Header />
 				<div className="landing">
 					<HomePage />
-					<Button className={"ui primary basic button"} msg={"VIEW DEMO"}/>
-					<Button className={"ui primary button"} msg={"LEARN MORE"}/>
 				</div>
 
 				<div className="features">

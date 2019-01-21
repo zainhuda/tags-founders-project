@@ -3,6 +3,7 @@ import "./App.css";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Route } from "react-router-dom";
 
+
 // import components
 import Showcase from './components/showcase' // Page that features product
 import Explore from './components/explore';

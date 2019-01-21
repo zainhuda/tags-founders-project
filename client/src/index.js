@@ -7,9 +7,16 @@ import * as serviceWorker from "./serviceWorker";
 
 
 import App from "./App";
+<<<<<<< Updated upstream
 import reducers from './reducers';
 
 const store = createStore(reducers, {}, applyMiddleware());
+=======
+import reducers from './reducers/rootReducer';
+import thunk from 'redux-thunk';
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
+>>>>>>> Stashed changes
 
 
 ReactDOM.render(
