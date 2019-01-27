@@ -117,9 +117,9 @@ module.exports = app => {
         console.log("api for current user called");
     });
 
+    // api to get profiles that belong to team with teamId
     app.get('/api/profiles/:teamId', (req, res) => {
     let teamId = req.params.teamId;
-    console.log(teamId);
     User.find((err, docs) => {
         res.send(JSON.stringify(docs));
 
