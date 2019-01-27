@@ -15,7 +15,7 @@ mongoose.connect(keys.mongoURI, {
       password: keys.mongoPassword
     }, useNewUrlParser: true
   })
-  .then(() => console.log('mongo connection successful!!'))
+  .then(() => console.log('mongo connection successful!'))
   .catch((err) => console.error(err));
 
 
