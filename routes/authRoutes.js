@@ -127,8 +127,14 @@ module.exports = app => {
         collection.find({}).toArray( (err, docs) => {
             console.log("docs is", docs);
             res.send(docs);
+            })
         })
+    });
+
+    app.get("/", (req, res) => {
+          res.sendFile(path.resolve('./client/build/index.html'));
+
+        // res.sendFile(path.resolve("./client/public/index.html"));
     })
-});
 };
 

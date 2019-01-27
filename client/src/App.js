@@ -13,6 +13,7 @@ import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import EmployeeDirectory from "./components/employeeDirectory";
 import ProfilePage from "./components/profilePage";
+import {HashRouter} from "react-router-dom"
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <Route exact={true} path="/" component={Showcase} />
           <Route path="/explore" component={Explore} />
@@ -32,7 +33,7 @@ class App extends Component {
 
 
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
