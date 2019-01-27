@@ -5,14 +5,19 @@ const async = require("async");
 const keys = require("../config/keys");
 const slackImporter = require("../services/slack_importer");
 const axios = require("axios");
-
-const DOMAIN = "http://localhost:5000/auth/slack/callback";
-// const DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
-const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
+if (process.env.ENV === "prod"){
+  const DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
+} else {
+    const DOMAIN = "http://localhost:5000/auth/slack/callback";
+}
+const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
+
+
 module.exports = app => {
+  console.log("aa");
   // google oauth
   app.get(
     "/auth/google",
