@@ -37,20 +37,3 @@ class App extends Component {
 }
 
 export default App;
-
-<<<<<<< Updated upstream
-/*          <Col>
-=======
-{/*          <Col>
->>>>>>> Stashed changes
-            <Sidebar />
-            <Col lg={9} className="content">
-              <Header />
-              <Route exact path="/" component={EmployeeDirectory} />
-              <Route path="/profile" component={ProfilePage} />
-            </Col>
-<<<<<<< Updated upstream
-          </Col>*/
-=======
-          </Col>*/}
->>>>>>> Stashed changes
