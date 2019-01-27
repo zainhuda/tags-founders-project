@@ -105,5 +105,6 @@ module.exports = app => {
   app.get("/slack", (req, res) => {
     res.sendFile(path.resolve("./views/slack_auth.html"));
   });
+
 };
 

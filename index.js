@@ -5,6 +5,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const app = express();
 const cors = require('cors');
+const path = require("path");
 
 require('./models/User');
 require('./services/passport');
@@ -27,6 +28,7 @@ app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static(path.resolve('./client/build')));
 
 require('./routes/authRoutes')(app);
 require('./routes/apiRoutes')(app);
@@ -35,7 +37,8 @@ const PORT =  process.env.PORT || 5000;
 const environment = process.env.ENV || 'dev';
 
 if (environment === "dev"){
-    console.log("\x1b[31m", "ENVIRONMENT IS DEV - ENSURE THAT THIS IS NOT SHOWING WHEN DEPLOYED", "\x1b[0m")
+    console.log("\x1b[31m", "ENVIRONMENT IS DEV - ENSURE THAT THIS IS NOT SHOWING WHEN DEPLOYED", "\x1b[0m");
+    process.ENV = 'dev';
 } else if (environment === "prod") {
     console.log("\x1b[34m", "RUNNING IN PROD", "\x1b[0m")
 }
