@@ -3,15 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "axios": "^0.18.0",
-=======
-<<<<<<< Updated upstream
-=======
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
->>>>>>> Stashed changes
->>>>>>> showcase
     "http-proxy-middleware": "^0.19.1",
     "react": "^16.6.1",
     "react-bootstrap": "^0.32.4",
