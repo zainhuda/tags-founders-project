@@ -179,16 +179,18 @@ a{
   text-decoration: none;
 }
 
-.ui.primary.basic.button {
+.ui.primary.basic.button { //button taken from semantic
+  position: relative;
   border-radius: 2px;
   cursor: pointer;
   color: rgba(154,220,255,.6);
   font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
   transition: all .2s cubic-bezier(.645,.045,.355,1);
   padding: 12 27;
+  transform: translate(100%, 100%);
 }
 
-.ui.primary.button {
+.ui.primary.button { //button taken from semantic
   border-radius: 2px;
   cursor: pointer;
   color: white;
@@ -297,5 +299,38 @@ ul li {
 button:hover {
   background-color: rgba(154,220,255,.6);
   color: white;
+  font-weight: bold;
+}
+
+.introduction { //css for homePage first div (white box)
+  position: relative;
+  display: block;
+  background-color: white;
+  color: black;
+  height: 75%;
+}
+
+.middle { //css for homepage second div (gray box)
+  position: relative;
+  display: block;
+  background-color: #eff1f4;
+  color: black;
+  height: 75%;
+}
+
+.aboutMe {
+  position: relative;
+  display: block;
+  background-color: black;
+  color: white;
+  height: 75%;
+}
+
+.slogan {
+  position: relative;
+  margin-left: 38%;
+  padding: 15% 0px;
+  color: red;
+  font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
   font-weight: bold;
 }

@@ -3,6 +3,7 @@ import "./App.css";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Route } from "react-router-dom";
 
+
 // import components
 
 import SignUp from "./components/signup";
