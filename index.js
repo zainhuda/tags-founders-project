@@ -29,6 +29,7 @@ app.use(passport.session());
 
 
 require('./routes/authRoutes')(app);
+require('./routes/apiRoutes')(app);
 // this sets our dynamic PORT, from underlying environment
 const PORT =  process.env.PORT || 5000;
 const environment = process.env.ENV || 'dev';

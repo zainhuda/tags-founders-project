@@ -10,7 +10,7 @@ class HomePage extends Component {
           <h2 className="slogan">Easy. Breezy. Covergirl.</h2>
           <h5 className="slogan" className="caption">Flawless skin for life</h5>
           <Button className={"ui primary basic button"} msg={"VIEW DEMO"}/>
-					<Button className={"ui primary button"} msg={"LEARN MORE"}/>
+            <Button className={"ui primary button"} msg={"LEARN MORE"}/>
         </div>
         <div className="middle">
         Features Content Here
