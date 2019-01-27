@@ -126,6 +126,7 @@ module.exports = app => {
         console.log("collection is: ", collection);
         collection.find({}).toArray( (err, docs) => {
             console.log("docs is", docs);
+            res.send(docs);
         })
     })
 });

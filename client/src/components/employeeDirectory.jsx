@@ -17,7 +17,7 @@ class EmployeeDirectory extends Component {
     componentDidMount() {
         // make api request for profiles
         // we need to make the id dynamic based on what user is logged in currently
-        axios.get('http://localhost:5000/api/profiles/t25mt190a', {
+        axios.get('http://localhost:5000/api/profiles', {
             headers: {"Access-Control-Allow-Origin": "*", }
         })
             .then(res => {
