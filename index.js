@@ -37,6 +37,8 @@ if (environment === "dev"){
     console.log("\x1b[31m", "ENVIRONMENT IS DEV - ENSURE THAT THIS IS NOT SHOWING WHEN DEPLOYED", "\x1b[0m")
 } else if (environment === "prod") {
     console.log("\x1b[34m", "RUNNING IN PROD", "\x1b[0m")
+} else {
+    console.log("no env")
 }
 
 
