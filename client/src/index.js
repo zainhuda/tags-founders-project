@@ -6,7 +6,6 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
 import thunk from 'redux-thunk';
-import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import reducers from './reducers/rootReducer';
 
