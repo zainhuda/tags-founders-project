@@ -15,7 +15,7 @@ mongoose.connect(keys.mongoURI, {
       password: keys.mongoPassword
     }, useNewUrlParser: true
   })
-  .then(() => console.log('mongo connection successful'))
+  .then(() => console.log('mongo connection successful!!'))
   .catch((err) => console.error(err));
 
 
@@ -37,8 +37,6 @@ if (environment === "dev"){
 } else if (environment === "prod") {
     console.log("\x1b[34m", "RUNNING IN PROD", "\x1b[0m")
 }
-
-
 
 
 // tells express to tell node to listen to port
