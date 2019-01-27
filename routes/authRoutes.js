@@ -8,8 +8,8 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 
-// const DOMAIN = "http://localhost:5000/auth/slack/callback";
-const DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
+const DOMAIN = "http://localhost:5000/auth/slack/callback";
+// const DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
 const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
 
 module.exports = app => {
@@ -70,7 +70,7 @@ module.exports = app => {
           // create user in mongo
           User.findOneAndUpdate(
             { slackId: response.data.user.id },
-            { slackId: response.data.user.id },
+            { slackId: response.data.user.id, teamId: response.data.team.id, slackDomain: response.data.team.domain},
             { upsert: true, new: true },
             (err, doc) => {
               if (err) {
@@ -93,6 +93,7 @@ module.exports = app => {
           req.query.state === "import" &&
           response.data.scope.includes("users:read")
         ) {
+            console.log("import gang");
 
             slackImporter.importSlack(response.data.access_token, res);
 
