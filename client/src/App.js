@@ -3,14 +3,16 @@ import "./App.css";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Route } from "react-router-dom";
 
+
 // import components
-import Showcase from './components/showcase' // Page that features product
+
+import SignUp from "./components/signup";
+import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
-const Profile = () => <h2>Profile</h2>;
-/*import Sidebar from "./components/sidebar";
+import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import EmployeeDirectory from "./components/employeeDirectory";
-import ProfilePage from "./components/profilePage";*/
+import ProfilePage from "./components/profilePage";
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +25,9 @@ class App extends Component {
         <div>
           <Route exact={true} path="/" component={Showcase} />
           <Route path="/explore" component={Explore} />
-          <Route path="/my_profile" component={Profile} />
+          <Route path="/my_profile" />
+
+          <Route path="/david" component={SignUp}/>
 
 
 
@@ -34,12 +38,3 @@ class App extends Component {
 }
 
 export default App;
-
-{/*          <Col>
-            <Sidebar />
-            <Col lg={9} className="content">
-              <Header />
-              <Route exact path="/" component={EmployeeDirectory} />
-              <Route path="/profile" component={ProfilePage} />
-            </Col>
-          </Col>*/}
