@@ -70,7 +70,7 @@ module.exports = app => {
           // create user in mongo
           User.findOneAndUpdate(
             { slackId: response.data.user.id },
-            { slackId: response.data.user.id, teamId: response.data.team.id, slackDomain: response.data.team.domain},
+            { slackId: response.data.user.id, slackTeamId: response.data.team.id.toUpperCase(), slackDomain: response.data.team.domain},
             { upsert: true, new: true },
             (err, doc) => {
               if (err) {

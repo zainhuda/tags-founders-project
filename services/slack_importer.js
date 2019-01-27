@@ -23,7 +23,7 @@ module.exports.importSlack = (accessToken, res) => {
 
         // user schema
         const mongooseUserSchema = GenerateSchema.mongoose(members[0]);
-        const team_id = members[0].team_id.toLowerCase();
+        const team_id = members[0].team_id.toUpperCase();
 
 
         let User;
