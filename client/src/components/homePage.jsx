@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "../App.css";
+import styles from "../utils/homePage.css";
 import Button from "./button.jsx";
 
 class HomePage extends Component {

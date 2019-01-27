@@ -6,7 +6,7 @@ import Button from "./button.jsx";
 import Header from "./headerLP.jsx";
 import Footer from "./footer.jsx";
 import HomePage from "./homePage.jsx"
-import styles from "../App.css";
+import styles from "../utils/homePage.css";
 
 class Showcase extends Component {
 	render() {

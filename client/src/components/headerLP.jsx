@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "./button.jsx";
-import styles from "../App.css";
+import styles from "../utils/homePage.css";
 
 class Header extends Component {
   render () {
