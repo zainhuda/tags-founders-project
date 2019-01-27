@@ -8,10 +8,11 @@ const axios = require("axios");
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
+let DOMAIN;
 if (process.env.ENV === "prod"){
-  const DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
+    DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
 } else {
-    const DOMAIN = "http://localhost:5000/auth/slack/callback";
+    DOMAIN = "http://localhost:5000/auth/slack/callback";
 }
 const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
 
