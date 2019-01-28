@@ -31,9 +31,9 @@ module.exports = app => {
         console.log("api for current user called");
     });
 
-    app.get('/api/update_profile', (req, res) => {
-        res.send('FORM');
-    })
+    app.post('/api/update_profile', (req, res) => {
+        console.log("req is: ", req.body.body);
+    });
 
 };
 
