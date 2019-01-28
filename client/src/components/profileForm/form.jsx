@@ -2,6 +2,9 @@
 // parent that will decide what elements get displayed
 
 import React, { Component } from "react";
+import UserDetailsForm from "./userDetailsForm";
+import UserTagsForm from "./userTagsForm";
+import ConfirmForm from "./confirmForm";
 
 export class Form extends Component {
 
@@ -37,6 +40,40 @@ export class Form extends Component {
 	};
 
 	render() {
+		const {step} = this.state;
+		const {firstName, lastName, email, position} = this.state;
+		const values = {firstName, lastName, email, position};
+
+		switch(step) {
+			case 1:
+				return (
+					<UserDetailsForm
+						nextStep={this.nextStep}
+						handleChange={this.handleChange}
+						values={values}
+					/>
+				);
+			case 2:
+				return (
+					<UserTagsForm
+						nextStep={this.nextStep}
+						prevStep={this.prevStep}
+						handleChange={this.handleChange}
+						values={values}
+					/>
+				);
+			case 3:
+				return(
+					<ConfirmForm
+						nextStep={this.nextStep}
+						prevStep={this.prevStep}
+						values={values}
+					/>
+				);
+			case 4:
+				return(<h1>forSubmitted</h1>);
+		}
+
 		return(
 			<div>
 
