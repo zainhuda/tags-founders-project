@@ -21,6 +21,7 @@ class EmployeeDirectory extends Component {
             headers: {"Access-Control-Allow-Origin": "*", }
         })
             .then(res => {
+                console.log(res.data);
                 this.setState({isLoaded: true, profiles: res.data});
             })
             .catch(err => console.log(err))

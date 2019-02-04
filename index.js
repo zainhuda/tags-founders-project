@@ -7,6 +7,15 @@ const app = express();
 const cors = require('cors');
 const path = require("path");
 
+//STUFF ADDED BY GARETH
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+
 require('./models/User');
 require('./services/passport');
 
