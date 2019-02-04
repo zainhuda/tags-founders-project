@@ -9,11 +9,14 @@ import ConfirmForm from "./confirmForm";
 export class Form extends Component {
 
 	state = {
-		step: 1,
+		// all the values that need to be changed have to be first declared here
 		firstName: '',
 		lastName: '',
 		email: '',
-		position: ''
+		position: '',
+		interests: '',
+		skills: '',
+		step: 1
 	};
 
 	// move to the next step of the form
@@ -41,8 +44,8 @@ export class Form extends Component {
 
 	render() {
 		const {step} = this.state;
-		const {firstName, lastName, email, position} = this.state;
-		const values = {firstName, lastName, email, position};
+		const {firstName, lastName, email, position, interests, skills} = this.state;
+		const values = {firstName, lastName, email, position, interests, skills};
 
 		switch(step) {
 			case 1:
@@ -76,8 +79,6 @@ export class Form extends Component {
 
 		return(
 			<div>
-
-
 			</div>
 		)
 	}

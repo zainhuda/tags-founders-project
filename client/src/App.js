@@ -9,7 +9,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import SignUp from "./components/signup";
 import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
-import Form from './components/profileForm/form';
+import Form from './components/settingsForm/form';
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import EmployeeDirectory from "./components/employeeDirectory";

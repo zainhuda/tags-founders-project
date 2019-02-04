@@ -7,19 +7,22 @@ export class ConfirmForm extends Component {
 		e.preventDefault();
 		// process form here
 
-		let data = {
-			"firstName:": this.props.firstName,
-			"lastName": this.props.lastName,
-			"email": this.props.email,
-			"position": this.props.positions
-		};
 
+		const { values: {firstName, lastName, email, position, interests, skills}} = this.props;
+		let data = {
+			"firstName": firstName,
+			"lastName": lastName,
+			"email": email,
+			"position": position,
+			"interests": interests,
+			"skills": skills
+		};
 		// call api to update user profile
 		axios.post('api/update_profile', {
 			body: JSON.stringify(data)
 		})
 			.then((response) => {
-				return response.json()
+				console.log(response);
 			})
 			.then((data) => {
 				console.log(data);
@@ -34,7 +37,7 @@ export class ConfirmForm extends Component {
 	};
 
 	render() {
-		const { values: {firstName, lastName, email, position}} = this.props;
+		const { values: {firstName, lastName, email, position, interests, skills}} = this.props;
 		return(
 			<div>
 				<h1>Confirm changes</h1>
@@ -47,6 +50,10 @@ export class ConfirmForm extends Component {
 					<li>{email}</li>
 					<li>Position</li>
 					<li>{position}</li>
+					<li>Interests</li>
+					<li>{interests}</li>
+					<li>Skills</li>
+					<li>{skills}</li>
 				</ul>
 				<input type="submit" value="Back" onClick={this.back}/>
 				<input type="submit" value="Submit" onClick={this.continue}/>

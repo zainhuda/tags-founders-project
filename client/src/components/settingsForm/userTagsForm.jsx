@@ -17,9 +17,9 @@ export class UserTagsForm extends Component {
 		return(
 			<div>
 				<h4>Interests</h4>
-				<input type="text" name="firstName" onChange={handleChange('firstName')} defaultValue={values.firstName}/>
+				<input type="text" name="interests" onChange={handleChange('interests')} defaultValue={values.interests}/>
 				<h4>Skills</h4>
-				<input type="text" name="lastName" onChange={handleChange('lastName')} defaultValue={values.lastName}/>
+				<input type="text" name="skills" onChange={handleChange('skills')} defaultValue={values.skills}/>
 				<input type="submit" value="Back" onClick={this.back}/>
 				<input type="submit" value="Submit" onClick={this.continue}/>
 
