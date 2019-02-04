@@ -30,6 +30,28 @@ module.exports = app => {
         console.log("api for current user called");
     });
 
+
+    // get user data from mongo
+    app.get('/api/get_profile', (req, res) => {
+       let teamId = req.user.slackTeamId;
+       mongoose.connection.db.collection(teamId, (err, collection) => {
+           if (err) {
+               // handle error
+               console.log("err boy: ", err)
+           }
+           else {
+               // no error we good lets go find the user
+               console.log("res.user.slackID:", req.user.slackId);
+               collection.find({
+                   "id": req.user.slackId
+               }).toArray((err, docs) => {
+                   console.log("docs", docs);
+                   res.send(docs);
+               })
+           }
+       })
+    });
+
     // update user profile
     app.post('/api/update_profile', (req, res) => {
         //console.log("user is: ", req.user);
