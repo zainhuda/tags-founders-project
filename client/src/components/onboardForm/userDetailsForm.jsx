@@ -7,26 +7,27 @@ export class UserDetailsForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-		isLoaded: false,
-		firstName: '',
-		lastName: '',
-		title: '',
-		email: '',
+			isLoaded: false,
+			firstName: '',
+			lastName: '',
+			title: '',
+			email: '',
         }
     }
 
-	// api call for the current user
 	componentDidMount() {
+
+    	// get whatever data we can from slack about the user
 		axios.get('/api/get_profile', {
 			headers: {"Allow-Control-Allow-Origin": "*", }
 		})
 			.then((res) => {
 				console.log("received by axios is: ", res.data);
 				this.setState({
-					firstName: res.data.profile.first_name,
-					lastName: res.data.profile.last_name,
-					title: res.data.profile.title,
-					email: res.data.email,
+					firstName: res.data[0].profile.first_name,
+					lastName: res.data[0].profile.last_name,
+					title: res.data[0].profile.title,
+					email: res.data[0].email,
 					isLoaded: true
 				})
 
@@ -36,14 +37,33 @@ export class UserDetailsForm extends Component {
 
 	continue = (e) => {
 		e.preventDefault();
-		// call api to update the profile
 
-		const {values: {firstName, lastName, email}} = this.props;
+		let {values: {firstName, lastName, title, email}} = this.props;
+
+		// if "" then the user didnt change anything so we'll just use what we got from slack
+		if (firstName === "") {
+			firstName = this.state.firstName;
+		}
+		if (lastName === "") {
+			lastName = this.state.lastName;
+		}
+		if (title === "") {
+			title = this.state.title;
+		}
+		if (email === "") {
+			email = this.state.email;
+		}
+
+		// create the data to be sent to update user profile
 		let data = {
 			"firstName": firstName,
 			"lastName": lastName,
+			"title": title,
 			"email": email
 		};
+		console.log("data from userDetailsForm:", data);
+
+		// call the api to update the user pfoiel
 		axios.post('api/update_profile', {
 			body: JSON.stringify(data)
 		})
@@ -53,16 +73,17 @@ export class UserDetailsForm extends Component {
 			.then((data) => {
 				console.log(data);
 			});
-
+		// move onto the next step (skills and interests)
 		this.props.nextStep();
 	};
 
 	render() {
 		let {isLoaded} = this.state;
-		const {values, handleChange} = this.props;
+		const {handleChange} = this.props;
 
 		if (!isLoaded) {
 			return (
+				// a cool loading animation should go here
 				<div>
 					LOADING
 				</div>
@@ -79,11 +100,12 @@ export class UserDetailsForm extends Component {
 					<h1>your first name is: </h1>
 					<input type="text" name="firstName" onChange={handleChange('firstName')} defaultValue={firstName}/>
 					<h1>your last is: </h1>
-					<input type="text" name="lastName" onChange={handleChange('lastName')}
-					       defaultValue={values.lastName}/>
+					<input type="text" name="lastName" onChange={handleChange('lastName')} defaultValue={lastName}/>
+					<h1>Your title is:</h1>
+					<input type="text" name="title" onChange={handleChange('title')} defaultValue={title}/>
 					<h1>your email is: </h1>
-					<input type="text" name="email" onChange={handleChange('email')} defaultValue={values.email}/>
-					<input type="submit" value="submit" onClick={this.continue}/>
+					<input type="text" name="email" onChange={handleChange('email')} defaultValue={email}/>
+					<input type="submit" value="continue" onClick={this.continue}/>
 					<h4> dw u can always change this stuff later</h4>
 				</div>
 			)

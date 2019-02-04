@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import UserDetailsForm from "./userDetailsForm";
 import UserTagsForm from "./userTagsForm";
 import ConfirmForm from "./confirmForm";
+import FormSubmitted from "./formSubmitted";
 
 export class Form extends Component {
 
@@ -14,8 +15,8 @@ export class Form extends Component {
 		lastName: '',
 		email: '',
 		position: '',
-		interests: '',
-		skills: '',
+		interests: [],
+		skills: [],
 		step: 1
 	};
 
@@ -74,7 +75,9 @@ export class Form extends Component {
 					/>
 				);
 			case 4:
-				return(<h1>forSubmitted</h1>);
+				return(
+					<FormSubmitted/>
+				);
 		}
 
 		return(

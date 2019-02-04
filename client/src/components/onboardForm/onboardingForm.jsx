@@ -2,17 +2,24 @@
 
 import React, {Component} from "react";
 import UserDetailsForm from "./userDetailsForm";
+import UserTagsForm from "./userTagsForm";
 import Success from "./success";
 
 export class OnboardingForm extends Component {
 
 	state = {
-		// all the fields the user might need to change
-
+		// user details
+		firstName: '',
+		lastName: '',
+		title: '',
+		email: '',
+		// tags
+		skills: [],
+		interests: [],
 		step: 1,
 	};
 
-	// move to the enxt step of the form
+	// move to the next step of the form
 	nextStep = () => {
 		const {step} = this.state;
 		this.setState({
@@ -37,8 +44,8 @@ export class OnboardingForm extends Component {
 
 	render() {
 		const {step} = this.state;
-		const {firstName, lastName, email} = this.state;
-		const values = {firstName, lastName, email};
+		const {firstName, lastName, email, skills, interests} = this.state;
+		const values = {firstName, lastName, email, skills, interests};
 
 		switch(step){
 			case 1:
@@ -51,6 +58,15 @@ export class OnboardingForm extends Component {
 				);
 			case 2:
 				return(
+					<UserTagsForm
+						nextStep={this.nextStep}
+						prevStep={this.prevStep}
+						handleChange={this.handleChange}
+						values={values}
+					/>
+				);
+			case 3:
+				return(
 					<Success
 						nextStep={this.nextStep}
 						prevStep={this.prevStep}
@@ -58,8 +74,6 @@ export class OnboardingForm extends Component {
 			)
 		}
 	}
-
-
 }
 
 export default OnboardingForm
