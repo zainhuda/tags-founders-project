@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 
-export class FormSubmitted extends Component {
+export class Success extends Component {
 
 	state = {
 		redirect: false
@@ -15,20 +15,28 @@ export class FormSubmitted extends Component {
 
 	renderRedirect = () => {
 		if (this.state.redirect) {
-			// redirect to their profile page????
+			// maybe we want a tutorial route?????
 			return <Redirect to="/explore"/>
 		}
+	};
+
+	// go bakc a step!!
+	back = (e) => {
+		e.preventDefault();
+		this.props.prevStep();
 	};
 
 	render() {
 		return(
 			<div>
-				<h1>ur settingss were changed !</h1>
+				<h1> all set !</h1>
+				<input type="submit" value="go back" onClick={this.back}/>
 				{this.renderRedirect()}
 				<input type="submit" value="explore" onClick={this.setRedirect}/>
 			</div>
 		)
 	}
+
 }
 
-export default FormSubmitted;
+export default Success;

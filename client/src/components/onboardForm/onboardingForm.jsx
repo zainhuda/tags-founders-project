@@ -1,23 +1,22 @@
-// this will be the user settings form to change profile
-// parent that will decide what elements get displayed
+// this wil lbe the form that userse see immediately after signing up through slack
 
-import React, { Component } from "react";
+import React, {Component} from "react";
 import UserDetailsForm from "./userDetailsForm";
 import UserTagsForm from "./userTagsForm";
-import ConfirmForm from "./confirmForm";
-import FormSubmitted from "./formSubmitted";
+import Success from "./success";
 
-export class Form extends Component {
+export class OnboardingForm extends Component {
 
 	state = {
-		// all the values that need to be changed have to be first declared here
+		// user details
 		firstName: '',
 		lastName: '',
+		title: '',
 		email: '',
-		position: '',
-		interests: [],
+		// tags
 		skills: [],
-		step: 1
+		interests: [],
+		step: 1,
 	};
 
 	// move to the next step of the form
@@ -45,12 +44,12 @@ export class Form extends Component {
 
 	render() {
 		const {step} = this.state;
-		const {firstName, lastName, email, position, interests, skills} = this.state;
-		const values = {firstName, lastName, email, position, interests, skills};
+		const {firstName, lastName, email, skills, interests} = this.state;
+		const values = {firstName, lastName, email, skills, interests};
 
-		switch(step) {
+		switch(step){
 			case 1:
-				return (
+				return(
 					<UserDetailsForm
 						nextStep={this.nextStep}
 						handleChange={this.handleChange}
@@ -58,7 +57,7 @@ export class Form extends Component {
 					/>
 				);
 			case 2:
-				return (
+				return(
 					<UserTagsForm
 						nextStep={this.nextStep}
 						prevStep={this.prevStep}
@@ -68,23 +67,13 @@ export class Form extends Component {
 				);
 			case 3:
 				return(
-					<ConfirmForm
+					<Success
 						nextStep={this.nextStep}
 						prevStep={this.prevStep}
-						values={values}
 					/>
-				);
-			case 4:
-				return(
-					<FormSubmitted/>
-				);
+			)
 		}
-
-		return(
-			<div>
-			</div>
-		)
 	}
 }
 
-export default Form
+export default OnboardingForm

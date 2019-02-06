@@ -9,7 +9,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import SignUp from "./components/signup";
 import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
-import Form from './components/settingsForm/form';
+import SettingsForm from './components/settingsForm/form';
+import OnboardingForm from './components/onboardForm/onboardingForm';
+import MyProfile from './components/myProfile';
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import EmployeeDirectory from "./components/employeeDirectory";
@@ -27,11 +29,11 @@ class App extends Component {
         <div>
           <Route exact={true} path="/" component={Showcase} />
           <Route path="/explore" component={Explore} />
-          <Route path="/my_profile" />
+          <Route path="/profile" component={MyProfile}/>
 
           <Route path="/david" component={SignUp}/>
-          <Route path="/form" component={Form}/>
-
+          <Route path="/settings_form" component={SettingsForm}/>
+          <Route path="/onboard" component={OnboardingForm}/>
 
 
         </div>
