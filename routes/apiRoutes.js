@@ -43,7 +43,8 @@ module.exports = app => {
                // no error we good lets go find the user
                console.log("res.user.slackID:", req.user.slackId);
                collection.find({
-                   "id": req.user.slackId
+                   // we might want to serach by mongo id
+                   "slackData.id": req.user.slackId
                }).toArray((err, docs) => {
                    console.log("docs", docs);
                    res.send(docs);
@@ -71,12 +72,15 @@ module.exports = app => {
             else {
                 // lets find the user and update their profile
                 collection.findOneAndUpdate({
-                        "id": req.user.slackId
+                        "slackData.id": req.user.slackId
                     },{ $set: {
                         // whatever fields needs to be changed happen here
-                    "real_name": userData.firstName + " " + userData.lastName,
-                    "email": userData.email,
-                    "position": userData.position
+                    "teamData.firstName": userData.firstName,
+                    "teamData.lastName": userData.lastName,
+                    "teamData.image_512": userData.image_512,
+                    "teamData.title": userData.title,
+                    "teamData.phone": userData.phone,
+                    "teamData.email": userData.email
                 }},
                     {
                         // dont create a new user this might mess up populating the explore page

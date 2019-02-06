@@ -45,7 +45,20 @@ module.exports.importSlack = (accessToken, res) => {
 
         for (let i = 0; i < members.length; i++){
 
-          const user = new User({'slackData' : members[i], 'teamData' : {"someData": "hello!"}, "isConfirmed": false});
+          const user = new User({
+              'slackData' : members[i],
+              'teamData' : {
+                "firstName": members[i].profile.first_name,
+                "lastName": members[i].profile.last_name,
+                  "image_512": members[i].profile.image_512,
+                  "title": members[i].profile.title,
+                  "phone": members[i].profile.phone,
+                  "email": ""
+
+              },
+              "isConfirmed": false
+          });
+
           try{
             await User.find({id: members[i].id}, (err, docs) => {
             if (docs.length){
