@@ -12,7 +12,7 @@ module.exports = app => {
         }
         console.log("collection is: ", collection);
         collection.find({}).toArray( (err, docs) => {
-            console.log("docs is", docs);
+            //console.log("docs is", docs);
             res.json(docs);
         })
         })
@@ -24,16 +24,76 @@ module.exports = app => {
         res.send(req.user);
     });
 
-
     app.get('/api/current_user', (req, res) => {
         res.send(req.user);
         console.log("current user is: ", req.user);
         console.log("api for current user called");
     });
 
-    app.get('/api/update_profile', (req, res) => {
-        res.send('FORM');
-    })
+
+    // get user data from mongo
+    app.get('/api/get_profile', (req, res) => {
+       let teamId = req.user.slackTeamId;
+       mongoose.connection.db.collection(teamId, (err, collection) => {
+           if (err) {
+               // handle error
+               console.log("err boy: ", err)
+           }
+           else {
+               // no error we good lets go find the user
+               console.log("res.user.slackID:", req.user.slackId);
+               collection.find({
+                   "id": req.user.slackId
+               }).toArray((err, docs) => {
+                   console.log("docs", docs);
+                   res.send(docs);
+               })
+           }
+       })
+    });
+
+    // update user profile
+    app.post('/api/update_profile', (req, res) => {
+        //console.log("user is: ", req.user);
+        //console.log("req is: ", req.body.body);
+        const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
+        const teamId = req.user.slackTeamId;
+        let userData = JSON.parse(req.body.body);
+/*        console.log("userId: ", userId);
+        console.log("slackTeamId", teamId);
+        console.log("userData: ", userData);*/
+
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                // handle the error
+                console.log("error boy ", err)
+            }
+            else {
+                // lets find the user and update their profile
+                collection.findOneAndUpdate({
+                        "id": req.user.slackId
+                    },{ $set: {
+                        // whatever fields needs to be changed happen here
+                    "real_name": userData.firstName + " " + userData.lastName,
+                    "email": userData.email,
+                    "position": userData.position
+                }},
+                    {
+                        // dont create a new user this might mess up populating the explore page
+                        upsert: false,
+                        new: true
+                    })
+                    .then((user) => {
+                        res.send(user);
+                        //console.log("user: ", user)
+                    })
+                    .catch((err) => {
+                        console.log("big error", err);
+                    })
+            }
+        })
+    });
+
 
 };
 
