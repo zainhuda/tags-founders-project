@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export class UserDetailsForm extends Component {
+class UserDetailsForm extends Component {
 
 	continue = (e) => {
 		e.preventDefault();
@@ -21,6 +21,7 @@ export class UserDetailsForm extends Component {
 				<h4>Position</h4>
 				<input type="text" name="position" onChange={handleChange('position')} defaultValue={values.position}/>
 				<input type="submit" value="Submit" onClick={this.continue}/>
+				<input type="submit" value="Go back to profile" onClick={() => {this.props.changePage("myProfile")}}/>
 			</div>
 		)
 	}

@@ -43,6 +43,7 @@ class MyProfile extends Component {
     }
 
 
+
     render() {
 
     	let {isLoaded} = this.state;
@@ -61,6 +62,8 @@ class MyProfile extends Component {
 			        <h2>MY PROFILE</h2>
 			        <h4>first name: {firstName} last name: {lastName} title: {title} email: {email} skills: {skills}
 			        interests: {interests} age: {age} bday: {birthday}</h4>
+			        <input type="submit" value="settings" onClick={() => {this.props.changePage("settings")}} />
+			        <input type="submit" value="tags" onClick={() => {this.props.changePage("changeTags")}}/>
 		        </div>
 	        )
         }

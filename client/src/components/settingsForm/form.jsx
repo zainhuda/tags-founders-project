@@ -55,6 +55,7 @@ export class Form extends Component {
 						nextStep={this.nextStep}
 						handleChange={this.handleChange}
 						values={values}
+						changePage={this.props.changePage}
 					/>
 				);
 			case 2:
