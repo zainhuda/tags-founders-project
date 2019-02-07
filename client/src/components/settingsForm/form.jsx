@@ -13,8 +13,10 @@ export class Form extends Component {
 		// all the values that need to be changed have to be first declared here
 		firstName: '',
 		lastName: '',
+		phone: '',
 		email: '',
 		position: '',
+		image_512: '',
 		interests: [],
 		skills: [],
 		step: 1
@@ -45,8 +47,8 @@ export class Form extends Component {
 
 	render() {
 		const {step} = this.state;
-		const {firstName, lastName, email, position, interests, skills} = this.state;
-		const values = {firstName, lastName, email, position, interests, skills};
+		const {firstName, lastName, email, position, interests, skills, image_512} = this.state;
+		const values = {firstName, lastName, email, position, interests, skills, image_512};
 
 		switch(step) {
 			case 1:

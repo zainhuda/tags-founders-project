@@ -42,7 +42,12 @@ class EmployeeDirectory extends Component {
             // data is received and we ca render it
             const profilesArray = profiles.map(profile => (
                 <Col lg={2} style={{ padding: "4px" }}>
-                <ProfileThumbnail key={profile.id} name={profile.real_name} url={profile.profile.image_192} id={profile.id}/>
+                    <ProfileThumbnail
+                        key={profile._id}
+                        firstName={profile.teamData.firstName}
+                        lastName={profile.teamData.lastName}
+                        title={profile.teamData.title}
+                        url={profile.teamData.image_512} />
                 </Col>
             ));
             return(

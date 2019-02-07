@@ -53,7 +53,9 @@ module.exports.importSlack = (accessToken, res) => {
                   "image_512": members[i].profile.image_512,
                   "title": members[i].profile.title,
                   "phone": members[i].profile.phone,
-                  "email": ""
+                  "email": "",
+                  "interests": [],
+                  "skills": []
 
               },
               "isConfirmed": false
