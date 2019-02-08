@@ -85,7 +85,8 @@ module.exports = app => {
                     {
                         // dont create a new user this might mess up populating the explore page
                         upsert: false,
-                        new: true
+                        new: true,
+                        returnOriginal: false,
                     })
                     .then((user) => {
                         res.send(user);
@@ -98,6 +99,41 @@ module.exports = app => {
         })
     });
 
+    app.post('/api/update_interests', (req, res) => {
+        const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
+        const teamId = req.user.slackTeamId;
+        let requestData = JSON.parse(req.body.body);
+
+        console.log("request data is:", requestData);
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                // handle the error
+                console.log("error boy ", err)
+            }
+            else {
+                // lets find the user and update their profile
+                collection.findOneAndUpdate({
+                        "slackData.id": req.user.slackId
+                    },{ $set: {
+                        // whatever fields needs to be changed happen here
+                    "teamData.interests": requestData.interests,
+                }},
+                    {
+                        // dont create a new user this might mess up populating the explore page
+                        upsert: false,
+                        new: true,
+                        returnOriginal: false,
+                    })
+                    .then((user) => {
+                        res.send(user);
+                        //console.log("user: ", user)
+                    })
+                    .catch((err) => {
+                        console.log("big error", err);
+                    })
+            }
+        })
+    });
 
 };
 

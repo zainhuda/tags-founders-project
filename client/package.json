@@ -8,6 +8,7 @@
     "http-proxy-middleware": "^0.19.1",
     "react": "^16.6.1",
     "react-bootstrap": "^0.32.4",
+    "react-chips": "^0.8.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",

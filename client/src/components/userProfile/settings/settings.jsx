@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import InterestsModal from './interestsModal';
 
 class Settings extends Component {
 
@@ -118,6 +119,7 @@ class Settings extends Component {
 					onChange={this.updateData("interests")}
 					defaultValue={interests}
 				/>
+				<InterestsModal interests={interests}/>
 
 				<h4>Skills</h4>
 				<input
