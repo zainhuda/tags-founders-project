@@ -9,7 +9,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import SignUp from "./components/signup";
 import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
-import SettingsForm from './components/settingsForm/form';
 import OnboardingForm from './components/onboardForm/onboardingForm';
 import ProfilePage from './components/userProfile/profilePage';
 import Sidebar from "./components/sidebar";
@@ -30,7 +29,6 @@ class App extends Component {
           <Route path="/explore" component={Explore} />
             <Route path="/profile" component={ProfilePage}/>
           <Route path="/david" component={SignUp}/>
-          <Route path="/settings_form" component={SettingsForm}/>
           <Route path="/onboard" component={OnboardingForm}/>
 
 
