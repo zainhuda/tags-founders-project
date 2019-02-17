@@ -135,5 +135,42 @@ module.exports = app => {
         })
     });
 
+    // serach for users based on skills
+    app.get('/api/search/skills/:skill', (req, res) => {
+        let teamId = req.user.slackTeamId;
+        let skill = req.params.skill;
+        //search the collection
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                console.log("there was an error", err)
+            }
+            else {
+                collection.find({"teamData.skills": skill})
+                    .toArray((err, docs) => {
+                        console.log("we found docs:", docs);
+                        res.json(docs);
+                    })
+            }
+        })
+    })
+
+	// serach for users based on skills
+    app.get('/api/search/interest/:interest', (req, res) => {
+        let teamId = req.user.slackTeamId;
+        let interest = req.params.interest;
+        //search the collection
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                console.log("there was an error", err)
+            }
+            else {
+                collection.find({"teamData.interests": interest})
+                    .toArray((err, docs) => {
+                        console.log("we found docs:", docs);
+                        res.json(docs);
+                    })
+            }
+        })
+    })
 };
 
