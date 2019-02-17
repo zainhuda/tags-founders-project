@@ -1,4 +1,4 @@
-import styles from "../App.css";
+import styles from "./signup.css";
 import React, { Component } from 'react';
 import Button from "./button.jsx";
 import input from "./input.jsx";
