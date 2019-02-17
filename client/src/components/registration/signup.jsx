@@ -1,6 +1,5 @@
 import styles from "./signup.css";
 import React, { Component } from 'react';
-import Button from "../button.jsx";
 import input from "../input.jsx";
 
 class SignUp extends Component {
@@ -26,7 +25,7 @@ class SignUp extends Component {
 
 										<span> Use your company provided access code to make an account:</span>
 										<input className={"ui input"} msg={"fuck you"}/>
-										<Button className={"ui primary basic button"} msg={"Choose"}/>
+
 
 									</div>
 								</div>
@@ -44,7 +43,7 @@ class SignUp extends Component {
 										<span> Register for a new company account:</span>
 
 
-										<Button className={"ui primary basic button"} msg={"Choose"}/>
+										
 
 
 
