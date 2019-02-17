@@ -299,7 +299,6 @@ ul li {
 button:hover {
   background-color: rgba(154,220,255,.6);
   color: white;
-  font-weight: bold;
 }
 
 .introduction { //css for homePage first div (white box)

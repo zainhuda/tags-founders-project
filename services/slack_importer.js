@@ -22,8 +22,15 @@ module.exports.importSlack = (accessToken, res) => {
         // we must generate schemas based on slack's data for mongoose
 
         // user schema
-        const mongooseUserSchema = GenerateSchema.mongoose(members[0]);
-        const team_id = members[0].team_id.toLowerCase();
+        const mongooseUserSchema = GenerateSchema.mongoose(
+
+          {
+              "slackData" : members[0],
+              "teamData": {},
+              "isConfirmed": false
+          }
+        );
+        const team_id = members[0].team_id.toUpperCase();
 
 
         let User;
@@ -38,7 +45,22 @@ module.exports.importSlack = (accessToken, res) => {
 
         for (let i = 0; i < members.length; i++){
 
-          const user = new User(members[i]);
+          const user = new User({
+              'slackData' : members[i],
+              'teamData' : {
+                "firstName": members[i].profile.first_name,
+                "lastName": members[i].profile.last_name,
+                  "image_512": members[i].profile.image_512,
+                  "title": members[i].profile.title,
+                  "phone": members[i].profile.phone,
+                  "email": "",
+                  "interests": [],
+                  "skills": []
+
+              },
+              "isConfirmed": false
+          });
+
           try{
             await User.find({id: members[i].id}, (err, docs) => {
             if (docs.length){

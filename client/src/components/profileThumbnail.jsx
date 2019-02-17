@@ -10,8 +10,8 @@ class ProfileThumbnail extends Component {
           <img src={this.props.url} className="summaryThumbnail"/>
         </Link>
         <div className={"profileSummaryDescription"}>
-          <h5> {this.props.name} </h5>
-          <h6> {this.props.id} </h6>
+          <h5> {this.props.firstName + " " + this.props.lastName} </h5>
+            <h5>{this.props.title}</h5>
         </div>
       </Panel>
     );

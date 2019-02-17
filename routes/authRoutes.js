@@ -5,14 +5,20 @@ const async = require("async");
 const keys = require("../config/keys");
 const slackImporter = require("../services/slack_importer");
 const axios = require("axios");
-
-const DOMAIN = "http://localhost:5000/auth/slack/callback";
-// const DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
-const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
+let DOMAIN;
+if (process.env.ENV === "prod"){
+    DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
+} else {
+    DOMAIN = "http://localhost:5000/auth/slack/callback";
+}
+const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
+
+
 module.exports = app => {
+  console.log("aa");
   // google oauth
   app.get(
     "/auth/google",
@@ -70,7 +76,7 @@ module.exports = app => {
           // create user in mongo
           User.findOneAndUpdate(
             { slackId: response.data.user.id },
-            { slackId: response.data.user.id, teamId: response.data.team.id, slackDomain: response.data.team.domain},
+            { slackId: response.data.user.id, slackTeamId: response.data.team.id.toUpperCase(), slackDomain: response.data.team.domain},
             { upsert: true, new: true },
             (err, doc) => {
               if (err) {
@@ -106,25 +112,5 @@ module.exports = app => {
     res.sendFile(path.resolve("./views/slack_auth.html"));
   });
 
-  //login/logout functions
-  app.get("/api/logout", (req, res) => {
-    req.logout();
-    res.send(req.user);
-  });
-
-    app.get('/api/current_user', (req, res) => {
-        res.send(req.user);
-        console.log("current user is: " + req.user);
-        console.log("api for current user called");
-    });
-
-    // api to get profiles that belong to team with teamId
-    app.get('/api/profiles/:teamId', (req, res) => {
-    let teamId = req.params.teamId;
-    User.find((err, docs) => {
-        res.send(JSON.stringify(docs));
-
-    })
-});
 };
 

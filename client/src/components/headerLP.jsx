@@ -26,10 +26,10 @@ class Header extends Component {
           <a href="#">Get in touch</a>
         </li>
         <li>
-          <a href="#">Login</a>
+          <a href="/auth/slack">Login</a>
         </li>
         <li>
-          <button className="signup">Sign up</button>
+          <button href="/auth/slack" className="signup">Sign up</button>
         </li>
       </ul>
     </nav>

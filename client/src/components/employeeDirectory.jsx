@@ -17,10 +17,11 @@ class EmployeeDirectory extends Component {
     componentDidMount() {
         // make api request for profiles
         // we need to make the id dynamic based on what user is logged in currently
-        axios.get('http://localhost:5000/api/profiles/t25mt190a', {
+        axios.get('/api/profiles', {
             headers: {"Access-Control-Allow-Origin": "*", }
         })
             .then(res => {
+                console.log(res.data);
                 this.setState({isLoaded: true, profiles: res.data});
             })
             .catch(err => console.log(err))
@@ -41,7 +42,12 @@ class EmployeeDirectory extends Component {
             // data is received and we ca render it
             const profilesArray = profiles.map(profile => (
                 <Col lg={2} style={{ padding: "4px" }}>
-                <ProfileThumbnail key={profile.id} name={profile.real_name} url={profile.profile.image_192} id={profile.id}/>
+                    <ProfileThumbnail
+                        key={profile._id}
+                        firstName={profile.teamData.firstName}
+                        lastName={profile.teamData.lastName}
+                        title={profile.teamData.title}
+                        url={profile.teamData.image_512} />
                 </Col>
             ));
             return(

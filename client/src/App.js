@@ -6,13 +6,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 // import components
 
-import SignUp from "./components/signup";
+import SignUp from "./components/registration/signup";
 import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
+import OnboardingForm from './components/onboardForm/onboardingForm';
+import ProfilePage from './components/userProfile/profilePage';
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import EmployeeDirectory from "./components/employeeDirectory";
-import ProfilePage from "./components/profilePage";
+import {HashRouter} from "react-router-dom"
 
 class App extends Component {
   constructor(props) {
@@ -21,18 +23,17 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <Route exact={true} path="/" component={Showcase} />
           <Route path="/explore" component={Explore} />
-          <Route path="/my_profile" />
-
+            <Route path="/profile" component={ProfilePage}/>
           <Route path="/david" component={SignUp}/>
-
+          <Route path="/onboard" component={OnboardingForm}/>
 
 
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
