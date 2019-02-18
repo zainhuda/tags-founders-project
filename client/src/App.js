@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 // import components
 
-import SignUp from "./components/signup";
+import SignUp from "./components/registration/signup";
 import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
 import OnboardingForm from './components/onboardForm/onboardingForm';
