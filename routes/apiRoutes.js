@@ -60,11 +60,11 @@ module.exports = app => {
         const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
         const teamId = req.user.slackTeamId;
         let userData = JSON.parse(req.body.body);
-/*        console.log("userId: ", userId);
+        console.log("userId: ", userId);
         console.log("slackTeamId", teamId);
-        console.log("userData: ", userData);*/
-
+        console.log("userData: ", userData);
         mongoose.connection.db.collection(teamId, (err, collection) => {
+            console.log("userdata inside collection", userData);
             if (err) {
                 // handle the error
                 console.log("error boy ", err)
@@ -90,7 +90,7 @@ module.exports = app => {
                     })
                     .then((user) => {
                         res.send(user);
-                        //console.log("user: ", user)
+                        console.log("user: ", user)
                     })
                     .catch((err) => {
                         console.log("big error", err);
@@ -99,7 +99,7 @@ module.exports = app => {
         })
     });
 
-    app.post('/api/update_interests', (req, res) => {
+    app.post('/api/update_tags', (req, res) => {
         const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
         const teamId = req.user.slackTeamId;
         let requestData = JSON.parse(req.body.body);
@@ -117,6 +117,7 @@ module.exports = app => {
                     },{ $set: {
                         // whatever fields needs to be changed happen here
                     "teamData.interests": requestData.interests,
+                    "teamData.skills": requestData.skills,
                 }},
                     {
                         // dont create a new user this might mess up populating the explore page
@@ -154,7 +155,7 @@ module.exports = app => {
         })
     });
 
-	// serach for users based on skills
+	// serach for users based on interests
     app.get('/api/search/interest/:interest', (req, res) => {
         let teamId = req.user.slackTeamId;
         let interest = req.params.interest;
@@ -213,7 +214,3 @@ module.exports = app => {
         })
     });
 };
-
-
-
-

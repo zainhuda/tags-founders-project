@@ -7,11 +7,16 @@ export class UserDetailsForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			// user details
 			firstName: '',
 			lastName: '',
+			image_512: '',
 			title: '',
 			phone: '',
 			email: '',
+			// tags
+			skills: [],
+			interests: [],
 			isLoaded: false
 		}
 	}
@@ -25,8 +30,10 @@ export class UserDetailsForm extends Component {
 			.then((res) => {
 				console.log("received by axios is: ", res);
 				this.setState({
+
 					firstName: res.data[0].slackData.profile.first_name,
 					lastName: res.data[0].slackData.profile.last_name,
+					image_512: res.data[0].slackData.profile.image_512,
 					title: res.data[0].slackData.profile.title,
 					phone: res.data[0].slackData.profile.phone,
 					email: res.data[0].slackData.email,
@@ -40,7 +47,7 @@ export class UserDetailsForm extends Component {
 	continue = (e) => {
 		e.preventDefault();
 
-		let {values: {firstName, lastName, title, email}} = this.props;
+		let {values: {firstName, lastName, image_512, title, phone, email}} = this.props;
 
 		// if "" then the user didnt change anything so we'll just use what we got from slack
 		if (firstName === "") {
@@ -49,8 +56,14 @@ export class UserDetailsForm extends Component {
 		if (lastName === "") {
 			lastName = this.state.lastName;
 		}
+		if (image_512 === "") {
+			image_512 = this.state.image_512;
+		}
 		if (title === "") {
 			title = this.state.title;
+		}
+		if (phone === "") {
+			phone = this.state.phone;
 		}
 		if (email === "") {
 			email = this.state.email;
@@ -58,9 +71,12 @@ export class UserDetailsForm extends Component {
 
 		// create the data to be sent to update user profile
 		let data = {
+
 			"firstName": firstName,
 			"lastName": lastName,
+			"image_512": image_512,
 			"title": title,
+			"phone": phone,
 			"email": email
 		};
 		console.log("data from userDetailsForm:", data);
@@ -70,10 +86,7 @@ export class UserDetailsForm extends Component {
 			body: JSON.stringify(data)
 		})
 			.then((response) => {
-				console.log(response)
-			})
-			.then((data) => {
-				console.log(data);
+				console.log("response after update_profiel", response)
 			});
 		// move onto the next step (skills and interests)
 		this.props.nextStep();
