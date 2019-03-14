@@ -18,7 +18,6 @@ const REDIRECT_URI_PARAM = "&redirect_uri=" + DOMAIN;
 
 
 module.exports = app => {
-  console.log("aa");
   // google oauth
   app.get(
     "/auth/google",

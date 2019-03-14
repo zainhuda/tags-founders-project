@@ -152,7 +152,7 @@ module.exports = app => {
                     })
             }
         })
-    })
+    });
 
 	// serach for users based on skills
     app.get('/api/search/interest/:interest', (req, res) => {
@@ -171,6 +171,49 @@ module.exports = app => {
                     })
             }
         })
-    })
+    });
+
+    // returns list of slack 'inactive' users
+    app.get('/api/inactive_users/', (req, res) => {
+        let teamId = req.user.slackTeamId;
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            console.log(teamId);
+            if (err) {
+                console.log("err", err);
+            }
+            console.log("collection is: ", collection);
+            collection.find({"slackData.deleted" : true}).toArray( (err, docs) => {
+                res.json(docs);
+            })
+        })
+    });
+
+    // delete user
+    app.post('/api/update_inactivity', (req) => {
+
+        let inactiveUsers = req.body.inactiveUsers; // users that will be set to inactive
+        let activeUsers = req.body.activeUsers; // users that will be set to active
+        let teamId = req.user.slackTeamId;
+
+        // search and update the collection
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                console.log("there was an error", err)
+            }
+            else {
+                collection.updateMany(
+                  {"slackData.id": {$in: inactiveUsers}},
+                  { $set: {"isInactive": true}}
+                );
+                collection.updateMany(
+                  {"slackData.id": {$in: activeUsers}},
+                  {$set: {"isInactive": false}}
+                  );
+            }
+        })
+    });
 };
+
+
+
 

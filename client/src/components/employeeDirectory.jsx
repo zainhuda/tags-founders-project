@@ -40,7 +40,9 @@ class EmployeeDirectory extends Component {
         }
         else {
             // data is received and we ca render it
-            const profilesArray = profiles.map(profile => (
+            const profilesArray = profiles.filter(profile => {
+                return !profile.isInactive
+            }).map(profile => (
                 <Col lg={2} style={{ padding: "4px" }}>
                     <ProfileThumbnail
                         key={profile._id}
