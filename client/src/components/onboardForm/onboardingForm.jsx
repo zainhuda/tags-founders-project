@@ -12,7 +12,9 @@ export class OnboardingForm extends Component {
 		firstName: '',
 		lastName: '',
 		title: '',
+		phone: ''.
 		email: '',
+		
 		// tags
 		skills: [],
 		interests: [],
