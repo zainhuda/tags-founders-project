@@ -52,7 +52,7 @@ export class ProfilePage extends Component {
 		});
 	};
 
-    // method to handle changes for the settings page
+	// handle the field change
 	handleChange = (input) => (e) => {
 		this.setState({
 			[input]: e.target.value
@@ -81,8 +81,8 @@ export class ProfilePage extends Component {
 					<div>
 						<Settings
 							changePage={this.changePage}
-							values={values}
 							handleChange={this.handleChange}
+							values={values}
 						/>
 					</div>
 				);
