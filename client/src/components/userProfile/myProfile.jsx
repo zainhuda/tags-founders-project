@@ -21,31 +21,30 @@ class MyProfile extends Component {
 		        <h4>first name:{firstName} last name: {lastName} image: {image_512} title: {title} phone: {phone} email: {email} skills: {skills}
 		        interests: {interests}</h4>
 		        <input type="submit" value="settings" onClick={() => {changePage("settings")}} />
-		        <input type="submit" value="tags" onClick={() => {changePage("changeTags")}}/>
 
 		     	<div className={"ui horizontal segments"}>
-		        	<div className={"seg"}> </div> 
+		        	<div className={"seg"}> </div>
 		        	<Sidebar>
 		        	</Sidebar>
 		       		 <div className={"bottom"}> <i className={"user circle icon blue huge"}></i> View my profile</div>
-		        	
-		        	
+
+
 		        	<div className={"segment"}>
 
 
 
 		        		<div className={"column"}>
-		        			
+
 		        			<div className={"ui segment"}>
 
 		        				<div className={"ui huge search"}>
 
 		        					<div className={"ui icon input"}>
-		        						
-     									
+
+
 		        						<input className={"prompt"} type={"`text"} placeholder={"Search for tags, interests and people"}/>
     									<i className={"search icon"}></i>
-		        					
+
 		        					</div>
 
 		        					<div className={"results"}></div>
@@ -55,7 +54,7 @@ class MyProfile extends Component {
 		        				<img src={require("./person.png")}/>
 		        				<h4> Financial Consultant</h4>
 		        				<h6> Matching Skills and intrests</h6>
-		        				
+
 		        		   </div>
 
 		        			<div className={"ui segment"}></div>
@@ -63,15 +62,15 @@ class MyProfile extends Component {
 
 
 		        		</div>
-		        		
-		        	</div> 
-		        	
-		        </div> 
+
+		        	</div>
+
+		        </div>
 
 
-		        
-		        	
-		        
+
+
+
 	        </div>
 
 

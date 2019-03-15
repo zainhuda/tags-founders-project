@@ -99,6 +99,8 @@ module.exports = app => {
         })
     });
 
+    // update tags
+    // used in settings and onboarding form
     app.post('/api/update_tags', (req, res) => {
         const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
         const teamId = req.user.slackTeamId;
@@ -135,6 +137,86 @@ module.exports = app => {
             }
         })
     });
+
+    // update interests
+    // used in the Modal
+    app.post('/api/update_interests', (req, res) => {
+        const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
+        const teamId = req.user.slackTeamId;
+        let requestData = JSON.parse(req.body.body);
+
+        console.log("request data is:", requestData);
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                // handle the error
+                console.log("error boy ", err)
+            }
+            else {
+                // lets find the user and update their profile
+                collection.findOneAndUpdate({
+                        "slackData.id": req.user.slackId
+                    },{ $set: {
+                        // whatever fields needs to be changed happen here
+                    "teamData.interests": requestData.interests,
+                }},
+                    {
+                        // dont create a new user this might mess up populating the explore page
+                        upsert: false,
+                        new: true,
+                        returnOriginal: false,
+                    })
+                    .then((user) => {
+                        res.send(user);
+                        //console.log("user: ", user)
+                    })
+                    .catch((err) => {
+                        console.log("big error", err);
+                    })
+            }
+        })
+    });
+
+
+    // update skills
+    // used in the Modal
+    app.post('/api/update_skills', (req, res) => {
+        const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
+        const teamId = req.user.slackTeamId;
+        let requestData = JSON.parse(req.body.body);
+
+        console.log("request data is:", requestData);
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                // handle the error
+                console.log("error boy ", err)
+            }
+            else {
+                // lets find the user and update their profile
+                collection.findOneAndUpdate({
+                        "slackData.id": req.user.slackId
+                    },{ $set: {
+                        // whatever fields needs to be changed happen here
+                    "teamData.skills": requestData.skills,
+                }},
+                    {
+                        // dont create a new user this might mess up populating the explore page
+                        upsert: false,
+                        new: true,
+                        returnOriginal: false,
+                    })
+                    .then((user) => {
+                        res.send(user);
+                        //console.log("user: ", user)
+                    })
+                    .catch((err) => {
+                        console.log("big error", err);
+                    })
+            }
+        })
+    });
+
+
+
 
     // serach for users based on skills
     app.get('/api/search/skills/:skill', (req, res) => {

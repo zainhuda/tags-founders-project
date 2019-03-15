@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import InterestsModal from './interestsModal';
+import SkillsModal from './skillsModal';
 
 class Settings extends Component {
 
@@ -131,6 +132,44 @@ class Settings extends Component {
 						onChange={handleChange('firstName')}
 						defaultValue={firstName}
 					/>
+					<h4>Lastt Name</h4>
+					<input
+						type="text"
+						name="lastName"
+						onChange={handleChange('lastName')}
+						defaultValue={lastName}
+					/>
+					<h4>profiel pic</h4>
+					<input
+						type="text"
+						name="image_512"
+						onChange={handleChange('image_512')}
+						defaultValue={image_512}
+					/>
+					<h4>title</h4>
+					<input
+						type="text"
+						name="title"
+						onChange={handleChange('title')}
+						defaultValue={title}
+					/>
+					<h4>phone</h4>
+					<input
+						type="text"
+						name="phone"
+						onChange={handleChange('phone')}
+						defaultValue={phone}
+					/>
+					<h4>email</h4>
+					<input
+						type="text"
+						name="email"
+						onChange={handleChange('email')}
+						defaultValue={email}
+					/>
+					<h4>Interests</h4>
+					<InterestsModal/>
+					<SkillsModal/>
 
 
 				<input type="submit" value="go back to profile" onClick={this.back}/>
