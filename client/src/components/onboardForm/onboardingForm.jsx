@@ -11,10 +11,10 @@ export class OnboardingForm extends Component {
 		// user details
 		firstName: '',
 		lastName: '',
+		image_512: '',
 		title: '',
-		phone: ''.
+		phone: '',
 		email: '',
-		
 		// tags
 		skills: [],
 		interests: [],
@@ -46,8 +46,8 @@ export class OnboardingForm extends Component {
 
 	render() {
 		const {step} = this.state;
-		const {firstName, lastName, email, skills, interests} = this.state;
-		const values = {firstName, lastName, email, skills, interests};
+		const {firstName, lastName, image_512, title, phone, email, skills, interests} = this.state;
+		const values = {firstName, lastName, image_512, title, phone, email, skills, interests};
 
 		switch(step){
 			case 1:

@@ -14,7 +14,7 @@ export class userTagsForm extends Component {
 			"interests": interests
 		};
 		console.log("data is:", data);
-		axios.post('/api/update_profile', {
+		axios.post('/api/update_tags', {
 			body: JSON.stringify(data)
 		})
 			.then((response) => {
@@ -37,9 +37,9 @@ export class userTagsForm extends Component {
 		return(
 			<div>
 				<h1>Enter some skills of yours! sperate them with commas we'll fix this later</h1>
-				<input type="text" name="skills" defaultValue={"enter some skills here"} onChange={handleChange('skills')}/>
+				<input type="text" name="skills" placeholder="enter some skills here" onChange={handleChange('skills')}/>
 				<h1>enter somein etersts</h1>
-				<input type="text" name="interests" onChange={handleChange('interests')}/>
+				<input type="text" name="interests" placeholder="enter some interests here" onChange={handleChange('interests')}/>
 				<input type="submit" value="continue" onClick={this.continue}/>
 
 			</div>
