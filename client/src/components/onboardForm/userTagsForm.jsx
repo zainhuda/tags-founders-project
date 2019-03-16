@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import InterestsTags from './interestsTags';
 
 export class userTagsForm extends Component {
 
@@ -42,6 +43,7 @@ export class userTagsForm extends Component {
 					<h1>Skills</h1>
 					<input type="text" name="skills" placeholder="Skills" onChange={handleChange('skills')}/>
 					<h1>Interests</h1>
+					<InterestsTags/>
 					<input type="text" name="interests" placeholder="Interests" onChange={handleChange('interests')}/>
 					<br/>
 					<input type="submit" class="submit-button" value="continue" onClick={this.continue}/>
