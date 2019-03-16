@@ -5,6 +5,13 @@ import InterestsTags from './interestsTags';
 export class userTagsForm extends Component {
 
 
+	constructor(props) {
+		super(props);
+
+		this.state = {interestChips: []} 
+	}
+
+
 	continue = (e) => {
 		e.preventDefault();
 
@@ -33,6 +40,12 @@ export class userTagsForm extends Component {
 		this.props.prevStep();
 	};
 
+
+	onChipChange = chips => {
+        this.setState({ interestChips : chips });
+    };
+
+
 	render() {
 		const {handleChange, values} = this.props;
 		return(
@@ -43,7 +56,7 @@ export class userTagsForm extends Component {
 					<h1>Skills</h1>
 					<input type="text" name="skills" placeholder="Skills" onChange={handleChange('skills')}/>
 					<h1>Interests</h1>
-					<InterestsTags/>
+					<InterestsTags onChipChange={this.onChipChange} chips={this.state.interestChips}/>
 					<input type="text" name="interests" placeholder="Interests" onChange={handleChange('interests')}/>
 					<br/>
 					<input type="submit" class="submit-button" value="continue" onClick={this.continue}/>

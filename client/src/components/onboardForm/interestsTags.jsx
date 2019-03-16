@@ -32,11 +32,6 @@ class InterestsTags extends Component {
             });
         };
 
-    onChipChange = chips => {
-        this.setState({ chips });
-    };
-
-
     render() {
         return(
             <div>
@@ -49,8 +44,8 @@ class InterestsTags extends Component {
                     </ol>
                     <h4> Seperate with commas </h4>
                             <Chips
-                                value = {this.state.chips}
-                                onChange={this.onChipChange}
+                                value = {this.props.chips}
+                                onChange={this.props.onChipChange}
                                 suggestions={[
                                     "Javascript",
                                     "Python",
