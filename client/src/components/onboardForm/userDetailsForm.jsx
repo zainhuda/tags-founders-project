@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './userDetailsForm.css';
 
 export class UserDetailsForm extends Component {
 
@@ -109,20 +110,24 @@ export class UserDetailsForm extends Component {
 			let {firstName, lastName, title, phone, email } = this.state;
 
 			return (
-				<div>
-					<h1>Heres what we got from slack :)</h1>
-					<h1>your first name is: </h1>
-					<input type="text" name="firstName" onChange={handleChange('firstName')} defaultValue={firstName}/>
-					<h1>your last is: </h1>
-					<input type="text" name="lastName" onChange={handleChange('lastName')} defaultValue={lastName}/>
-					<h1>Your title is:</h1>
-					<input type="text" name="title" onChange={handleChange('title')} defaultValue={title}/>
-					<h1>your email is: </h1>
-					<input type="text" name="email" onChange={handleChange('email')} defaultValue={email}/>
-					<h1>yurt phoen nubmer is</h1>
-					<input type="text" name="phone" onChange={handleChange('phone')} defaultValue={phone}/>
-					<input type="submit" value="continue" onClick={this.continue}/>
-					<h4> dw u can always change this stuff later</h4>
+				<div class="main-container">
+					<div class="form">
+						<h1>Details</h1>
+						<p>Here's what we got from Slack.</p>
+						<p>First Name: </p>
+						<input type="text" name="firstName" onChange={handleChange('firstName')} defaultValue={firstName}/>
+						<p>Last Name: </p>
+						<input type="text" name="lastName" onChange={handleChange('lastName')} defaultValue={lastName}/>
+						<p>Title:</p>
+						<input type="text" name="title" onChange={handleChange('title')} defaultValue={title}/>
+						<p>Email: </p>
+						<input type="text" name="email" onChange={handleChange('email')} defaultValue={email}/>
+						<p>Phone:</p>
+						<input type="text" name="phone" onChange={handleChange('phone')} defaultValue={phone}/>
+						<br/>
+						<input type="submit" class="submit-button" value="Next" onClick={this.continue}/>
+						<p>Don't worry, you can always change these later.</p>
+					</div>
 				</div>
 			)
 		}

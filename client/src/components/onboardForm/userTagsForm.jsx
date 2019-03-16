@@ -35,13 +35,17 @@ export class userTagsForm extends Component {
 	render() {
 		const {handleChange, values} = this.props;
 		return(
-			<div>
-				<h1>Enter some skills of yours! sperate them with commas we'll fix this later</h1>
-				<input type="text" name="skills" placeholder="enter some skills here" onChange={handleChange('skills')}/>
-				<h1>enter somein etersts</h1>
-				<input type="text" name="interests" placeholder="enter some interests here" onChange={handleChange('interests')}/>
-				<input type="submit" value="continue" onClick={this.continue}/>
-
+			<div class="main-container">
+				<div class="form">
+					<h1>Tags</h1>
+					<p>Enter some tags to get started.</p>
+					<h1>Skills</h1>
+					<input type="text" name="skills" placeholder="Skills" onChange={handleChange('skills')}/>
+					<h1>Interests</h1>
+					<input type="text" name="interests" placeholder="Interests" onChange={handleChange('interests')}/>
+					<br/>
+					<input type="submit" class="submit-button" value="continue" onClick={this.continue}/>
+				</div>
 			</div>
 		)
 	}
