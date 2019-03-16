@@ -25,7 +25,7 @@ class Settings extends Component {
 
 	componentDidMount() {
 
-		// get whatever data we can from slack about the user
+		// get the data we have about the user
 		axios.get('/api/get_profile', {
 			headers: {"Allow-Control-Allow-Origin": "*", }
 		})
@@ -48,6 +48,7 @@ class Settings extends Component {
 
 
 	continue = (e) => {
+		// this method updates the user's data
 		e.preventDefault();
 
 		let {values: {firstName, lastName, image_512, title, phone, email}} = this.props;
@@ -100,13 +101,6 @@ class Settings extends Component {
 		e.preventDefault();
 		this.props.changePage("myProfile");
 	};
-
-	updateData = (input) => (e) => {
-		this.setState({
-			[input]: e.target.value
-		})
-	};
-
 
 	render() {
 		let {isLoaded} = this.state;
@@ -181,9 +175,6 @@ class Settings extends Component {
 		}
 
 	};
-
-
-
 }
 
 export default Settings;

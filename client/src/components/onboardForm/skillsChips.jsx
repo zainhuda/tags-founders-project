@@ -1,56 +1,41 @@
 // this is how the skils chips are added in the onboard form
+// values are being passed down from the parent form as props
+// states of this component and parent component are linked
 import React, { Component } from 'react';
 import Chips from 'react-chips';
 import axios from 'axios';
 
-class skillsChips extends Component {
+class SkillsChips extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             suggestions: [
-                "basketball",
-                "golf",
-                "volleyball",
-                "rice",
-                "men",
-                "women"
+                // we'll have to change these on the fly as the user types
+                // big ml things
+                "javascript",
+                "python",
+                "leadership",
+                "excel",
+                "adobe",
+                "photography"
             ],
-
         }
     }
 
     render() {
         return(
             <div>
-
-                You wana edit? then edit bossman aint nothing stopping u except
-                    <ol>
-                        <li> Fetch suggestions from db </li>
-                        <li> Enable enter to add, right now its just adding comma for custom interest</li>
-
-                    </ol>
-                    <h4> Seperate with commas </h4>
-                            <Chips
-                                value = {this.props.skillChips}
-                                onChange={this.props.onChipChange}
-                                suggestions={[
-                                    "Javascript",
-                                    "Python",
-                                    "Problem Solving",
-                                    "Being sus",
-                                    "Double sus",
-                                    "Success",
-                                    "men"
-                                ]}
-                                fromSuggestionsOnly={true}
-                            />
+                <Chips
+                    value = {this.props.skillChips}
+                    onChange={this.props.onChipChange}
+                    suggestions={this.state.suggestions}
+                    fromSuggestionsOnly={false}
+                />
             </div>
         )
     }
-
-
 }
 
-export default skillsChips;
+export default SkillsChips;

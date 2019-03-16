@@ -5,11 +5,12 @@ import SkillsChips from './skillsChips';
 
 export class userTagsForm extends Component {
 
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			// initialize empty lists of chips
+			// this state is passed onto child components
 			interestChips: [],
 			skillChips: []
 		}
@@ -19,37 +20,32 @@ export class userTagsForm extends Component {
 	continue = (e) => {
 		e.preventDefault();
 
-		// call api to update users tags
 		const {interestChips, skillChips} = this.state;
-
-		console.log("intershs chips are: ", interestChips);
-		console.log("skil chips are: ", skillChips);
 		let data = {
+			// create the post data
 			"skills": skillChips,
 			"interests": interestChips
 		};
-		console.log("data is:", data);
+		// console.log("data is:", data);
+		// call api to update users tags
 		axios.post('/api/update_tags', {
 			body: JSON.stringify(data)
 		})
 			.then((response) => {
-				console.log(response);
-			})
-			.then((data) => {
-				console.log(data);
+				// lets see if it updated alright
+				console.log("response after post", response);
 			});
-
+		// move onto the next step
 		this.props.nextStep();
 	};
 
+	// function to go back a page in the form
 	back = (e) => {
 		e.preventDefault();
 		this.props.prevStep();
 	};
 
-
-
-
+	// two way link between child and parent states for interets and skills chips
 	onInterestChange = interestChips => {
 		this.setState({
 			interestChips: interestChips
@@ -60,7 +56,6 @@ export class userTagsForm extends Component {
 			skillChips: skillChips
 		})
 	}
-
 
 	render() {
 		const {handleChange, values} = this.props;
@@ -79,8 +74,6 @@ export class userTagsForm extends Component {
 			</div>
 		)
 	}
-
-
 }
 
 export default userTagsForm;

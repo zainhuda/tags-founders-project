@@ -4,7 +4,6 @@ import './userDetailsForm.css';
 
 export class UserDetailsForm extends Component {
 
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -31,7 +30,7 @@ export class UserDetailsForm extends Component {
 			.then((res) => {
 				console.log("received by axios is: ", res);
 				this.setState({
-
+					// set the state to wahtever slack data we got
 					firstName: res.data[0].slackData.profile.first_name,
 					lastName: res.data[0].slackData.profile.last_name,
 					image_512: res.data[0].slackData.profile.image_512,
@@ -72,7 +71,6 @@ export class UserDetailsForm extends Component {
 
 		// create the data to be sent to update user profile
 		let data = {
-
 			"firstName": firstName,
 			"lastName": lastName,
 			"image_512": image_512,
@@ -132,9 +130,6 @@ export class UserDetailsForm extends Component {
 			)
 		}
 	}
-
-
-
 }
 
 export default UserDetailsForm
