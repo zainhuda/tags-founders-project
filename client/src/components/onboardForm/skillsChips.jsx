@@ -1,15 +1,14 @@
-// this is how the interests tags are added
+// this is how the skils chips are added in the onboard form
 import React, { Component } from 'react';
 import Chips from 'react-chips';
 import axios from 'axios';
 
-class InterestsTags extends Component {
+class skillsChips extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            chips: this.props.intersts,
             suggestions: [
                 "basketball",
                 "golf",
@@ -21,16 +20,6 @@ class InterestsTags extends Component {
 
         }
     }
-    handleSave = () => {
-            const data = {interests: this.state.chips};
-
-            axios.post('api/update_interests', {
-                body: JSON.stringify(data)
-            }).then((res) => {
-                console.log("update res: ", res);
-                this.handleClose();
-            });
-        };
 
     render() {
         return(
@@ -44,7 +33,7 @@ class InterestsTags extends Component {
                     </ol>
                     <h4> Seperate with commas </h4>
                             <Chips
-                                value = {this.props.chips}
+                                value = {this.props.skillChips}
                                 onChange={this.props.onChipChange}
                                 suggestions={[
                                     "Javascript",
@@ -57,7 +46,6 @@ class InterestsTags extends Component {
                                 ]}
                                 fromSuggestionsOnly={true}
                             />
-                            <input type="submit" value="Next" onClick={this.handleSave}/>
             </div>
         )
     }
@@ -65,4 +53,4 @@ class InterestsTags extends Component {
 
 }
 
-export default InterestsTags;
+export default skillsChips;

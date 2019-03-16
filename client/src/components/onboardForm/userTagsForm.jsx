@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import InterestsTags from './interestsTags';
+import InterestsChips from './interestsChips';
+import SkillsChips from './skillsChips';
 
 export class userTagsForm extends Component {
 
@@ -8,7 +9,10 @@ export class userTagsForm extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {interestChips: []} 
+		this.state = {
+			interestChips: [],
+			skillChips: []
+		}
 	}
 
 
@@ -16,10 +20,13 @@ export class userTagsForm extends Component {
 		e.preventDefault();
 
 		// call api to update users tags
-		const {values: {skills, interests}} = this.props;
+		const {interestChips, skillChips} = this.state;
+
+		console.log("intershs chips are: ", interestChips);
+		console.log("skil chips are: ", skillChips);
 		let data = {
-			"skills": skills,
-			"interests": interests
+			"skills": skillChips,
+			"interests": interestChips
 		};
 		console.log("data is:", data);
 		axios.post('/api/update_tags', {
@@ -41,9 +48,18 @@ export class userTagsForm extends Component {
 	};
 
 
-	onChipChange = chips => {
-        this.setState({ interestChips : chips });
-    };
+
+
+	onInterestChange = interestChips => {
+		this.setState({
+			interestChips: interestChips
+		})
+	}
+	onSkillChange = skillChips => {
+		this.setState({
+			skillChips: skillChips
+		})
+	}
 
 
 	render() {
@@ -54,10 +70,9 @@ export class userTagsForm extends Component {
 					<h1>Tags</h1>
 					<p>Enter some tags to get started.</p>
 					<h1>Skills</h1>
-					<input type="text" name="skills" placeholder="Skills" onChange={handleChange('skills')}/>
+					<SkillsChips onChipChange={this.onSkillChange} skillChips={this.state.skillChips}/>
 					<h1>Interests</h1>
-					<InterestsTags onChipChange={this.onChipChange} chips={this.state.interestChips}/>
-					<input type="text" name="interests" placeholder="Interests" onChange={handleChange('interests')}/>
+					<InterestsChips onChipChange={this.onInterestChange} interestChips={this.state.interestChips}/>
 					<br/>
 					<input type="submit" class="submit-button" value="continue" onClick={this.continue}/>
 				</div>

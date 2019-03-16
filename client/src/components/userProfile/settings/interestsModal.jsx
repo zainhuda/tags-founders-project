@@ -7,8 +7,6 @@ import Chips from 'react-chips';
 import { Modal, Button } from "react-bootstrap"; // using bootstrap modal for nice styles
 import axios from 'axios';
 
-
-
 class InterestsModal extends Component {
 
 		constructor(props) {
