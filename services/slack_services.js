@@ -121,12 +121,12 @@ const updateSlackUserInactivity = async accessToken => {
           { "slackData.id": members[i].id },
           (err, userDoc) => {
             if (userDoc != null) {
+
               // user already exists, need to update their isInactive field
               userDoc.slackData.deleted = members[i].deleted;
 
               userDoc.save(err => {
                 if (err) console.log("error:", err);
-                console.log("success!");
               });
             } else {
               // user doesn't exist, create a new user with slack info and save
