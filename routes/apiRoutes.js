@@ -258,6 +258,10 @@ module.exports = app => {
 
     // returns list of slack 'inactive' users
     app.get('/api/inactive_users/', (req, res) => {
+
+        // need to update inactive users from slack first
+
+
         let teamId = req.user.slackTeamId;
         mongoose.connection.db.collection(teamId, (err, collection) => {
             console.log(teamId);
