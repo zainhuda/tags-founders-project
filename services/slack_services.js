@@ -27,7 +27,8 @@ const importSlackUsers = (accessToken, res) => {
           {
               "slackData" : members[0],
               "teamData": {},
-              "isConfirmed": false
+              "isConfirmed": false,
+              "isInactive": false,
           }
         );
         const team_id = members[0].team_id.toUpperCase();
@@ -83,21 +84,58 @@ const updateSlackUserInactivity = async (accessToken) => {
     return false
   }
   const members = response.data.members;
-  const teamId = response.data.members[0].teamId.toUpperCase();
+  const team_id = response.data.members[0].team_id.toUpperCase();
 
   mongoose.connect(keys.mongoURI);
   const db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
 
-  db.once('open', async => {
+  db.once('open', async () => {
     // connected to db
 
-      User = mongoose.model(teamId);
+    // we must generate schemas based on slack's data for mongoose
+
+        // user schema
+        const mongooseUserSchema = GenerateSchema.mongoose(
+
+          {
+              "slackData" : members[0],
+              "teamData": {},
+              "isConfirmed": false,
+              "isInactive": false,
+          }
+        );
+
+        let User;
+        try {
+          User = mongoose.model(team_id);
+        } catch {
+          console.log("Model for", team_id, "did not exist, creating.");
+          User = mongoose.model(team_id, mongooseUserSchema, team_id);
+        }
+
 
       for (let i = 0; i < members.length; i++) {
-        const user = createUserFromSlackMemeber(members[1]);
+          try{
+            await User.findOne({"slackData.id": members[i].id}, (err, userDoc) => {
+            if (userDoc != null){
+              // user already exists, need to update their isInactive field
+              userDoc.slackData.deleted = members[i].deleted;
 
-
+              userDoc.save((err) => {
+                if (err) console.log("error:", err);
+                console.log("success!")
+              });
+            } else {
+              // user doesn't exist, create a new user with slack info and save
+              console.log("Encounted user that hasn't been added, adding");
+              const user = createUserFromSlackMemeber(members[i], User);
+              user.save()
+            }
+          });
+          } catch(e) {
+            console.log("ERROR:", e)
+          }
       }
   });
 };
