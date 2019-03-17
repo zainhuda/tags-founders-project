@@ -48,8 +48,8 @@ const importSlackUsers = (accessToken, res) => {
           const user = createUserFromSlackMemeber(members[i], User);
 
           try{
-            await User.find({"slackData.id": user.slackData.id}, (err, docs) => {
-            if (docs.length){
+            await User.findOne({"slackData.id": user.slackData.id}, (err, userDoc) => {
+            if (userDoc != null){
               console.log("User already created:", user.teamData.firstName + " " + user.teamData.lastName, user.slackData.id)
             } else {
               user.save()
