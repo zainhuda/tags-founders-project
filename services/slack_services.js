@@ -41,30 +41,16 @@ const importSlackUsers = (accessToken, res) => {
           User = mongoose.model(team_id, mongooseUserSchema, team_id);
         }
 
-        console.log("start");
+        console.log("starting Slack import");
 
         for (let i = 0; i < members.length; i++){
 
-          const user = new User({
-              'slackData' : members[i],
-              'teamData' : {
-                "firstName": members[i].profile.first_name,
-                "lastName": members[i].profile.last_name,
-                  "image_512": members[i].profile.image_512,
-                  "title": members[i].profile.title,
-                  "phone": members[i].profile.phone,
-                  "email": "",
-                  "interests": [],
-                  "skills": []
-
-              },
-              "isConfirmed": false
-          });
+          const user = createUserFromSlackMemeber(members[i], User);
 
           try{
-            await User.find({id: members[i].id}, (err, docs) => {
+            await User.find({"slackData.id": user.slackData.id}, (err, docs) => {
             if (docs.length){
-              console.log("User already created:", members[i].name ,members[i].id)
+              console.log("User already created:", user.teamData.firstName + " " + user.teamData.lastName, user.slackData.id)
             } else {
               user.save()
             }
@@ -87,6 +73,56 @@ const importSlackUsers = (accessToken, res) => {
   })
 };
 
+// pulls user data from slack and updates the 'deleted' field in our database for each user, to update their inactivity status
+// if there is a slack user that is not in our database, we will add them in
+const updateSlackUserInactivity = async (accessToken) => {
+  const response = await axios.get("https://slack.com/api/users.list?token=" + accessToken);
+
+  if (!response.data.ok) {
+    console.log("Error!", response.data.error);
+    return false
+  }
+  const members = response.data.members;
+  const teamId = response.data.members[0].teamId.toUpperCase();
+
+  mongoose.connect(keys.mongoURI);
+  const db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+
+  db.once('open', async => {
+    // connected to db
+
+      User = mongoose.model(teamId);
+
+      for (let i = 0; i < members.length; i++) {
+        const user = createUserFromSlackMemeber(members[1]);
+
+
+      }
+  });
+};
+
+
+const createUserFromSlackMemeber = (slackMember, UserSchema) => {
+      const user = new UserSchema({
+        'slackData' : slackMember,
+        'teamData' : {
+          "firstName": slackMember.profile.first_name,
+          "lastName": slackMember.profile.last_name,
+            "image_512": slackMember.profile.image_512,
+            "title": slackMember.profile.title,
+            "phone": slackMember.profile.phone,
+            "email": "",
+            "interests": [],
+            "skills": []
+
+        },
+        "isConfirmed": false
+    });
+    return user;
+};
+
 module.exports = {
   importSlackUsers,
+  updateSlackUserInactivity
 };
