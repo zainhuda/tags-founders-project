@@ -3,7 +3,7 @@ const path = require("path");
 const requestPromise = require("request-promise");
 const async = require("async");
 const keys = require("../config/keys");
-const slackImporter = require("../services/slack_importer");
+const slackServices = require("../services/slack_services");
 const axios = require("axios");
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
@@ -100,7 +100,7 @@ module.exports = app => {
         ) {
             console.log("import gang");
 
-            slackImporter.importSlack(response.data.access_token, res);
+            slackServices.importSlackUsers(response.data.access_token, res);
 
         }
       }

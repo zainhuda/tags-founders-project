@@ -4,7 +4,7 @@ const keys = require("../config/keys");
 const GenerateSchema = require("generate-schema");
 const async = require("async");
 
-module.exports.importSlack = (accessToken, res) => {
+const importSlackUsers = (accessToken, res) => {
   axios.get("https://slack.com/api/users.list?token=" + accessToken).then(response => {
 
 
@@ -85,4 +85,8 @@ module.exports.importSlack = (accessToken, res) => {
       });
     }
   })
+};
+
+module.exports = {
+  importSlackUsers,
 };
