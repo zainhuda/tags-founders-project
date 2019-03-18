@@ -57,7 +57,7 @@ const importSlackUsers = (accessToken, res) => {
         }
         console.log("done for teamid", team_id);
 
-        db.collection(team_id)
+        mongoose.connection.db.collection(team_id)
           .find()
           .toArray(function(err, result) {
             if (err) throw err;
