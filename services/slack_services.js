@@ -127,7 +127,7 @@ const updateSlackUserInactivity = async accessToken => {
       console.log("ERROR:", e);
     }
   }
-  // console.log("done?");
+  console.log("done in func");
 };
 
 const createUserFromSlackMemeber = (slackMember, UserSchema) => {

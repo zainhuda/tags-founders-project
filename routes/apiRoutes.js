@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slackServices = require("../services/slack_services");
 
 module.exports = app => {
 
@@ -216,9 +217,7 @@ module.exports = app => {
     });
 
 
-
-
-    // serach for users based on skills
+    // search for users based on skills
     app.get('/api/search/skills/:skill', (req, res) => {
         let teamId = req.user.slackTeamId;
         let skill = req.params.skill;
@@ -257,18 +256,20 @@ module.exports = app => {
     });
 
     // returns list of slack 'inactive' users
-    app.get('/api/inactive_users/', (req, res) => {
-
-        // need to update inactive users from slack first
-
-
+    app.get('/api/inactive_users/', async (req, res) => {
         let teamId = req.user.slackTeamId;
+
+        // sync the deleted field with slack's database first
+        console.log("Starting 'slack deleted field' synchronization");
+        await slackServices.updateSlackUserInactivity(req.user.slackAccessToken);
+        console.log("Finished slack synchronization");
+
+        // query for users that are inactive on slack, then send it back in the response
         mongoose.connection.db.collection(teamId, (err, collection) => {
             console.log(teamId);
             if (err) {
                 console.log("err", err);
             }
-            console.log("collection is: ", collection);
             collection.find({"slackData.deleted" : true}).toArray( (err, docs) => {
                 res.json(docs);
             })
