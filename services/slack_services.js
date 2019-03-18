@@ -117,29 +117,33 @@ const updateSlackUserInactivity = async accessToken => {
 
     for (let i = 0; i < members.length; i++) {
       try {
-        await User.findOne(
-          { "slackData.id": members[i].id },
-          (err, userDoc) => {
-            if (userDoc != null) {
+        // .exec() makes the operation a ture javascript promise
+        const userDoc = await User.findOne({
+          "slackData.id": members[i].id
+        }).exec();
 
-              // user already exists, need to update their isInactive field
-              userDoc.slackData.deleted = members[i].deleted;
+        if (userDoc != null) {
+          // user already exists, need to update their isInactive field
+          userDoc.slackData.deleted = members[i].deleted;
 
-              userDoc.save(err => {
-                if (err) console.log("error:", err);
-              });
-            } else {
-              // user doesn't exist, create a new user with slack info and save
-              console.log("Encounted user that hasn't been added, adding");
-              const user = createUserFromSlackMemeber(members[i], User);
-              user.save();
-            }
+          // big async to ensure that all mongoose operations are completed
+          try {
+            await userDoc.save();
+            // console.log("Success");
+          } catch (e) {
+            console.log("Error saving userDoc", e);
           }
-        );
+        } else {
+          // user doesn't exist, create a new user with slack info and save
+          console.log("Encounted user that hasn't been added, adding");
+          const user = createUserFromSlackMemeber(members[i], User);
+          user.save();
+        }
       } catch (e) {
         console.log("ERROR:", e);
       }
     }
+    // console.log("done?");
   });
 };
 
