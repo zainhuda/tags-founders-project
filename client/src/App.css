@@ -188,14 +188,18 @@ a{
   transition: all .2s cubic-bezier(.645,.045,.355,1);
   padding: 12 27;
   transform: translate(100%, 100%);
+ 
+  
 }
 
 .ui.primary.button { //button taken from semantic
   border-radius: 2px;
   cursor: pointer;
-  color: white;
+  color: green;
   background-color: rgba(154,220,255,1);
   font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
+  
+  
 }
 
 .features {
