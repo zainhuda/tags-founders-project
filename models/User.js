@@ -6,6 +6,7 @@ const userSchema = new Schema({
     slackId: String,
     slackTeamId: String,
     slackDomain: String,
+    slackAccessToken: String,
 
 });
 

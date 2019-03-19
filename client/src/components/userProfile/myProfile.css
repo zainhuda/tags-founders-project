@@ -1,0 +1,33 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css");
+
+.segment {
+   min-height: 800px;
+}
+.seg {
+   width: 1px;
+}
+
+h4{
+  font-family:Helvetica Neue,sans-serif;
+  color: #545454;
+}
+
+h6{
+  font-family:Times New Roman,sans;
+  color: #eefof2;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 400;
+  left:90px;
+  
+}
+.FirstName{
+
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  left: 100;
+  font-family:Helvertica Neue,sans-serif;
+  color: #eefof2;
+}

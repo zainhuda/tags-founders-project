@@ -7,7 +7,9 @@ import Chips from 'react-chips';
 import { Modal, Button } from "react-bootstrap"; // using bootstrap modal for nice styles
 import axios from 'axios';
 
-class InterestsModal extends Component {
+
+
+class SkillsModal extends Component {
 
 		constructor(props) {
 			super(props);
@@ -36,9 +38,9 @@ class InterestsModal extends Component {
   	};
 
   	handleSave = () => {
-			const data = {interests: this.state.chips};
+			const data = {skills: this.state.chips};
 
-			axios.post('api/update_interests', {
+			axios.post('api/update_skills', {
 				body: JSON.stringify(data)
 			}).then((res) => {
 				console.log("update res: ", res);
@@ -56,12 +58,12 @@ class InterestsModal extends Component {
         return (
         <>
 				<Button variant="primary" onClick={this.handleShow}>
-          Edit Interests
+          Edit skills
         </Button>
 
 					<Modal show={this.state.showModal} onHide={this.handleClose}>
 							<Modal.Header closeButton>
-								<Modal.Title>Edit interests</Modal.Title>
+								<Modal.Title>Edit skills</Modal.Title>
 							</Modal.Header>
 							<Modal.Body>
 
@@ -104,4 +106,4 @@ class InterestsModal extends Component {
     }
 
 }
-export default InterestsModal;
+export default SkillsModal;

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slackServices = require("../services/slack_services");
 
 module.exports = app => {
 
@@ -60,11 +61,11 @@ module.exports = app => {
         const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
         const teamId = req.user.slackTeamId;
         let userData = JSON.parse(req.body.body);
-/*        console.log("userId: ", userId);
+        console.log("userId: ", userId);
         console.log("slackTeamId", teamId);
-        console.log("userData: ", userData);*/
-
+        console.log("userData: ", userData);
         mongoose.connection.db.collection(teamId, (err, collection) => {
+            console.log("userdata inside collection", userData);
             if (err) {
                 // handle the error
                 console.log("error boy ", err)
@@ -90,6 +91,45 @@ module.exports = app => {
                     })
                     .then((user) => {
                         res.send(user);
+                        console.log("user: ", user)
+                    })
+                    .catch((err) => {
+                        console.log("big error", err);
+                    })
+            }
+        })
+    });
+
+    // update tags
+    // used in settings and onboarding form
+    app.post('/api/update_tags', (req, res) => {
+        const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
+        const teamId = req.user.slackTeamId;
+        let requestData = JSON.parse(req.body.body);
+
+        console.log("request data is:", requestData);
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                // handle the error
+                console.log("error boy ", err)
+            }
+            else {
+                // lets find the user and update their profile
+                collection.findOneAndUpdate({
+                        "slackData.id": req.user.slackId
+                    },{ $set: {
+                        // whatever fields needs to be changed happen here
+                    "teamData.interests": requestData.interests,
+                    "teamData.skills": requestData.skills,
+                }},
+                    {
+                        // dont create a new user this might mess up populating the explore page
+                        upsert: false,
+                        new: true,
+                        returnOriginal: false,
+                    })
+                    .then((user) => {
+                        res.send(user);
                         //console.log("user: ", user)
                     })
                     .catch((err) => {
@@ -99,6 +139,8 @@ module.exports = app => {
         })
     });
 
+    // update interests
+    // used in the Modal
     app.post('/api/update_interests', (req, res) => {
         const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
         const teamId = req.user.slackTeamId;
@@ -135,7 +177,47 @@ module.exports = app => {
         })
     });
 
-    // serach for users based on skills
+
+    // update skills
+    // used in the Modal
+    app.post('/api/update_skills', (req, res) => {
+        const userId = req.user.id;  // right now it doesnt use the user id to find the user but the slack id
+        const teamId = req.user.slackTeamId;
+        let requestData = JSON.parse(req.body.body);
+
+        console.log("request data is:", requestData);
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                // handle the error
+                console.log("error boy ", err)
+            }
+            else {
+                // lets find the user and update their profile
+                collection.findOneAndUpdate({
+                        "slackData.id": req.user.slackId
+                    },{ $set: {
+                        // whatever fields needs to be changed happen here
+                    "teamData.skills": requestData.skills,
+                }},
+                    {
+                        // dont create a new user this might mess up populating the explore page
+                        upsert: false,
+                        new: true,
+                        returnOriginal: false,
+                    })
+                    .then((user) => {
+                        res.send(user);
+                        //console.log("user: ", user)
+                    })
+                    .catch((err) => {
+                        console.log("big error", err);
+                    })
+            }
+        })
+    });
+
+
+    // search for users based on skills
     app.get('/api/search/skills/:skill', (req, res) => {
         let teamId = req.user.slackTeamId;
         let skill = req.params.skill;
@@ -152,9 +234,9 @@ module.exports = app => {
                     })
             }
         })
-    })
+    });
 
-	// serach for users based on skills
+	// serach for users based on interests
     app.get('/api/search/interest/:interest', (req, res) => {
         let teamId = req.user.slackTeamId;
         let interest = req.params.interest;
@@ -171,6 +253,51 @@ module.exports = app => {
                     })
             }
         })
-    })
-};
+    });
 
+    // returns list of slack 'inactive' users
+    app.get('/api/inactive_users/', async (req, res) => {
+        let teamId = req.user.slackTeamId;
+
+        // sync the deleted field with slack's database first
+        console.log("Starting 'slack deleted field' synchronization");
+        await slackServices.updateSlackUserInactivity(req.user.slackAccessToken);
+        console.log("Finished slack synchronization");
+
+        // query for users that are inactive on slack, then send it back in the response
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            console.log(teamId);
+            if (err) {
+                console.log("err", err);
+            }
+            collection.find({"slackData.deleted" : true}).toArray( (err, docs) => {
+                res.json(docs);
+            })
+        })
+    });
+
+    // delete user
+    app.post('/api/update_inactivity', (req) => {
+
+        let inactiveUsers = req.body.inactiveUsers; // users that will be set to inactive
+        let activeUsers = req.body.activeUsers; // users that will be set to active
+        let teamId = req.user.slackTeamId;
+
+        // search and update the collection
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                console.log("there was an error", err)
+            }
+            else {
+                collection.updateMany(
+                  {"slackData.id": {$in: inactiveUsers}},
+                  { $set: {"isInactive": true}}
+                );
+                collection.updateMany(
+                  {"slackData.id": {$in: activeUsers}},
+                  {$set: {"isInactive": false}}
+                  );
+            }
+        })
+    });
+};

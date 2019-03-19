@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './userDetailsForm.css';
 
 export class UserDetailsForm extends Component {
-
 
 	constructor(props) {
 		super(props);
 		this.state = {
+			// user details
 			firstName: '',
 			lastName: '',
+			image_512: '',
 			title: '',
 			phone: '',
 			email: '',
+			// tags
+			skills: [],
+			interests: [],
 			isLoaded: false
 		}
 	}
@@ -25,8 +30,10 @@ export class UserDetailsForm extends Component {
 			.then((res) => {
 				console.log("received by axios is: ", res);
 				this.setState({
+					// set the state to wahtever slack data we got
 					firstName: res.data[0].slackData.profile.first_name,
 					lastName: res.data[0].slackData.profile.last_name,
+					image_512: res.data[0].slackData.profile.image_512,
 					title: res.data[0].slackData.profile.title,
 					phone: res.data[0].slackData.profile.phone,
 					email: res.data[0].slackData.email,
@@ -40,7 +47,7 @@ export class UserDetailsForm extends Component {
 	continue = (e) => {
 		e.preventDefault();
 
-		let {values: {firstName, lastName, title, email}} = this.props;
+		let {values: {firstName, lastName, image_512, title, phone, email}} = this.props;
 
 		// if "" then the user didnt change anything so we'll just use what we got from slack
 		if (firstName === "") {
@@ -49,8 +56,14 @@ export class UserDetailsForm extends Component {
 		if (lastName === "") {
 			lastName = this.state.lastName;
 		}
+		if (image_512 === "") {
+			image_512 = this.state.image_512;
+		}
 		if (title === "") {
 			title = this.state.title;
+		}
+		if (phone === "") {
+			phone = this.state.phone;
 		}
 		if (email === "") {
 			email = this.state.email;
@@ -60,7 +73,9 @@ export class UserDetailsForm extends Component {
 		let data = {
 			"firstName": firstName,
 			"lastName": lastName,
+			"image_512": image_512,
 			"title": title,
+			"phone": phone,
 			"email": email
 		};
 		console.log("data from userDetailsForm:", data);
@@ -70,10 +85,7 @@ export class UserDetailsForm extends Component {
 			body: JSON.stringify(data)
 		})
 			.then((response) => {
-				console.log(response)
-			})
-			.then((data) => {
-				console.log(data);
+				console.log("response after update_profiel", response)
 			});
 		// move onto the next step (skills and interests)
 		this.props.nextStep();
@@ -96,27 +108,28 @@ export class UserDetailsForm extends Component {
 			let {firstName, lastName, title, phone, email } = this.state;
 
 			return (
-				<div>
-					<h1>Heres what we got from slack :)</h1>
-					<h1>your first name is: </h1>
-					<input type="text" name="firstName" onChange={handleChange('firstName')} defaultValue={firstName}/>
-					<h1>your last is: </h1>
-					<input type="text" name="lastName" onChange={handleChange('lastName')} defaultValue={lastName}/>
-					<h1>Your title is:</h1>
-					<input type="text" name="title" onChange={handleChange('title')} defaultValue={title}/>
-					<h1>your email is: </h1>
-					<input type="text" name="email" onChange={handleChange('email')} defaultValue={email}/>
-					<h1>yurt phoen nubmer is</h1>
-					<input type="text" name="phone" onChange={handleChange('phone')} defaultValue={phone}/>
-					<input type="submit" value="continue" onClick={this.continue}/>
-					<h4> dw u can always change this stuff later</h4>
+				<div class="main-container">
+					<div class="form">
+						<h1>Details</h1>
+						<p>Here's what we got from Slack.</p>
+						<p>First Name: </p>
+						<input type="text" name="firstName" onChange={handleChange('firstName')} defaultValue={firstName}/>
+						<p>Last Name: </p>
+						<input type="text" name="lastName" onChange={handleChange('lastName')} defaultValue={lastName}/>
+						<p>Title:</p>
+						<input type="text" name="title" onChange={handleChange('title')} defaultValue={title}/>
+						<p>Email: </p>
+						<input type="text" name="email" onChange={handleChange('email')} defaultValue={email}/>
+						<p>Phone:</p>
+						<input type="text" name="phone" onChange={handleChange('phone')} defaultValue={phone}/>
+						<br/>
+						<input type="submit" class="submit-button" value="Next" onClick={this.continue}/>
+						<p>Don't worry, you can always change these later.</p>
+					</div>
 				</div>
 			)
 		}
 	}
-
-
-
 }
 
 export default UserDetailsForm

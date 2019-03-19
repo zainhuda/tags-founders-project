@@ -14,7 +14,9 @@ import ProfilePage from './components/userProfile/profilePage';
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import EmployeeDirectory from "./components/employeeDirectory";
+import InactiveUserList from "./components/inactiveUsers/inactiveUserList";
 import {HashRouter} from "react-router-dom"
+import LinkWithSlack from "./components/onboardForm/linkWithSlack"
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +32,8 @@ class App extends Component {
             <Route path="/profile" component={ProfilePage}/>
           <Route path="/david" component={SignUp}/>
           <Route path="/onboard" component={OnboardingForm}/>
-
+          <Route path="/inactive-users" component={InactiveUserList}/>
+          <Route path="/slack" component={LinkWithSlack} />
 
         </div>
       </HashRouter>
