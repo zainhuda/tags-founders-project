@@ -11,7 +11,7 @@ class SignUp extends Component {
 				<div>
 					<h1>Project X</h1>
 					<div>
-						<center/>
+						
 							<center><h2>Let's Get Started!</h2></center>
 						<div className={"GetStarted-table"}>
 
@@ -23,10 +23,12 @@ class SignUp extends Component {
 
 									<div className={"description"}>
 
-
-										<span> Use your company provided access code to make an account:</span>
+										<i className={"user plus icon blue huge"}></i>
+										<span> Use your company provided access code to make an account: </span>
+									
 										<input className={"ui input"} msg={"fuck you"}/>
-										<Button className={"ui primary basic button"} msg={"Choose"}/>
+
+										<div><centerbutton><Button className={"ui primary basic button"} msg={"Choose"}/></centerbutton></div>
 
 									</div>
 								</div>
@@ -41,7 +43,10 @@ class SignUp extends Component {
 									<h2> Company </h2>
 									<div className={"description"}>
 
+										<i className={"users icon blue huge"}></i>
+
 										<span> Register for a new company account:</span>
+
 
 
 										<Button className={"ui primary basic button"} msg={"Choose"}/>
