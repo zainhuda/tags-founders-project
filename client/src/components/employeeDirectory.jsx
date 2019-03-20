@@ -41,7 +41,14 @@ class EmployeeDirectory extends Component {
             // data is received and we ca render it
             const profilesArray = profiles.filter(profile => {
                 return !profile.isInactive
-            }).map(profile => (
+            }).map(profile => {
+
+                // use a default profile picture if there is no url on the profile... probably should host this ourselves
+                if (!profile.teamData.image_512) {
+                    profile.teamData.image_512 = "https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg";
+                }
+
+                return (
                 <Col lg={2} style={{ padding: "4px" }}>
                     <ProfileThumbnail
                         key={profile._id}
@@ -50,7 +57,8 @@ class EmployeeDirectory extends Component {
                         title={profile.teamData.title}
                         url={profile.teamData.image_512} />
                 </Col>
-            ));
+            )
+            });
             return(
                 <Col className="listingContent">
                     <Row>
