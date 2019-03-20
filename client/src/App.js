@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -7,7 +6,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 // import components
 
 import SignUp from "./components/registration/signup";
-import Showcase from './components/showcase'; // Page that features product
+import HomePage from './components/landingpage/homePage'; // Page that features product
 import Explore from './components/explore';
 import OnboardingForm from './components/onboardForm/onboardingForm';
 import ProfilePage from './components/userProfile/profilePage';
@@ -27,7 +26,7 @@ class App extends Component {
     return (
       <HashRouter>
         <div>
-          <Route exact={true} path="/" component={Showcase} />
+          <Route exact={true} path="/" component={HomePage} />
           <Route path="/explore" component={Explore} />
             <Route path="/profile" component={ProfilePage}/>
           <Route path="/david" component={SignUp}/>
