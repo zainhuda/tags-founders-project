@@ -179,29 +179,6 @@ a{
   text-decoration: none;
 }
 
-.ui.primary.basic.button { //button taken from semantic
-  position: relative;
-  border-radius: 2px;
-  cursor: pointer;
-  color: rgba(154,220,255,.6);
-  font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
-  transition: all .2s cubic-bezier(.645,.045,.355,1);
-  padding: 12 27;
-  transform: translate(100%, 100%);
- 
-  
-}
-
-.ui.primary.button { //button taken from semantic
-  border-radius: 2px;
-  cursor: pointer;
-  color: green;
-  background-color: rgba(154,220,255,1);
-  font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
-  
-  
-}
-
 .features {
   background-color: #cccccc;
 }
@@ -230,7 +207,7 @@ a{
 }
 
 
-.introduction { //css for homePage first div (white box)
+.introduction {
   position: relative;
   display: block;
   background-color: white;
@@ -238,7 +215,7 @@ a{
   height: 75%;
 }
 
-.middle { //css for homepage second div (gray box)
+.middle { /*css for homepage second div (gray box)*/
   position: relative;
   display: block;
   background-color: #eff1f4;
@@ -262,5 +239,3 @@ a{
   font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
   font-weight: bold;
 }
-
-
