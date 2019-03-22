@@ -8,13 +8,20 @@ import Sidebar from './sidebar';
 
 import React, {Component} from 'react';
 
+import './explore.css';
+
 class Explore extends Component {
 	render() {
+
+
 		return(
 			<div>
 				<Header/>
-				<Sidebar/>
-				<EmployeeDirectory/>
+			<div className="explore-grid">
+				
+				<Sidebar className="sidebar"/>
+				<EmployeeDirectory className="employee-directory"/>
+			</div>
 			</div>
 		);
 	}

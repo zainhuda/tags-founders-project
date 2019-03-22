@@ -7,6 +7,7 @@ import Button from "../button.jsx";
 import Sidebar from "../sidebar.jsx";
 import styles from "./myProfile.css";
 
+
 class MyProfile extends Component {
 
     render() {
@@ -26,6 +27,7 @@ class MyProfile extends Component {
 		        	<div className={"seg"}> </div>
 		        	<Sidebar>
 		        	</Sidebar>
+		        	
 		       		 <div className={"bottom"}> <i className={"user circle icon blue huge"}></i> View my profile</div>
 
 
