@@ -14,7 +14,6 @@ class Explore extends Component {
 
 	render() {
 
-
 		return(
 			<div>
 				<LoggedInRedirect/>
