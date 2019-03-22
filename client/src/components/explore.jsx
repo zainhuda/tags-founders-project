@@ -5,17 +5,19 @@
 import EmployeeDirectory from './employeeDirectory';
 import Header from './header';
 import Sidebar from './sidebar';
-
 import React, {Component} from 'react';
+import LoggedInRedirect from "./loggedInRedirect";
 
 import './explore.css';
 
 class Explore extends Component {
+
 	render() {
 
 
 		return(
 			<div>
+				<LoggedInRedirect/>
 				<Header/>
 			<div className="explore-grid">
 				
