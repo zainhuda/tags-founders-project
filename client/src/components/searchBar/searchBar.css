@@ -1,0 +1,13 @@
+.search-input {
+    width: 500px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.search-icon {
+    margin-top: 22px;
+    font-size: 1em;
+}

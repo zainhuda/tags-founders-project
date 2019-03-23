@@ -4,5 +4,5 @@ import profilesReducer from './profilesReducer';
 
 export default combineReducers({
 	auth: authReducer,
-	profile: profilesReducer,
+	profiles: profilesReducer,
 });

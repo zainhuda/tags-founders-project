@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
+import {fetchProfiles} from '../../actions';
 import {Col, Panel, PanelGroup, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import './sidebar.css';
+
 
 class Sidebar extends Component {
+
+    handleSort = (sortElement) => {
+        console.log("elem is", sortElement);
+        this.props.fetchProfiles(sortElement);
+    }
 
   render() {
     function handleClick() {
@@ -21,11 +30,11 @@ class Sidebar extends Component {
         </Panel>
             <Panel eventkey="2" className="sidebarCollapse">
                 <Panel.Heading>
-                    <Panel.Title toggle className="panelTitle">By Department</Panel.Title>
+                    <Panel.Title toggle className="panelTitle">By Portfoilio</Panel.Title>
                   </Panel.Heading>
               <Panel.Body collapsible>
                 <Col>
-                  <Row> <a href={""} className="collapseLinks"> Account Management </a>  </Row>
+                  <Row> <p onClick={() => this.handleSort("Projects")} className="collapseLinks"> Projects </p>  </Row>
                   <Row> <a href={""} className="collapseLinks"> Administration </a> </Row>
                   <Row> <a href={""} className="collapseLinks"> Creative </a> </Row>
                   <Row> <a href={""} className="collapseLinks"> Digital & Social </a> </Row>
@@ -74,4 +83,7 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+function mapStateToProps(state) {
+    return {profiles: state.profiles}
+}
+export default connect(mapStateToProps, {fetchProfiles})(Sidebar);

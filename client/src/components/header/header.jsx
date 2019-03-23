@@ -1,3 +1,5 @@
+// this compoenent has been replaced by serach bar
+
 import React, { Component } from "react";
 import {
   Form,
@@ -25,13 +27,14 @@ class Header extends Component {
               margin: 0
             }}
           >
-            
+
           </h3>
           <FormGroup controlId="formInlineName" className={"searchBar"}>
             <FormControl
               type="text"
               placeholder="Search"
               style={{ width: "500px" }}
+              onChange={() => console.log("tyeo")}
             />
             <FormControl.Feedback>
               <Glyphicon glyph="search" />

@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import Button from "../button.jsx";
-import Sidebar from "../sidebar.jsx";
+import Sidebar from "../sidebar/sidebar.jsx";
 import styles from "./profile.css";
 
 class Profile extends Component {

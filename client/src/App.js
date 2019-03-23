@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Route } from "react-router-dom";
-
+import {connect} from 'react-redux';
+import * as actions from './actions'
 
 // import components
 
@@ -10,7 +11,6 @@ import SignUp from "./components/registration/signup";
 import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
 import OnboardingForm from './components/onboardForm/onboardingForm';
-import Sidebar from "./components/sidebar";
 import Header from "./components/header/header";
 import EmployeeDirectory from "./components/employeeDirectory";
 import InactiveUserList from "./components/inactiveUsers/inactiveUserList";
@@ -42,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, actions)(App);

@@ -4,9 +4,11 @@
 
 import EmployeeDirectory from './employeeDirectory';
 import Header from './header/header';
-import Sidebar from './sidebar';
+import Sidebar from './sidebar/sidebar';
 import React, {Component} from 'react';
 import LoggedInRedirect from "./loggedInRedirect";
+
+import SearchBar from './searchBar/searchBar';
 
 import './explore.css';
 
@@ -19,10 +21,10 @@ class Explore extends Component {
 				<LoggedInRedirect/>
 
 			<div className="explore-grid">
-				
+
 				<Sidebar className="sidebar"/>
 				<div className="directory">
-					<Header/>
+					<SearchBar/>
 					<EmployeeDirectory className="employee-directory"/>
 				</div>
 			</div>
