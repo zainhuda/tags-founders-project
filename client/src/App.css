@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  padding: 0;
+  padding: 3;
 }
 
 html {
@@ -40,8 +40,7 @@ html {
 }
 
 .sidebar {
-    height: 100%;
-    width: 19vw;
+    height: auto;
     padding: 1vw 3vw;
   }
 
@@ -72,7 +71,7 @@ html {
 }
 
 .profileSummary h5 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: #FFFFFF;
 }
@@ -86,7 +85,7 @@ html {
 .profileSummary a:after {
     content:'\A';
     position:absolute;
-    width:100%; height:100%;
+    width: 100%; height:100%;
     top:0; left:0;
     background:rgba(0,0,0,0.3);
     opacity:0;
@@ -94,7 +93,7 @@ html {
     -webkit-transition: all 0.5s;
 }
 .profileSummary a:hover:after {
-    opacity:1;
+    opacity:5;
 }
 
 
@@ -138,8 +137,8 @@ html {
 
 .sidebarCollapse .panel-heading {
   background-color: white;
-  padding: 0px;
-  line-height: 2.1;
+  padding: 5px;
+  margin-bottom: 5px;
 }
 
 #Panels {
@@ -169,13 +168,13 @@ a{
   line-height: 2;
   text-decoration: none;
   position: relative;
-  left: 30px;
+  left: 40px;
 }
 
 .collapseLinks:hover {
   color: green;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   text-decoration: none;
 }
 

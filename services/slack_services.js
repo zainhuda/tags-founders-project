@@ -46,7 +46,10 @@ const importSlackUsers = (accessToken, res) => {
                     user.teamData.firstName + " " + user.teamData.lastName,
                     user.slackData.id
                   );
-                } else {
+                } else if (user.slackData.is_bot || user.slackData.id === "USLACKBOT") {
+                  console.log("User is bot, not saving");
+                }
+                else {
                   user.save();
                 }
               }
@@ -117,7 +120,10 @@ const updateSlackUserInactivity = async accessToken => {
         } catch (e) {
           console.log("Error saving userDoc", e);
         }
-      } else {
+      } else if (members[i].is_bot || members[i].id === "USLACKBOT" ) {
+        console.log("User is a bot, not saving");
+      }
+      else {
         // user doesn't exist, create a new user with slack info and save
         console.log("Encounted user that hasn't been added, adding");
         const user = createUserFromSlackMemeber(members[i], User);
@@ -131,12 +137,18 @@ const updateSlackUserInactivity = async accessToken => {
 };
 
 const createUserFromSlackMemeber = (slackMember, UserSchema) => {
+
+  let imageUrl = slackMember.profile.image_512;
+  if (!imageUrl)
+    imageUrl = slackMember.profile.image_192;
+
+
   const user = new UserSchema({
     slackData: slackMember,
     teamData: {
       firstName: slackMember.profile.first_name,
       lastName: slackMember.profile.last_name,
-      image_512: slackMember.profile.image_512,
+      image_512: imageUrl,
       title: slackMember.profile.title,
       phone: slackMember.profile.phone,
       email: "",
@@ -145,6 +157,7 @@ const createUserFromSlackMemeber = (slackMember, UserSchema) => {
     },
     isConfirmed: false
   });
+
   return user;
 };
 
