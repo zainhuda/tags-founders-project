@@ -11,3 +11,7 @@
     margin-top: 22px;
     font-size: 1em;
 }
+.searchBar {
+    float: left;
+    margin-left: 7px;
+}

@@ -1,5 +1,4 @@
-// this compoenent has been replaced by serach bar
-
+// this component imports the search bar and adds other routing
 import React, { Component } from "react";
 import {
   Form,
@@ -8,40 +7,25 @@ import {
   Glyphicon,
   Row
 } from "react-bootstrap";
+import {Link} from 'react-router-dom';
+
+import SearchBar from '../searchBar/searchBar';
 import './header.css';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { searchValue: "" };
-  }
 
   render() {
     return (
-      <Row style={{ marginTop: "2vh", marginBottom: "2vh" }}>
-        <Form inline>
-          <h3
-            style={{
-              display: "inline",
-              float: "left",
-              margin: 0
-            }}
-          >
+        <div class="header-container">
+            <div id="search-bar">
+                <SearchBar/>
+            </div>
+            <div id="profile-icon">
+                <Link to="/my-profile"> My Profile </Link>
+            </div>
 
-          </h3>
-          <FormGroup controlId="formInlineName" className={"searchBar"}>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              style={{ width: "500px" }}
-              onChange={() => console.log("tyeo")}
-            />
-            <FormControl.Feedback>
-              <Glyphicon glyph="search" />
-            </FormControl.Feedback>
-          </FormGroup>
-        </Form>
-      </Row>
+        </div>
+
     );
   }
 }

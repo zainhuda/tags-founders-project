@@ -1,4 +1,14 @@
-.searchBar {
-    float: left;
-    margin-left: 7px;
+.header-container {
+
+}
+#search-bar {
+    display: inline-block;
+    vertical-align: middle;
+}
+#profile-icon {
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    padding-top: 30px;
+    padding-right: 20px;
 }
