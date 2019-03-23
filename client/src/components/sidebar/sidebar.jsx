@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import {fetchProfiles} from '../../actions';
 import {Col, Panel, PanelGroup, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import './sidebar.css';
 
+import './sidebar.css';
+import sidebarLabels from './sidebarLabels';
 
 class Sidebar extends Component {
 
@@ -13,19 +14,37 @@ class Sidebar extends Component {
         this.props.fetchProfiles(sortElement);
     }
 
+
+
+
+
   render() {
-    function handleClick() {
-   alert('You can now view all people');
-    }
+    // make the porfolios list
+    const portfolios = sidebarLabels.portfolios.map(label => {
+        return(
+            <Row>
+                <p onClick={() => this.handleSort(label.sort)} className="collapseLinks"> {label.label} </p>
+            </Row>
+        )
+    });
+
+    // make the majors list
+    const majors = sidebarLabels.majors.map(label => {
+        return(
+            <Row>
+                <p onClick={() => this.handleSort(label.sort)} className="collapseLinks"> {label.label} </p>
+            </Row>
+        )
+    })
 
     return (
       <Col className="sidebar">
         <Link to={"/"} style={{color: "black", textDecoration: "none"}}> <h1 style={{textAlign: "center"}}> Tags </h1> </Link>
 
         <PanelGroup accordian id={"Panels"}>
-        <Panel eventkey="1" className="sidebarCollapse" onClick={handleClick}>
+        <Panel eventkey="1" className="sidebarCollapse" onClick={() => this.handleSort("")}>
           <Panel.Heading>
-            <Panel.Title className="panelTitle">All people</Panel.Title>
+            <Panel.Title  className="panelTitle"><p>All People</p></Panel.Title>
           </Panel.Heading>
         </Panel>
             <Panel eventkey="2" className="sidebarCollapse">
@@ -34,33 +53,18 @@ class Sidebar extends Component {
                   </Panel.Heading>
               <Panel.Body collapsible>
                 <Col>
-                  <Row> <p onClick={() => this.handleSort("Projects")} className="collapseLinks"> Projects </p>  </Row>
-                  <Row> <a href={""} className="collapseLinks"> Administration </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> Creative </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> Digital & Social </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> DTP </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> Finance </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> HR </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> IT </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> Management </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> Media </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> Prodcution </a> </Row>
-                  <Row> <a href={""} className="collapseLinks"> Strategy </a> </Row>
+                    {portfolios}
                 </Col>
               </Panel.Body>
             </Panel>
                 <Panel eventkey={"3"} className="sidebarCollapse">
                 <Panel.Heading>
-                    <Panel.Title toggle className="panelTitle">By Office</Panel.Title>
+                    <Panel.Title toggle className="panelTitle">By Major</Panel.Title>
                     </Panel.Heading>
                 <Panel.Body collapsible>
-                        <Row> <a href={""} className="collapseLinks"> London </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Calgary </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Toronto </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Vancouver </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Waterloo </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Ottawa </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Edmonton </a> </Row>
+                    <Col>
+                        {majors}
+                    </Col>
                 </Panel.Body>
                 </Panel>
              <Panel eventkey={"4"} className="sidebarCollapse">

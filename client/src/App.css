@@ -39,10 +39,7 @@ html {
   }
 }
 
-.sidebar {
-    height: auto;
-    padding: 1vw 3vw;
-  }
+
 
 .content {
     border-left: 1px lightgrey solid;
@@ -81,48 +78,8 @@ html {
     font-size: 16px;
 }
 
-.sidebarCollapse .panel-heading {
-  background-color: white;
-  padding: 5px;
-  margin-bottom: 5px;
-}
-
-#Panels {
-  position: relative;
-  top: 40px;
-  border-bottom: none;
-}
 
 
-.panelTitle {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.panel {
-  border: none;
-}
-
-a{
-  color: black;
-}
-
-.collapseLinks:link {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 15px;
-  line-height: 2;
-  text-decoration: none;
-  position: relative;
-  left: 40px;
-}
-
-.collapseLinks:hover {
-  color: green;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  text-decoration: none;
-}
 
 .features {
   background-color: #cccccc;

@@ -1,3 +1,43 @@
 p:hover {
     cursor: pointer;
 }
+.sidebar {
+    height: auto;
+    padding: 1vw 3vw;
+}
+.sidebarCollapse .panel-heading {
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#Panels {
+    position: relative;
+    top: 40px;
+    border-bottom: none;
+}
+.panelTitle {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.panel {
+    border: none;
+}
+
+a{
+    color: black;
+}
+
+.collapseLinks {
+    font-size: 15px;
+    line-height: 2;
+    text-decoration: none;
+    position: relative;
+    left: 20px;
+}
+
+.collapseLinks:hover {
+    color: green;
+    text-decoration: none;
+}
