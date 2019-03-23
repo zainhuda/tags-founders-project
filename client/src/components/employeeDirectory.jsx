@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import { Col, Row } from "react-bootstrap";
-import ProfileThumbnail from "./profileThumbnail";
+import ProfileThumbnail from "./profileThumbnail/profileThumbnail";
 import axios from 'axios';
 
 class EmployeeDirectory extends Component {

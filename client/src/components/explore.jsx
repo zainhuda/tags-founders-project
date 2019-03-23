@@ -3,7 +3,7 @@
 // accessed through the path: /explore
 
 import EmployeeDirectory from './employeeDirectory';
-import Header from './header';
+import Header from './header/header';
 import Sidebar from './sidebar';
 import React, {Component} from 'react';
 import LoggedInRedirect from "./loggedInRedirect";
@@ -17,11 +17,14 @@ class Explore extends Component {
 		return(
 			<div>
 				<LoggedInRedirect/>
-				<Header/>
+
 			<div className="explore-grid">
 				
 				<Sidebar className="sidebar"/>
-				<EmployeeDirectory className="employee-directory"/>
+				<div className="directory">
+					<Header/>
+					<EmployeeDirectory className="employee-directory"/>
+				</div>
 			</div>
 			</div>
 		);

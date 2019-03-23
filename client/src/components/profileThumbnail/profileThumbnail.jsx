@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Panel } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import ProfileModal from "./profileModal/profileModal";
+import ProfileModal from "../profileModal/profileModal";
+import './profileThumbnail.css';
 
 class ProfileThumbnail extends Component {
     constructor(...args) {
@@ -20,13 +20,13 @@ class ProfileThumbnail extends Component {
     }
 
   render() {
-  let modalClose = () => {
-      this.setState({
-          modalShow: false
-      })
-  }
+	  let modalClose = () => {
+	      this.setState({
+	          modalShow: false
+	      })
+	  };
 
-  const {firstName, lastName, url, title, email, phone,  skills, interests} = this.state;
+	  const {firstName, lastName, url, title, email, phone,  skills, interests} = this.state;
 
     return (
         <div>
@@ -34,24 +34,23 @@ class ProfileThumbnail extends Component {
           console.log("clicked")
       })} className="profileSummary">
           <img src={this.props.url} className="summaryThumbnail"/>
-        <div className={"profileSummaryDescription"}>
-          <h5> {this.props.firstName + " " + this.props.lastName} </h5>
-            <h5>{this.props.title}</h5>
-        </div>
-
-      </Panel>
-      <ProfileModal
-          show={this.state.modalShow}
-          onHide={modalClose}
-          firstName={firstName}
-          lastName={lastName}
-          url={url}
-          title={title}
-          phone={phone}
-          email={email}
-          skills={skills}
-          interests={interests}
-          />
+            <div className={"profileSummaryDescription"}>
+                <h5> {this.props.firstName + " " + this.props.lastName} </h5>
+                <h5>{this.props.title}</h5>
+            </div>
+        </Panel>
+		<ProfileModal
+			  show={this.state.modalShow}
+			  onHide={modalClose}
+			  firstName={firstName}
+			  lastName={lastName}
+			  url={url}
+			  title={title}
+			  phone={phone}
+			  email={email}
+			  skills={skills}
+			  interests={interests}
+		  />
       </div>
     );
   }

@@ -6,6 +6,7 @@ import {
   Glyphicon,
   Row
 } from "react-bootstrap";
+import './header.css';
 
 class Header extends Component {
   constructor(props) {
@@ -21,7 +22,6 @@ class Header extends Component {
             style={{
               display: "inline",
               float: "left",
-              paddingLeft: "2vw",
               margin: 0
             }}
           >
