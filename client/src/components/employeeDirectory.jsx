@@ -55,7 +55,11 @@ class EmployeeDirectory extends Component {
                         firstName={profile.teamData.firstName}
                         lastName={profile.teamData.lastName}
                         title={profile.teamData.title}
-                        url={profile.teamData.image_512} />
+                        phone={profile.teamData.phone}
+                        email={profile.teamData.email}
+                        url={profile.teamData.image_512}
+                        skills={profile.teamData.skills}
+                        interests={profile.teamData.interests} />
                 </Col>
             )
             });

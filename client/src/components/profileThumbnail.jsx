@@ -1,19 +1,58 @@
 import React, { Component } from "react";
 import { Panel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ProfileModal from "./profileModal/profileModal";
 
 class ProfileThumbnail extends Component {
+    constructor(...args) {
+      super(...args);
+      this.state = {
+          modalShow: false,
+          firstName: this.props.firstName,
+          lastName: this.props.lastName,
+          url: this.props.url,
+          title: this.props.title,
+          email: this.props.email,
+          phone: this.props.phone,
+          skills: this.props.skills,
+          interests: this.props.interests
+       };
+    }
+
   render() {
+  let modalClose = () => {
+      this.setState({
+          modalShow: false
+      })
+  }
+
+  const {firstName, lastName, url, title, email, phone,  skills, interests} = this.state;
+
     return (
-      <Panel className="profileSummary">
-        <Link to={"/profile"} style={{ display: "block", position: "relative" }}>
+        <div>
+      <Panel onClick={() => this.setState({ modalShow: true }, () => {
+          console.log("clicked")
+      })} className="profileSummary">
           <img src={this.props.url} className="summaryThumbnail"/>
-        </Link>
         <div className={"profileSummaryDescription"}>
           <h5> {this.props.firstName + " " + this.props.lastName} </h5>
             <h5>{this.props.title}</h5>
         </div>
+
       </Panel>
+      <ProfileModal
+          show={this.state.modalShow}
+          onHide={modalClose}
+          firstName={firstName}
+          lastName={lastName}
+          url={url}
+          title={title}
+          phone={phone}
+          email={email}
+          skills={skills}
+          interests={interests}
+          />
+      </div>
     );
   }
 }

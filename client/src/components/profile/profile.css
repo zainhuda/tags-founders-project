@@ -1,0 +1,46 @@
+.profile-main-container {
+    padding-top: 100px !important;
+    margin: auto;
+    width: 75%;
+    padding: 10px;
+    text-align: left;
+}
+.image-container {
+
+}
+
+.profile-image {
+    width: 100%;
+}
+.name {
+    font-size: 4em;
+    padding: 10px;
+}
+.title {
+    padding: 10px;
+}
+.email {
+    padding: 10px;
+}
+.phone {
+    padding: 10px;
+}
+.skills {
+    padding: 10px;
+
+}
+.interests {
+    padding: 10px;
+
+}
+.tags-list {
+    padding: 10px;
+}
+.grid1 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

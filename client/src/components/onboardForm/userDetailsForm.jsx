@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import './userDetailsForm.css';
+import styles from './userDetailsForm.css';
 
 export class UserDetailsForm extends Component {
 

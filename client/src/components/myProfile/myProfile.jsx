@@ -5,10 +5,10 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 // import different profile pages
-import MyProfile from './myProfile';
 import Settings from './settings/settings';
+import Profile from '../profile/profile';
 
-export class ProfilePage extends Component {
+export class MyProfile extends Component {
 
 	state = {
 		firstName: '',
@@ -20,7 +20,7 @@ export class ProfilePage extends Component {
 	    interests: '',
 		skills: '',
 	    isLoaded: false,
-		page: "myProfile"
+		page: "profile"
     };
 
 
@@ -32,16 +32,15 @@ export class ProfilePage extends Component {
             	console.log("the res in profilePage is:", res);
                 this.setState({
 					firstName: res.data[0].teamData.firstName,
-					lastName: res.data[0].teamData.lastname,
+					lastName: res.data[0].teamData.lastName,
 					image_512: res.data[0].teamData.image_512,
 	                title: res.data[0].teamData.title,
 					phone: res.data[0].teamData.phone,
-	                email: res.data[0].email,
+	                email: res.data[0].teamData.email,
 	                interests: res.data[0].teamData.interests,
 					skills: res.data[0].teamData.skills,
 	                isLoaded: true
                 })
-
             })
     }
 
@@ -67,10 +66,10 @@ export class ProfilePage extends Component {
 		const {page} = this.state;
 		switch (page) {
 			// load which ever settings page
-			case "myProfile":
+			case "profile":
 				return(
 					<div>
-						<MyProfile
+						<Profile
 							changePage={this.changePage}
 							values={values}
 						/>
@@ -90,4 +89,4 @@ export class ProfilePage extends Component {
 	}
 }
 
-export default ProfilePage;
+export default MyProfile;
