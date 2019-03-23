@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Route } from "react-router-dom";
-
+import {connect} from 'react-redux';
+import * as actions from './actions'
 
 // import components
 
@@ -10,13 +11,14 @@ import SignUp from "./components/registration/signup";
 import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
 import OnboardingForm from './components/onboardForm/onboardingForm';
-import ProfilePage from './components/userProfile/profilePage';
-import Sidebar from "./components/sidebar";
-import Header from "./components/header";
+import Header from "./components/header/header";
 import EmployeeDirectory from "./components/employeeDirectory";
 import InactiveUserList from "./components/inactiveUsers/inactiveUserList";
 import {HashRouter} from "react-router-dom"
-import LinkWithSlack from "./components/onboardForm/linkWithSlack"
+import LinkWithSlack from "./components/onboardForm/linkWithSlack";
+
+import MyProfile from "./components/myProfile/myProfile";
+
 
 class App extends Component {
   constructor(props) {
@@ -29,16 +31,15 @@ class App extends Component {
         <div>
           <Route exact={true} path="/" component={Showcase} />
           <Route path="/explore" component={Explore} />
-          <Route path="/profile" component={ProfilePage}/>
           <Route path="/david" component={SignUp}/>
           <Route path="/onboard" component={OnboardingForm}/>
           <Route path="/inactive-users" component={InactiveUserList}/>
           <Route path="/slack" component={LinkWithSlack} />
-
+        <Route path="/my-profile" component={MyProfile}/>
         </div>
       </HashRouter>
     );
   }
 }
 
-export default App;
+export default connect(null, actions)(App);

@@ -93,13 +93,13 @@ class Settings extends Component {
 				console.log("response after update_profiel", response)
 			});
 		// move onto the next step (skills and interests)
-		this.props.changePage('myProfile')
+		this.props.changePage('profile')
 	};
 
 
 	back = (e) => {
 		e.preventDefault();
-		this.props.changePage("myProfile");
+		this.props.changePage("profile");
 	};
 
 	render() {
@@ -126,7 +126,7 @@ class Settings extends Component {
 						onChange={handleChange('firstName')}
 						defaultValue={firstName}
 					/>
-					<h4>Lastt Name</h4>
+					<h4>Last Name</h4>
 					<input
 						type="text"
 						name="lastName"
@@ -164,12 +164,8 @@ class Settings extends Component {
 					<h4>Interests</h4>
 					<InterestsModal/>
 					<SkillsModal/>
-
-
-				<input type="submit" value="go back to profile" onClick={this.back}/>
+					<input type="submit" value="go back to profile" onClick={this.back}/>
 					<input type="submit" value="save changes and update data base" onClick={this.continue}/>
-
-
 				</div>
 			)
 		}

@@ -3,10 +3,12 @@
 // accessed through the path: /explore
 
 import EmployeeDirectory from './employeeDirectory';
-import Header from './header';
-import Sidebar from './sidebar';
+import Header from './header/header';
+import Sidebar from './sidebar/sidebar';
 import React, {Component} from 'react';
 import LoggedInRedirect from "./loggedInRedirect";
+
+import SearchBar from './searchBar/searchBar';
 
 import './explore.css';
 
@@ -17,11 +19,12 @@ class Explore extends Component {
 		return(
 			<div>
 				<LoggedInRedirect/>
-				<Header/>
 			<div className="explore-grid">
-				
 				<Sidebar className="sidebar"/>
-				<EmployeeDirectory className="employee-directory"/>
+				<div className="directory">
+					<SearchBar/>
+					<EmployeeDirectory className="employee-directory"/>
+				</div>
 			</div>
 			</div>
 		);

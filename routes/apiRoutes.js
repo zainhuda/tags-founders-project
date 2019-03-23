@@ -255,6 +255,34 @@ module.exports = app => {
         })
     });
 
+    // serach for users
+    app.get('/api/search/:query', (req, res) => {
+        let teamId = req.user.slackTeamId;
+        let query = req.params.query;
+        //search the collection
+        mongoose.connection.db.collection(teamId, (err, collection) => {
+            if (err) {
+                console.log("there was an error", err)
+            }
+            else {
+                collection.find({
+                    $or: [
+                        {"teamData.interests": query},
+                        {"teamData.skills": query},
+                        {"teamData.title": query},
+                        {"teamData.firstName": query},
+                        {"teamData.lastName": query},
+                        {"teamData.email": query},
+                        {"teamData.phone": query}
+                    ]
+                }).toArray((err, docs) => {
+                    console.log("we found these", docs);
+                    res.json(docs);
+                })
+            }
+        })
+    });
+
     // returns list of slack 'inactive' users
     app.get('/api/inactive_users/', async (req, res) => {
         let teamId = req.user.slackTeamId;
