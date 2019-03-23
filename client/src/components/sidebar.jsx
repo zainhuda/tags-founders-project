@@ -10,8 +10,8 @@ class Sidebar extends Component {
     }
 
     return (
-      <Col lg={3} className="sidebar">
-        <Link to={"/"} style={{color: "black", textDecoration: "none"}}> <h1 style={{textAlign: "center"}}> Project <b> X </b> </h1> </Link>
+      <Col className="sidebar">
+        <Link to={"/"} style={{color: "black", textDecoration: "none"}}> <h1 style={{textAlign: "center"}}> Tags </h1> </Link>
 
         <PanelGroup accordian id={"Panels"}>
         <Panel eventkey="1" className="sidebarCollapse" onClick={handleClick}>

@@ -49,7 +49,7 @@ class EmployeeDirectory extends Component {
                 }
 
                 return (
-                <Col lg={2} style={{ padding: "4px" }}>
+                <Col sm={2} style={{ padding: "3px" }}>
                     <ProfileThumbnail
                         key={profile._id}
                         firstName={profile.teamData.firstName}
@@ -64,11 +64,13 @@ class EmployeeDirectory extends Component {
             )
             });
             return(
-                <Col className="listingContent">
-                    <Row>
-                        {profilesArray}
-                    </Row>
-                </Col>
+                <div>
+                    <Col className="listingContent" lg="auto" >
+                        <Row>
+                            {profilesArray}
+                        </Row>
+                    </Col>
+                </div>
             )
         }
 	}
@@ -79,5 +81,4 @@ const mapStateToProps = (state) => {
         profiles: state.profile.profiles
     }
 };
-
 export default connect(mapStateToProps)(EmployeeDirectory);

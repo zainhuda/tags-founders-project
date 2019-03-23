@@ -1,0 +1,12 @@
+.explore-grid {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+}
+.sidebar {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+.employee-directory {
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
