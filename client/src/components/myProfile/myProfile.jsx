@@ -7,7 +7,7 @@ import axios from 'axios';
 import Settings from './settings/settings';
 import Profile from '../profile/profile';
 
-export class MyProfile extends Component {
+class MyProfile extends Component {
 
 	state = {
 		firstName: '',
@@ -24,6 +24,7 @@ export class MyProfile extends Component {
 
 
     componentDidMount() {
+		console.log("mounted")
         axios.get('/api/get_profile', {
             headers: {"Allow-Control-Allow-Origin": "*"}
         })
@@ -61,7 +62,7 @@ export class MyProfile extends Component {
 		const {firstName, lastName, image_512, title, phone, email, interests, skills } = this.state;
 		const values = {firstName, lastName, image_512, title, phone, email, interests, skills};
 
-
+		console.log("skills in myprofiel are:", skills)
 		const {page} = this.state;
 		switch (page) {
 			// load which ever settings page

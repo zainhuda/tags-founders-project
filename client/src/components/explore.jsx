@@ -19,9 +19,7 @@ class Explore extends Component {
 		return(
 			<div>
 				<LoggedInRedirect/>
-
 			<div className="explore-grid">
-
 				<Sidebar className="sidebar"/>
 				<div className="directory">
 					<SearchBar/>

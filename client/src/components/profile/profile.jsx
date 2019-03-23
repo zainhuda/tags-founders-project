@@ -12,51 +12,44 @@ class Profile extends Component {
     render() {
 
     	const {values, changePage} = this.props;
-    	let {firstName, lastName, image_512, title, phone, email, interests, skills} = values;
+    	let {firstName, lastName, image_512, title, phone, email, skills} = values;
+
+            console.log("skills in profiel are", skills)
+
 
         return (
 
 
-				<div className="profile-main-container">
-					<div className="grid1">
-						<div className="image-container">
-							<img className="profile-image" src={image_512}/>
-						</div>
-						<div>
 
-						<div className="name">
-							{firstName} {lastName}
-						</div>
-						<div className="title">
-							{title}
-						</div>
-						<div className="grid2">
-							<div className="phone">
-								{phone}
-							</div>
-							<div className="email">
-								{email}
-							</div>
+            <div className="modal-grid">
+                <div>
+                    <img src={image_512} className="modal-pic"/>
+                </div>
+                <div>
+                    <div>
+                        <h1 className="modal-name">
+                            {firstName + " " +lastName}
+                        </h1>
+                        <h4 className="modal-title">{title}</h4>
+                        <p className="info">Phone: {phone}</p>
+                        <p className="info">Email: {email}</p>
+                    </div>
+                    <div>
+                        <p className="info">Skills</p>
+                        <div className="tags-list">
+                            {skills}
+                        </div>
+                    </div>
+                    <div>
+                        <p className="info">Interests</p>
+                        <div className="tags-list">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="settings" onClick={() => {changePage("settings")}} />
 
-							<div className="skills">
-								Skills
-								<div className="tags-list">
-									{skills}
-								</div>
-							</div>
-							<div className="interests">
-								Interests
-								<div className="tags-list">
-									{interests}
-								</div>
-							</div>
+            </div>
 
-						</div>
-					</div>
-					</div>
-					<input type="submit" value="settings" onClick={() => {changePage("settings")}} />
-
-				</div>
 
 
         )

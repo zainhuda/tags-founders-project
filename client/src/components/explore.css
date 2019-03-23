@@ -10,3 +10,6 @@
 	grid-column-start: 2;
 	grid-column-end: 3;
 }
+.listingContent {
+	padding-right: 30px;
+}
