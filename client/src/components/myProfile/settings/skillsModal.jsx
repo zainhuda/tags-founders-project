@@ -7,29 +7,36 @@ import Chips from 'react-chips';
 import { Modal, Button } from "react-bootstrap"; // using bootstrap modal for nice styles
 import axios from 'axios';
 
+// redux
+import {connect} from 'react-redux';
 
 
 class SkillsModal extends Component {
 
-		constructor(props) {
-			super(props);
+	constructor(props) {
+		super(props);
+		this.state = {
+			showModal: false,
+			chips: this.props.interests,
+			suggestions: [
+				"Javascript",
+				"Python",
+				"Problem Solving",
+				"Being sus",
+				"Double sus",
+				"Success"
+			],
+		}
+	};
 
-			this.state = {
-          showModal: false,
-          chips: this.props.interests,
-          suggestions: [
-              "Javascript",
-              "Python",
-              "Problem Solving",
-              "Being sus",
-              "Double sus",
-              "Success"
-          ],
-      }
+	componentDidMount() {
+		let skills = this.props.myProfile[0].teamData.skills;
+		this.setState({
+			chips: skills
+		})
+	};
 
-		};
-
-		handleClose = () => {
+	handleClose = () => {
     	this.setState({ showModal: false });
   	};
 
@@ -38,72 +45,65 @@ class SkillsModal extends Component {
   	};
 
   	handleSave = () => {
-			const data = {skills: this.state.chips};
+		// update the skills
+		this.props.myProfile[0].teamData.skills = this.state.chips;
+		this.setState({showModal: false});
+	};
 
-			axios.post('api/update_skills', {
-				body: JSON.stringify(data)
-			}).then((res) => {
-				console.log("update res: ", res);
-				this.handleClose();
-			});
-		};
-
-		onChipChange = chips => {
+	onChipChange = chips => {
     	this.setState({ chips });
   	};
 
 
     render() {
-
         return (
-        <>
+	        <>
 				<Button variant="primary" onClick={this.handleShow}>
-          Edit skills
-        </Button>
+	      			Edit skills
+	    		</Button>
 
-					<Modal show={this.state.showModal} onHide={this.handleClose}>
-							<Modal.Header closeButton>
-								<Modal.Title>Edit skills</Modal.Title>
-							</Modal.Header>
-							<Modal.Body>
+				<Modal show={this.state.showModal} onHide={this.handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Edit skills</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
 
-									You wana edit? then edit bossman aint nothing stopping u except
-										<ol>
-											<li> Fetch suggestions from db </li>
-											<li> Enable enter to add, right now its just adding comma for custom interest</li>
+					You wana edit? then edit bossman aint nothing stopping u except
+					<ol>
+						<li> Fetch suggestions from db </li>
+						<li> Enable enter to add, right now its just adding comma for custom interest</li>
 
-										</ol>
+					</ol>
 
-							</Modal.Body>
+					</Modal.Body>
 
 
-							<h4> Seperate with commas </h4>
-									<Chips
-										value = {this.state.chips}
-										onChange={this.onChipChange}
-										suggestions={[
-											"Javascript",
-											"Python",
-											"Problem Solving",
-											"Being sus",
-											"Double sus",
-											"Success"
-										]}
-										fromSuggestionsOnly={false}
+					<h4> Seperate with commas </h4>
+					<Chips
+						value = {this.state.chips}
+						onChange={this.onChipChange}
+						suggestions={this.state.suggestions}
+						fromSuggestionsOnly={false}
 
-									/>
-							<Modal.Footer>
-								<Button variant="secondary" onClick={this.handleClose}>
-									Close
-								</Button>
-								<Button variant="primary" onClick={this.handleSave}>
-									Save Changes
-								</Button>
-							</Modal.Footer>
-					</Modal>
-				</>
-        )
-    }
-
+					/>
+					<Modal.Footer>
+						<Button variant="secondary" onClick={this.handleClose}>
+							Close
+						</Button>
+						<Button variant="primary" onClick={this.handleSave}>
+							Done
+						</Button>
+					</Modal.Footer>
+				</Modal>
+			</>
+    	)
+	}
 }
-export default SkillsModal;
+
+function mapStateToProps(state) {
+	return {
+		myProfile: state.myProfile
+	};
+};
+
+export default connect(mapStateToProps)(SkillsModal);

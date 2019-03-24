@@ -7,16 +7,16 @@ import Button from "../button.jsx";
 import Sidebar from "../sidebar/sidebar.jsx";
 import styles from "./profile.css";
 
+// import constants to navigate between pages
+import {PROFILE_PAGE, SETTINGS_PAGE} from '../myProfile/myProfileNavPages';
+
 class Profile extends Component {
 
     render() {
 
     	const {values, changePage} = this.props;
-    	let {firstName, lastName, image_512, title, phone, email, skills} = values;
-
-            console.log("skills in profiel are", skills)
-
-
+    	let {firstName, lastName, image_512, title, phone, email, skills, interests} = values;
+        //console.log("skills in profiel are", skills)
         return (
 
 
@@ -43,10 +43,11 @@ class Profile extends Component {
                     <div>
                         <p className="info">Interests</p>
                         <div className="tags-list">
+                            {interests}
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="settings" onClick={() => {changePage("settings")}} />
+                <input type="submit" value="settings" onClick={() => {changePage(SETTINGS_PAGE)}} />
 
             </div>
 

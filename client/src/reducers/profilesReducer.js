@@ -6,7 +6,7 @@ export default (state = [] , action) => {
         case FETCH_PROFILES:
             console.log("got profiles", action.payload);
 			return action.payload;
-        default:
+		default:
 			return state;
 	}
 }
