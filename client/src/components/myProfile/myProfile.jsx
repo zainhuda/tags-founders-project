@@ -2,47 +2,24 @@
 
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {fetchMyProfile} from '../../actions';
 
 // import different profile pages
 import Settings from './settings/settings';
 import Profile from '../profile/profile';
 
+import {PROFILE_PAGE, SETTINGS_PAGE} from './myProfileNavPages';
+
 class MyProfile extends Component {
 
 	state = {
-		firstName: '',
-		lastName: '',
-		image_512: '',
-	    title: '',
-		phone: '',
-	    email: '',
-	    interests: '',
-		skills: '',
-	    isLoaded: false,
-		page: "profile"
+		page: PROFILE_PAGE
     };
 
-
-    componentDidMount() {
-		console.log("mounted")
-        axios.get('/api/get_profile', {
-            headers: {"Allow-Control-Allow-Origin": "*"}
-        })
-            .then((res) => {
-            	console.log("the res in profilePage is:", res);
-                this.setState({
-					firstName: res.data[0].teamData.firstName,
-					lastName: res.data[0].teamData.lastName,
-					image_512: res.data[0].teamData.image_512,
-	                title: res.data[0].teamData.title,
-					phone: res.data[0].teamData.phone,
-	                email: res.data[0].teamData.email,
-	                interests: res.data[0].teamData.interests,
-					skills: res.data[0].teamData.skills,
-	                isLoaded: true
-                })
-            })
-    }
+	componentDidMount() {
+		this.props.fetchMyProfile()
+	}
 
 	// change page method
 	changePage = (goPage) => {
@@ -51,42 +28,60 @@ class MyProfile extends Component {
 		});
 	};
 
-	// handle the field change
-	handleChange = (input) => (e) => {
-		this.setState({
-			[input]: e.target.value
-		})
-	};
+	renderContent() {
+		const {myProfile} = this.props
+		//console.log("profile is yeeter", myProfile[0]);
+		if (myProfile.length === 0) {
+			return (
+				<>
+					loading
+				</>
+			)
+		}
+		else {
+			const values = myProfile[0].teamData;
+			//console.log("value are", values);
+			return (
+				<>
+					<Profile
+						values={values}
+						changePage={this.changePage}
+					/>
+				</>
+			)
+		}
+	}
 
 	render() {
-		const {firstName, lastName, image_512, title, phone, email, interests, skills } = this.state;
-		const values = {firstName, lastName, image_512, title, phone, email, interests, skills};
 
-		console.log("skills in myprofiel are:", skills)
-		const {page} = this.state;
+		let {page} = this.state;
 		switch (page) {
-			// load which ever settings page
-			case "profile":
+			case PROFILE_PAGE:
 				return(
-					<div>
-						<Profile
-							changePage={this.changePage}
-							values={values}
-						/>
-					</div>
-				);
-			case "settings":
+					<>
+						{this.renderContent()}
+					</>
+				)
+			case SETTINGS_PAGE:
 				return(
-					<div>
+					<>
 						<Settings
 							changePage={this.changePage}
-							handleChange={this.handleChange}
-							values={values}
 						/>
-					</div>
-				);
+					</>
+				)
 		}
+		return(
+			<div>
+				{this.renderContent()}
+			</div>
+		)
+
 	}
 }
 
-export default MyProfile;
+function mapStateToProps(state) {
+	return {myProfile: state.myProfile}
+}
+
+export default connect(mapStateToProps, {fetchMyProfile})(MyProfile);
