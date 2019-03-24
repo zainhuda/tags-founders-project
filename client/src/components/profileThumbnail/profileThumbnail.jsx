@@ -33,11 +33,13 @@ class ProfileThumbnail extends Component {
       <Panel onClick={() => this.setState({ modalShow: true }, () => {
           console.log("clicked")
       })} className="profileSummary">
+        <a>
           <img src={this.props.url} className="summaryThumbnail"/>
             <div className={"profileSummaryDescription"}>
                 <h5> {this.props.firstName + " " + this.props.lastName} </h5>
                 <h5>{this.props.title}</h5>
             </div>
+        </a>
         </Panel>
 		<ProfileModal
 			  show={this.state.modalShow}

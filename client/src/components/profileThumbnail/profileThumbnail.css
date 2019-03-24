@@ -29,7 +29,12 @@
     opacity:0;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
+    cursor: pointer;
+    border-radius: 3px;
+    transform: scale(0.97);
+
 }
+
 .profileSummary a:hover:after {
     opacity:5;
 }
