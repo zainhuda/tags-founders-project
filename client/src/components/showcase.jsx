@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import Button from "./button.jsx";
-import Header from "./headerLP.jsx";
+import HeaderNav from "./headerNav/headerNav";
 import Footer from "./footer.jsx";
 import HomePage from "./homePage.jsx"
 import styles from "../App.css";
@@ -12,7 +12,7 @@ class Showcase extends Component {
 	render() {
 		return(
 			<div>
-				<Header />
+				<HeaderNav links={true}/>
 				<div className="landing">
 					<HomePage />
 				</div>

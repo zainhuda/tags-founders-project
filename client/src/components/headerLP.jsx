@@ -1,3 +1,5 @@
+// this compoennt is depreciated, see headernav
+
 import React, { Component } from "react";
 import Button from "./button.jsx";
 import styles from "../App.css";

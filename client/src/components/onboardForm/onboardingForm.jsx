@@ -5,6 +5,8 @@ import UserDetailsForm from "./userDetailsForm";
 import UserTagsForm from "./userTagsForm";
 import Success from "./success";
 
+import HeaderNav from "../headerNav/headerNav";
+
 export class OnboardingForm extends Component {
 
 	state = {
@@ -52,27 +54,38 @@ export class OnboardingForm extends Component {
 		switch(step){
 			case 1:
 				return(
-					<UserDetailsForm
-						nextStep={this.nextStep}
-						handleChange={this.handleChange}
-						values={values}
-					/>
+					<>
+						<HeaderNav/>
+						<UserDetailsForm
+							nextStep={this.nextStep}
+							handleChange={this.handleChange}
+							values={values}
+						/>
+					</>
 				);
 			case 2:
 				return(
-					<UserTagsForm
-						nextStep={this.nextStep}
-						prevStep={this.prevStep}
-						handleChange={this.handleChange}
-						values={values}
-					/>
+					<>
+						<HeaderNav/>
+						<UserTagsForm
+							nextStep={this.nextStep}
+							prevStep={this.prevStep}
+							handleChange={this.handleChange}
+							values={values}
+						/>
+					</>
+
 				);
 			case 3:
 				return(
-					<Success
-						nextStep={this.nextStep}
-						prevStep={this.prevStep}
-					/>
+					<>
+						<HeaderNav/>
+						<Success
+							nextStep={this.nextStep}
+							prevStep={this.prevStep}
+						/>
+					</>
+
 			)
 		}
 	}

@@ -111,17 +111,19 @@ export class UserDetailsForm extends Component {
 				<div class="main-container">
 					<div class="form">
 						<h1>Details</h1>
-						<p>Here's what we got from Slack.</p>
-						<p>First Name: </p>
-						<input type="text" name="firstName" onChange={handleChange('firstName')} defaultValue={firstName}/>
-						<p>Last Name: </p>
-						<input type="text" name="lastName" onChange={handleChange('lastName')} defaultValue={lastName}/>
-						<p>Title:</p>
-						<input type="text" name="title" onChange={handleChange('title')} defaultValue={title}/>
-						<p>Email: </p>
-						<input type="text" name="email" onChange={handleChange('email')} defaultValue={email}/>
-						<p>Phone:</p>
-						<input type="text" name="phone" onChange={handleChange('phone')} defaultValue={phone}/>
+						<p className="user-form-sub">Here's what we got from Slack.</p>
+						<div className="fields-container">
+							<p>First Name: </p>
+							<input type="text" className="user-detail-form-field" name="firstName" onChange={handleChange('firstName')} defaultValue={firstName}/>
+							<p>Last Name: </p>
+							<input type="text"  className="user-detail-form-field" name="lastName" onChange={handleChange('lastName')} defaultValue={lastName}/>
+							<p>Title:</p>
+							<input type="text" className="user-detail-form-field" name="title" onChange={handleChange('title')} defaultValue={title}/>
+							<p>Email: </p>
+							<input type="text" className="user-detail-form-field" name="email" onChange={handleChange('email')} defaultValue={email}/>
+							<p>Phone:</p>
+							<input type="text" className="user-detail-form-field" name="phone" onChange={handleChange('phone')} defaultValue={phone}/>
+						</div>
 						<br/>
 						<input type="submit" class="submit-button" value="Next" onClick={this.continue}/>
 						<p>Don't worry, you can always change these later.</p>

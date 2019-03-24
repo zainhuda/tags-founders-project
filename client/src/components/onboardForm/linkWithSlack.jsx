@@ -1,5 +1,9 @@
+// NOT IN USE, CSS FILE HAS BEEN COMMENTED OUT
+
 // this is the screen in the mockup that says "link with slack?"
 // i dont think we need this though
+
+
 import React from 'react';
 import './linkWithSlack.css';
 
