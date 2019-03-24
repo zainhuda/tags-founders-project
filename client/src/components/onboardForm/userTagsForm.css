@@ -29,3 +29,6 @@ p {
 input {
     border-radius: 5px;
 }
+.tags-field {
+    width: 80%;
+}

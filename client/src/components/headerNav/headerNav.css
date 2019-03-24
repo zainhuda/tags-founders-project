@@ -1,14 +1,22 @@
 .header-nav {
-
+    position: fixed;
+    top: 0;
+    display: block;
+    width: 100%;
+    background-color: white;
+    z-index: 3;
 }
 .nav-logo {
     float: left;
+    margin-top: 5px;
     font-size: 1.5em;
 }
 .nav-link {
     padding-top: 10px !important;
     margin-left: 0 !important;
     margin-right: 10px;
+
+    display: block;
 }
 ul {
   list-style-type: none;

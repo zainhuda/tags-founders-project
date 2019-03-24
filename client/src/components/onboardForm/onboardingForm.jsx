@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import UserDetailsForm from "./userDetailsForm";
 import UserTagsForm from "./userTagsForm";
 import Success from "./success";
-
+import Footer from '../footer/footer';
 import HeaderNav from "../headerNav/headerNav";
 
 export class OnboardingForm extends Component {
@@ -61,6 +61,7 @@ export class OnboardingForm extends Component {
 							handleChange={this.handleChange}
 							values={values}
 						/>
+						<Footer/>
 					</>
 				);
 			case 2:
@@ -73,6 +74,7 @@ export class OnboardingForm extends Component {
 							handleChange={this.handleChange}
 							values={values}
 						/>
+						<Footer/>
 					</>
 
 				);
@@ -84,6 +86,7 @@ export class OnboardingForm extends Component {
 							nextStep={this.nextStep}
 							prevStep={this.prevStep}
 						/>
+						<Footer/>
 					</>
 
 			)

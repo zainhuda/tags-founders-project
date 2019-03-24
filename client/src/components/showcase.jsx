@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import Button from "./button.jsx";
 import HeaderNav from "./headerNav/headerNav";
-import Footer from "./footer.jsx";
+import Footer from "./footer/footer.jsx";
 import HomePage from "./homePage.jsx"
 import styles from "../App.css";
 

@@ -65,9 +65,9 @@ export class userTagsForm extends Component {
 					<h1>Tags</h1>
 					<p>Enter some tags to get started.</p>
 					<h1>Skills</h1>
-					<SkillsChips onChipChange={this.onSkillChange} skillChips={this.state.skillChips}/>
+					<SkillsChips className="tags-field" onChipChange={this.onSkillChange} skillChips={this.state.skillChips}/>
 					<h1>Interests</h1>
-					<InterestsChips onChipChange={this.onInterestChange} interestChips={this.state.interestChips}/>
+					<InterestsChips className="tags-field" onChipChange={this.onInterestChange} interestChips={this.state.interestChips}/>
 					<br/>
 					<input type="submit" class="submit-button" value="continue" onClick={this.continue}/>
 				</div>

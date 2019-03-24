@@ -17,6 +17,8 @@ import InactiveUserList from "./components/inactiveUsers/inactiveUserList";
 import {HashRouter} from "react-router-dom"
 import LinkWithSlack from "./components/onboardForm/linkWithSlack";
 
+import Loading from "./components/loading/loading";
+
 import MyProfile from "./components/myProfile/myProfile";
 
 
@@ -36,6 +38,7 @@ class App extends Component {
           <Route path="/inactive-users" component={InactiveUserList}/>
           <Route path="/slack" component={LinkWithSlack} />
         <Route path="/my-profile" component={MyProfile}/>
+        <Route path="/load" component={Loading}/>
         </div>
       </HashRouter>
     );

@@ -6,7 +6,7 @@ import EmployeeDirectory from './employeeDirectory';
 import Sidebar from './sidebar/sidebar';
 import React, {Component} from 'react';
 import LoggedInRedirect from "./loggedInRedirect";
-
+import Footer from './footer/footer';
 import Header from './header/header';
 
 import './explore.css';
@@ -25,6 +25,7 @@ class Explore extends Component {
 					<EmployeeDirectory className="employee-directory"/>
 				</div>
 			</div>
+				<Footer/>
 			</div>
 		);
 	}
