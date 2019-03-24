@@ -1,0 +1,18 @@
+input.form-check-input {
+    margin-right: 5px;
+}
+
+.list-button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    margin-top: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #809dc2 !important; /* there's a hover color coming from somewhere that needs to be overridden */
+    margin-right: 8px;
+}
+
+.list-button.submit {
+    background-color: #3c4858 !important;
+}

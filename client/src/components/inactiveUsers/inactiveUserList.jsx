@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Col, Row } from "react-bootstrap";
 import axios from "axios";
-import InactiveUser from "./inactiveUser";
 import Checkbox from "./checkbox";
+import Loading from "../loading/loading";
+import "./inactiveUserList.css";
+
 
 class InactiveUserList extends Component {
   constructor(props) {
@@ -136,54 +138,49 @@ class InactiveUserList extends Component {
       // havent recieved data
       return (
         // loading icon goes here
-        <div>Loading...</div>
+        <Loading height={60} width={60} centered={true}/>
       );
     } else {
-      // data is received and we ca render it
+      // data is received and we can render it
       const checkboxes = this.createCheckboxes();
       return (
         <>
+
         <Col style={{ padding: "50px" }}>
           <Row>
-            {/*profilesArray*/}
-            {checkboxes}
+            <h2> Remove inactive users from Explore </h2>
+            <h4> Below is a list of users who are inactive on Slack, select and save the users you wish to remove from Tags </h4>
           </Row>
-        </Col>
-          <Col>
-
-
-            <form onSubmit={this.handleFormSubmit}>
+          <Row>
+           <form onSubmit={this.handleFormSubmit}>
             <div className="form-group mt-2">
                 <button
-                  type="button"
-                  className="btn btn-outline-primary mr-2"
+                  // type="button"
+                  className="list-button"
                   onClick={this.selectAll}
                 >
                   Select All
                 </button>
                 <button
-                  type="button"
-                  className="btn btn-outline-primary mr-2"
+                  // type="button"
+                  className="list-button"
                   onClick={this.deselectAll}
                 >
                   Deselect All
                 </button>
 
-              <button type="submit">save</button>
-
-            </div>
+              <button type="submit" className="list-button submit">Save Changes</button>
+              </div>
             </form>
-          </Col>
+
+            {checkboxes}
+
+          </Row>
+        </Col>
         </>
       );
     }
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    profiles: state.profile.profiles
-  };
-};
-
-export default connect(mapStateToProps)(InactiveUserList);
+export default InactiveUserList

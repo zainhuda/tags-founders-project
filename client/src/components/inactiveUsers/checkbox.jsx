@@ -9,7 +9,6 @@ const Checkbox = ({ label, isSelected, onCheckboxChange, slackId }) => (
         checked={isSelected}
         onChange={(e) => onCheckboxChange(slackId)}
         className="form-check-input"
-        value="pleasework"
       />
       {label}
     </label>
