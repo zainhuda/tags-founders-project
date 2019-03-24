@@ -31,6 +31,7 @@ class InterestsChips extends Component {
                     onChange={this.props.onChipChange}
                     suggestions={this.state.suggestions}
                     fromSuggestionsOnly={false}
+                    createChipKeys={['Enter', ',']}
                 />
             </div>
         )

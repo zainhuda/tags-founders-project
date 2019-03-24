@@ -50,18 +50,19 @@ export class userTagsForm extends Component {
 		this.setState({
 			interestChips: interestChips
 		})
-	}
+	};
+
 	onSkillChange = skillChips => {
 		this.setState({
 			skillChips: skillChips
 		})
-	}
+	};
 
 	render() {
 		const {handleChange, values} = this.props;
 		return(
-			<div class="main-container">
-				<div class="form">
+			<div className="main-container">
+				<div className="form">
 					<h1>Tags</h1>
 					<p>Enter some tags to get started.</p>
 					<h1>Skills</h1>
@@ -69,7 +70,7 @@ export class userTagsForm extends Component {
 					<h1>Interests</h1>
 					<InterestsChips className="tags-field" onChipChange={this.onInterestChange} interestChips={this.state.interestChips}/>
 					<br/>
-					<input type="submit" class="submit-button" value="continue" onClick={this.continue}/>
+					<input type="submit" className="submit-button" value="continue" onClick={this.continue}/>
 				</div>
 			</div>
 		)
