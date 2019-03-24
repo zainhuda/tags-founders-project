@@ -3,6 +3,9 @@ import Loader from 'react-loaders'
 
 import './loading.css';
 
+const DEFAULT_WIDTH = 60;
+const DEFAULT_HEIGHT = 60;
+
 const Loading = (props) => {
 
     let className = "loader";
@@ -11,7 +14,7 @@ const Loading = (props) => {
     }
 
     return (
-        <div style={{width: props.width, height: props.height}} className={className}/>
+        <div style={{width: props.width || DEFAULT_WIDTH, height: props.height || DEFAULT_HEIGHT}} className={className}/>
     )
 }
 

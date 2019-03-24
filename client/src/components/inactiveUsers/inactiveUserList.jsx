@@ -138,7 +138,7 @@ class InactiveUserList extends Component {
       // havent recieved data
       return (
         // loading icon goes here
-        <Loading height={60} width={60} centered={true}/>
+        <Loading centered={true}/>
       );
     } else {
       // data is received and we can render it
