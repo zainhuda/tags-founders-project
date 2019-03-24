@@ -23,3 +23,8 @@
     margin-left: 7px;
     color: green;
 }
+
+.search-input:focus {
+    outline:none;
+}
+
