@@ -1,9 +1,11 @@
 import React from 'react';
+import Loader from 'react-loaders'
+
 import './loading.css';
 
-const Loading = () => {
-    return(
-        <div class="loader">Loading...</div>
+const Loading = (props) => {
+    return (
+        <div style={{width: props.width, height: props.height}} class="loader"></div>
     )
 }
 

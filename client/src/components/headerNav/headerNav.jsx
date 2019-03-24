@@ -5,12 +5,12 @@ import Button from '../button.jsx';
 class HeaderNav extends Component {
 
     renderList() {
-        // pass links={true} in parent component to show all links 
+        // pass links={true} in parent component to show all links
         if (this.props.links) {
             return (
                 <ul>
-                    <li><a href="" className="nav-link">LOGIN</a></li>
-                    <li><a href="">
+                    <li><a href="/auth/slack" className="nav-link">LOGIN</a></li>
+                    <li><a href="/auth/slack">
                         <Button className={"ui primary button"} msg={"SIGNUP"}/>
                     </a></li>
                     <li><a href="" className="nav-link">CONTACT</a></li>

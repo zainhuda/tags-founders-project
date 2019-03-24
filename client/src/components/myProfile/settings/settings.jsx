@@ -3,6 +3,8 @@ import axios from 'axios';
 import InterestsModal from './interestsModal';
 import SkillsModal from './skillsModal';
 
+import Loading from '../../loading/loading';
+
 class Settings extends Component {
 
 	// these are states of variables used only in the settings page!
@@ -110,7 +112,7 @@ class Settings extends Component {
 		if (!isLoaded) {
 			return(
 				<div>
-					loading
+					<Loading width={"120px"} height={"120px"}/>
 				</div>
 			)
 		}

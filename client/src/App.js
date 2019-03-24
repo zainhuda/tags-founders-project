@@ -12,7 +12,6 @@ import Showcase from './components/showcase'; // Page that features product
 import Explore from './components/explore';
 import OnboardingForm from './components/onboardForm/onboardingForm';
 import Header from "./components/header/header";
-import EmployeeDirectory from "./components/employeeDirectory";
 import InactiveUserList from "./components/inactiveUsers/inactiveUserList";
 import {HashRouter} from "react-router-dom"
 import LinkWithSlack from "./components/onboardForm/linkWithSlack";

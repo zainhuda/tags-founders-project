@@ -2,7 +2,7 @@
 // should also include the brains to sort by department or soemting
 // accessed through the path: /explore
 
-import EmployeeDirectory from './employeeDirectory';
+import EmployeeDirectory from './employeeDirectory/employeeDirectory';
 import Sidebar from './sidebar/sidebar';
 import React, {Component} from 'react';
 import LoggedInRedirect from "./loggedInRedirect";

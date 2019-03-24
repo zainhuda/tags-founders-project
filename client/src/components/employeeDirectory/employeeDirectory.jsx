@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import { Col, Row } from "react-bootstrap";
-import ProfileThumbnail from "./profileThumbnail/profileThumbnail";
+import ProfileThumbnail from "../profileThumbnail/profileThumbnail";
 import axios from 'axios';
+
+import "./employeeDirectory.css";
 
 class EmployeeDirectory extends Component {
 
@@ -38,7 +40,7 @@ class EmployeeDirectory extends Component {
         )
         });
         return(
-            <div>
+            <div className="employee-list">
                 <Col className="listingContent" lg="auto" >
                     <Row>
                         {profilesArray}
