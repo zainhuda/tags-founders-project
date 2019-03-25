@@ -12,7 +12,8 @@ import Profile from '../profile/profile';
 import Loading from '../loading/loading';
 
 import {PROFILE_PAGE, SETTINGS_PAGE} from './myProfileNavPages';
-
+import Sidebar from "../sidebar/sidebar";
+import {Col} from 'react-bootstrap'
 class MyProfile extends Component {
 
 	state = {
@@ -44,12 +45,15 @@ class MyProfile extends Component {
 			const values = myProfile[0].teamData;
 			//console.log("value are", values);
 			return (
-				<>
+				<div className="explore-grid">
+					<Sidebar/>
+					<Col className="employee-directory" lg="auto">
 					<Profile
 						values={values}
 						changePage={this.changePage}
 					/>
-				</>
+					</Col>
+				</div>
 			)
 		}
 	}

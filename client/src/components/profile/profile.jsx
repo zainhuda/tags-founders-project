@@ -16,7 +16,7 @@ class Profile extends Component {
 
     	const {values, changePage} = this.props;
     	let {firstName, lastName, image_512, title, phone, email, skills, interests} = values;
-        //console.log("skills in profiel are", skills)
+        // console.log("skills in profiel are", skills)
         return (
 
 
@@ -37,17 +37,17 @@ class Profile extends Component {
                     <div>
                         <p className="info">Skills</p>
                         <div className="tags-list">
-                            {skills}
+                            {skills.join(", ")}
                         </div>
                     </div>
                     <div>
                         <p className="info">Interests</p>
                         <div className="tags-list">
-                            {interests}
+                            {interests.join(",  ")}
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="settings" onClick={() => {changePage(SETTINGS_PAGE)}} />
+                <input className="submit-button" type="submit" value="Edit Profile" onClick={() => {changePage(SETTINGS_PAGE)}} />
 
             </div>
 
