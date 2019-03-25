@@ -10,7 +10,7 @@ const User = mongoose.model('users');
 
 let DOMAIN;
 if (process.env.ENV === "prod"){
-    DOMAIN = "https://westernfn.herokuapp.com/auth/slack/callback";
+    DOMAIN = "https://foundersproject.herokuapp.com/auth/slack/callback";
 } else {
     DOMAIN = "http://localhost:5000/auth/slack/callback";
 }
