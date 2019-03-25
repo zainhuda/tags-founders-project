@@ -21,6 +21,8 @@ const importSlackUsers = (accessToken, res) => {
           isConfirmed: false,
           isInactive: false
         });
+
+
         const team_id = members[0].team_id.toUpperCase();
 
         let User;
@@ -31,7 +33,15 @@ const importSlackUsers = (accessToken, res) => {
           User = mongoose.model(team_id, mongooseUserSchema, team_id);
         }
 
+        const UserSchema = mongoose.model(team_id).schema;
+        UserSchema.index( { "$**": "text" } );
+
+
         console.log("starting Slack import");
+
+        // create a Text index which has all text fields for searching
+        // mongoose.connection.db.collection(team_id).createIndex( { "$**": "text" } );
+
 
         for (let i = 0; i < members.length; i++) {
           const user = createUserFromSlackMemeber(members[i], User);

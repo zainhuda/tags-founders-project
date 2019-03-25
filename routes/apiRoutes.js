@@ -266,17 +266,21 @@ module.exports = app => {
             }
             else {
                 // regex query to do a substring serach, options ix makes cases and spaces insensitive
-                collection.find({
-                    $or: [
-                        {"teamData.interests": {"$regex": query, "$options": "ix"}},
-                        {"teamData.skills": {"$regex": query, "$options": "ix"}},
-                        {"teamData.title": {"$regex": query, "$options": "ix"}},
-                        {"teamData.firstName": {"$regex": query, "$options": "ix"}},
-                        {"teamData.lastName": {"$regex": query, "$options": "ix"}},
-                        {"teamData.email": {"$regex": query, "$options": "ix"}},
-                        {"teamData.phone": {"$regex": query, "$options": "ix"}}
-                    ]
-                }).toArray((err, docs) => {
+                // collection.find({
+                //     $or: [
+                //         {"teamData.interests": {"$regex": query, "$options": "ix"}},
+                //         {"teamData.skills": {"$regex": query, "$options": "ix"}},
+                //         {"teamData.title": {"$regex": query, "$options": "ix"}},
+                //         {"teamData.firstName": {"$regex": query, "$options": "ix"}},
+                //         {"teamData.lastName": {"$regex": query, "$options": "ix"}},
+                //         {"teamData.email": {"$regex": query, "$options": "ix"}},
+                //         {"teamData.phone": {"$regex": query, "$options": "ix"}}
+                //     ]
+                // })
+
+                  collection.find({$text: {$search: query}})
+
+                  .toArray((err, docs) => {
                     console.log("we found these", docs);
                     res.json(docs);
                 })
