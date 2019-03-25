@@ -1,0 +1,12 @@
+.onboard-success-container{
+    height: 100vh;
+    background-color: #EDF5FB;
+    text-align: center;
+}
+.success-message {
+    padding-top: 20% !important;
+    padding-bottom: 30px !important;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3em;
+}

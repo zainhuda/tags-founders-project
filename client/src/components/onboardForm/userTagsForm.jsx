@@ -3,6 +3,8 @@ import axios from 'axios';
 import InterestsChips from './interestsChips';
 import SkillsChips from './skillsChips';
 
+import './userTagsForm.css';
+
 export class userTagsForm extends Component {
 
 	constructor(props) {
@@ -64,13 +66,17 @@ export class userTagsForm extends Component {
 			<div className="main-container">
 				<div className="form">
 					<h1>Tags</h1>
-					<p>Enter some tags to get started.</p>
-					<h1>Skills</h1>
-					<SkillsChips className="tags-field" onChipChange={this.onSkillChange} skillChips={this.state.skillChips}/>
-					<h1>Interests</h1>
-					<InterestsChips className="tags-field" onChipChange={this.onInterestChange} interestChips={this.state.interestChips}/>
+					<p className="tags-sub">Enter a few tags to get started.</p>
+					<h3>Skills</h3>
+					<div className="tags-field">
+						<SkillsChips onChipChange={this.onSkillChange} skillChips={this.state.skillChips}/>
+					</div>
+					<h3>Interests</h3>
+					<div className="tags-field">
+						<InterestsChips onChipChange={this.onInterestChange} interestChips={this.state.interestChips}/>
+					</div>
 					<br/>
-					<input type="submit" className="submit-button" value="continue" onClick={this.continue}/>
+					<input type="submit" className="submit-button" value="Next" onClick={this.continue}/>
 				</div>
 			</div>
 		)

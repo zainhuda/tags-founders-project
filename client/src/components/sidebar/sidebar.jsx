@@ -7,16 +7,15 @@ import {Link} from "react-router-dom";
 import './sidebar.css';
 import sidebarLabels from './sidebarLabels';
 
+// use below for text instead of image
+//<Link to={"/"} style={{color: "black", textDecoration: "none"}}> <h1 style={{textAlign: "center"}}> Tags </h1> </Link>
+
 class Sidebar extends Component {
 
     handleSort = (sortElement) => {
         console.log("elem is", sortElement);
         this.props.fetchProfiles(sortElement);
     }
-
-
-
-
 
   render() {
     // make the porfolios list
@@ -39,7 +38,10 @@ class Sidebar extends Component {
 
     return (
       <Col className="sidebar">
-        <Link to={"/"} style={{color: "black", textDecoration: "none"}}> <h1 style={{textAlign: "center"}}> Tags </h1> </Link>
+        <Link to={"/explore"}>
+            <img className="image-logo" src={require('../../assets/FN.png')}/>
+        </Link>
+
 
         <PanelGroup accordian id={"Panels"}>
         <Panel eventkey="1" className="sidebarCollapse" onClick={() => this.handleSort("")}>

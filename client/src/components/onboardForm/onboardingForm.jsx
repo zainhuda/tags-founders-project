@@ -32,6 +32,7 @@ export class OnboardingForm extends Component {
 	};
 
 	// go back a step of the form
+	// not used currently
 	prevStep = () => {
 		const {step} = this.state;
 		this.setState({
@@ -70,7 +71,6 @@ export class OnboardingForm extends Component {
 						<HeaderNav/>
 						<UserTagsForm
 							nextStep={this.nextStep}
-							prevStep={this.prevStep}
 							handleChange={this.handleChange}
 							values={values}
 						/>

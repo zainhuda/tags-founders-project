@@ -1,42 +1,19 @@
-import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom'
+import React from 'react';
+import Button from '../button';
+import {Link} from 'react-router-dom';
 
-export class Success extends Component {
+// import styles
+import './success.css';
 
-	state = {
-		redirect: false
-	};
-
-	setRedirect = () => {
-		this.setState({
-			redirect: true
-		})
-	};
-
-	renderRedirect = () => {
-		if (this.state.redirect) {
-			// maybe we want a tutorial route?????
-			return <Redirect to="/explore"/>
-		}
-	};
-
-	// go bakc a step!!
-	back = (e) => {
-		e.preventDefault();
-		this.props.prevStep();
-	};
-
-	render() {
-		return(
-			<div>
-				<h1> all set !</h1>
-				<input type="submit" value="go back" onClick={this.back}/>
-				{this.renderRedirect()}
-				<input type="submit" value="explore" onClick={this.setRedirect}/>
-			</div>
-		)
-	}
-
+const Success = () => {
+	return(
+		<div className="onboard-success-container">
+			<h1 className="success-message"> You're all set! </h1>
+			<Link to="/explore">
+				<Button className={"ui primary button"} msg={"EXPLORE"} />
+			</Link>
+		</div>
+	)
 }
 
 export default Success;

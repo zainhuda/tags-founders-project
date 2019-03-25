@@ -9,6 +9,16 @@
     display: inline-block;
     vertical-align: middle;
     float: right;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-right: 20px;
+
+}
+.material-icons.md-42 {
+    font-size: 42px;
+    color: black;
+    transition: ease 0.3s;
+}
+.material-icons:hover {
+    color: #3BB9FF;
+
 }

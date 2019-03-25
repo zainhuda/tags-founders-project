@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import styles from './userDetailsForm.css';
 
+import Loading from '../loading/loading';
+
 export class UserDetailsForm extends Component {
 
 	constructor(props) {
@@ -97,10 +99,9 @@ export class UserDetailsForm extends Component {
 
 		if (!isLoaded) {
 			return (
-				// a cool loading animation should go here
-				<div>
-					LOADING
-				</div>
+				<>
+					<Loading centered={true}/>
+				</>
 			)
 		}
 		else {
@@ -108,8 +109,8 @@ export class UserDetailsForm extends Component {
 			let {firstName, lastName, title, phone, email } = this.state;
 
 			return (
-				<div class="main-container">
-					<div class="form">
+				<div className="main-container">
+					<div className="form">
 						<h1>Details</h1>
 						<p className="user-form-sub">Here's what we got from Slack.</p>
 						<div className="fields-container">

@@ -9,6 +9,8 @@ import {fetchMyProfile} from '../../actions';
 import Settings from './settings/settings';
 import Profile from '../profile/profile';
 
+import Loading from '../loading/loading';
+
 import {PROFILE_PAGE, SETTINGS_PAGE} from './myProfileNavPages';
 
 class MyProfile extends Component {
@@ -34,7 +36,7 @@ class MyProfile extends Component {
 		if (myProfile.length === 0) {
 			return (
 				<>
-					loading
+					<Loading centered={true}/>
 				</>
 			)
 		}

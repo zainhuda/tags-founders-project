@@ -21,7 +21,7 @@ class Header extends Component {
                 <SearchBar/>
             </div>
             <div id="profile-icon">
-                <Link to="/my-profile"> My Profile </Link>
+                <Link to="/my-profile"><i class="material-icons md-42">account_circle</i></Link>
             </div>
 
         </div>
