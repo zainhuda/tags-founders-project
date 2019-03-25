@@ -10,6 +10,7 @@
 .modal-grid {
     display: grid;
     grid-template-columns: 4fr 6fr;
+    padding-top: 1vw;
 }
 .modal-pic{
     width: 100%;
