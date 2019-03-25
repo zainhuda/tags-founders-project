@@ -50,6 +50,14 @@ if (environment === "dev"){
     console.log("\x1b[31m", "ENVIRONMENT IS DEV - ENSURE THAT THIS IS NOT SHOWING WHEN DEPLOYED", "\x1b[0m");
 } else if (environment === "prod") {
     console.log("\x1b[34m", "RUNNING IN PROD", "\x1b[0m")
+
+    // we need to make sure express can serve production assets
+    app.use(express.static('client/build'));
+
+    // we need to make sure we serve index.html to any unkown routes
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirnmae, 'client', 'build', 'index.html'));
+    })
 }
 
 

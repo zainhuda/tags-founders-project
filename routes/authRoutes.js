@@ -90,7 +90,7 @@ module.exports = app => {
                   console.log("REQ LOGIN ERROR", err);
                 }
                 console.log("login done");
-                res.redirect("/api/current_user");
+                res.redirect("/explore");
               });
             }
           );
@@ -112,4 +112,3 @@ module.exports = app => {
   });
 
 };
-
