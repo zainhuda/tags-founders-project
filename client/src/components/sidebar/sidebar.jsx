@@ -51,7 +51,7 @@ class Sidebar extends Component {
         </Panel>
             <Panel eventkey="2" className="sidebarCollapse">
                 <Panel.Heading>
-                    <Panel.Title toggle className="panelTitle">By Portfoilio</Panel.Title>
+                    <Panel.Title toggle className="panelTitle">By Portfolio</Panel.Title>
                   </Panel.Heading>
               <Panel.Body collapsible>
                 <Col>
