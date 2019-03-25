@@ -13,7 +13,7 @@ class ProfileModal extends Component {
                 {skill}
               </div>
           )
-      })
+      });
 
       const interests = (this.props.interests).map(interest => {
           return(
@@ -21,7 +21,7 @@ class ProfileModal extends Component {
                 {interest}
               </div>
           )
-      })
+      });
 
 
     return (
