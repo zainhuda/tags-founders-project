@@ -10,6 +10,7 @@ const User = mongoose.model('users');
 
 let DOMAIN;
 if (process.env.ENV === "prod"){
+    console.log("in production");
     DOMAIN = "https://foundersproject.herokuapp.com/auth/slack/callback";
 } else {
     DOMAIN = "http://localhost:5000/auth/slack/callback";

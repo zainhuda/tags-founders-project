@@ -56,7 +56,7 @@ if (environment === "dev"){
 
     // we need to make sure we serve index.html to any unkown routes
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirnmae, 'client', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
 }
 
