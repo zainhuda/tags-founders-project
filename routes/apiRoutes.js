@@ -81,7 +81,9 @@ module.exports = app => {
                     "teamData.image_512": userData.image_512,
                     "teamData.title": userData.title,
                     "teamData.phone": userData.phone,
-                    "teamData.email": userData.email
+                    "teamData.email": userData.email,
+                    "teamData.interests": userData.interests,
+                    "teamData.skills": userData.skills
                 }},
                     {
                         // dont create a new user this might mess up populating the explore page

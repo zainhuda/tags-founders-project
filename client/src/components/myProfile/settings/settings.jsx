@@ -23,7 +23,7 @@ class Settings extends Component {
 
 	continue = (e) => {
 		console.log("values are", this.props.myProfile[0].teamData)
-		const {firstName, lastName, title, image_512, phone, email} = this.props.myProfile[0].teamData;
+		const {firstName, lastName, title, image_512, phone, email, skills, interests} = this.props.myProfile[0].teamData;
 		// this method updates the user's data
 		e.preventDefault();
 
@@ -35,7 +35,9 @@ class Settings extends Component {
 			"image_512": image_512,
 			"title": title,
 			"phone": phone,
-			"email": email
+			"email": email,
+			"skills": skills,
+			"interests": interests
 		};
 		console.log("data from userDetailsForm:", data);
 
