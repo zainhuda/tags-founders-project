@@ -3,7 +3,7 @@ import axios from 'axios';
 import InterestsModal from './interestsModal';
 import SkillsModal from './skillsModal';
 import Loading from '../../loading/loading';
-
+import "./settings.css";
 // redux action
 import {connect} from 'react-redux';
 
@@ -64,56 +64,68 @@ class Settings extends Component {
 		const {firstName, lastName, image_512, title, phone, email, interests, skills } = this.props.myProfile[0].teamData;
 
 			return(
-				<div>
-					<h1>Settings</h1>
+				<div className="main-container settings">
+					<div className="form">
+						<h1>Edit Profile</h1>
 
-					<h4>First Name</h4>
-					<input
-						type="text"
-						name={FIRST_NAME}
-						defaultValue={firstName}
-						onChange={this.handleChange(FIRST_NAME)}
-					/>
-					<h4>Last Name</h4>
-					<input
-						type="text"
-						name={LAST_NAME}
-						defaultValue={lastName}
-						onChange={this.handleChange(LAST_NAME)}
-					/>
-					<h4>profiel pic</h4>
-					<input
-						type="text"
-						name={IMAGE}
-						defaultValue={image_512}
-						onChange={this.handleChange(IMAGE)}
-					/>
-					<h4>title</h4>
-					<input
-						type="text"
-						name={TITLE}
-						defaultValue={title}
-						onChange={this.handleChange(TITLE)}
-					/>
-					<h4>phone</h4>
-					<input
-						type="text"
-						name={PHONE}
-						defaultValue={phone}
-						onChange={this.handleChange(PHONE)}
-					/>
-					<h4>email</h4>
-					<input
-						type="text"
-						name={EMAIL}
-						defaultValue={email}
-						onChange={this.handleChange(EMAIL)}
-					/>
-					<h4>Interests</h4>
-					<InterestsModal/>
-					<SkillsModal/>
-					<input type="submit" value="Back" onClick={this.back}/>
-					<input type="submit" value="Save" onClick={this.continue}/>
+						<p className="user-form-sub">Edit how your profile looks to others on Tags.</p>
+
+						<div className="fields-container">
+							<h4>First Name</h4>
+							<input
+								type="text"
+								name={FIRST_NAME}
+								defaultValue={firstName}
+								onChange={this.handleChange(FIRST_NAME)}
+								className="user-detail-form-field"
+							/>
+							<h4>Last Name</h4>
+							<input
+								type="text"
+								name={LAST_NAME}
+								defaultValue={lastName}
+								onChange={this.handleChange(LAST_NAME)}
+								className="user-detail-form-field"
+							/>
+							<h4>Profile Picture URL</h4>
+							<input
+								type="text"
+								name={IMAGE}
+								defaultValue={image_512}
+								onChange={this.handleChange(IMAGE)}
+								className="user-detail-form-field"
+							/>
+							<h4>Title</h4>
+							<input
+								type="text"
+								name={TITLE}
+								defaultValue={title}
+								onChange={this.handleChange(TITLE)}
+								className="user-detail-form-field"
+							/>
+							<h4>Phone #</h4>
+							<input
+								type="text"
+								name={PHONE}
+								defaultValue={phone}
+								onChange={this.handleChange(PHONE)}
+								className="user-detail-form-field"
+							/>
+							<h4>Email</h4>
+							<input
+								type="text"
+								name={EMAIL}
+								defaultValue={email}
+								onChange={this.handleChange(EMAIL)}
+								className="user-detail-form-field"
+							/>
+							<h4>Interests</h4>
+							<InterestsModal/>
+							<SkillsModal/>
+						</div>
+						<input className="settings-submit-button" type="submit" value="Back" onClick={this.back}/>
+						<input className="settings-submit-button" type="submit" value="Save" onClick={this.continue}/>
+					</div>
 				</div>
 			)
 		}

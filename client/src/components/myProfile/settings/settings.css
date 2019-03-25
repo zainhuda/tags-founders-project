@@ -1,0 +1,27 @@
+.settings-form {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 40%;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.settings-submit-button {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #3c4858;
+    margin-top: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 8px;
+}
+
+.settings-tags-button {
+    margin-right: 8px;
+    margin-top: 16px;
+}

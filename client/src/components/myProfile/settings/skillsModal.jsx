@@ -58,7 +58,7 @@ class SkillsModal extends Component {
     render() {
         return (
 	        <>
-				<Button variant="primary" onClick={this.handleShow}>
+				<Button variant="primary" className="settings-tags-button" onClick={this.handleShow}>
 	      			Edit skills
 	    		</Button>
 

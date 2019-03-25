@@ -44,7 +44,7 @@ class InterestsModal extends Component {
 		// update the interests
 		this.props.myProfile[0].teamData.interests = this.state.chips;
 		this.setState({ showModal: false });
-	}
+	};
 
 
 
@@ -64,7 +64,7 @@ class InterestsModal extends Component {
 
         return (
         <>
-			<Button variant="primary" onClick={this.handleShow}>
+			<Button variant="primary" className="settings-tags-button" onClick={this.handleShow}>
           		Edit Interests
         	</Button>
 
