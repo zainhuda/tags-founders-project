@@ -28,7 +28,7 @@ class App extends Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={Showcase} />
           <Route path="/explore" component={Explore} />
@@ -39,7 +39,7 @@ class App extends Component {
         <Route path="/my-profile" component={MyProfile}/>
         <Route path="/load" component={Loading}/>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
