@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import {fetchProfiles} from '../../actions';
+import {fetchLabels} from '../../actions';
+
+
 import {Col, Panel, PanelGroup, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
@@ -17,24 +20,78 @@ class Sidebar extends Component {
         this.props.fetchProfiles(sortElement);
     }
 
-  render() {
-    // make the porfolios list
-    const portfolios = sidebarLabels.portfolios.map(label => {
-        return(
-            <Row>
-                <p onClick={() => this.handleSort(label.sort)} className="collapseLinks"> {label.label} </p>
-            </Row>
-        )
-    });
+    componentDidMount() {
+        this.props.fetchLabels();
+    }
 
-    // make the majors list
-    const majors = sidebarLabels.majors.map(label => {
-        return(
-            <Row>
-                <p onClick={() => this.handleSort(label.sort)} className="collapseLinks"> {label.label} </p>
-            </Row>
-        )
-    })
+    renderSecondaryLabels(key) {
+        const secondaryLabels = this.props.labels[key];
+        secondaryLabels.map(label => {
+            //  console.log("seconday label is:", label, key);
+            return(
+                <Row>
+                    <p onClick={() => this.handleSort(label.sort)} className="collapseLinks"> {label.label} </p>
+                </Row>
+            )
+        })
+    }
+
+
+    renderPrimaryLabels() {
+        const labelsObject = this.props.labels;
+        Object.keys(labelsObject).map((key, index) => {
+            labelsObject[key].map(primaryLabel => {
+                //console.log("primary label is", primaryLabel.label);
+                //console.log("key is:", key);
+                //console.log("index is:", index);
+                return(
+                        <Panel eventkey="2" className="sidebarCollapse">
+                            <Panel.Heading>
+                                <Panel.Title toggle className="panelTitle">By {key}</Panel.Title>
+                              </Panel.Heading>
+                          <Panel.Body collapsible>
+                            <Col>
+                                {this.renderSecondaryLabels(key)}
+                            </Col>
+                          </Panel.Body>
+                        </Panel>
+
+                )
+            })
+        })
+    }
+
+  render() {
+
+      const labelsObject = this.props.labels;
+
+      const labels = Object.keys(labelsObject).map((key, index) => {
+          // lets get the secondary labels in a list
+          const secondaryLabels = labelsObject[key].map((secondaryLabel) => {
+              return(
+                  <Row>
+                      <p onClick={() => this.handleSort(secondaryLabel.sort)} className="collapseLinks"> {secondaryLabel.label} </p>
+                  </Row>
+              )
+          })
+
+
+          // now lets put those secondary labels under one primary label
+          return(
+              <Panel eventkey="2" className="sidebarCollapse">
+                  <Panel.Heading>
+                      <Panel.Title toggle className="panelTitle">By {key}</Panel.Title>
+                    </Panel.Heading>
+                <Panel.Body collapsible>
+                  <Col>
+                      {secondaryLabels}
+                  </Col>
+                </Panel.Body>
+              </Panel>
+          )
+      })
+
+
 
     return (
       <Col className="sidebar">
@@ -44,45 +101,7 @@ class Sidebar extends Component {
 
 
         <PanelGroup accordian id={"Panels"}>
-        <Panel eventkey="1" className="sidebarCollapse" onClick={() => this.handleSort("")}>
-          <Panel.Heading>
-            <Panel.Title  className="panelTitle"><p>All People</p></Panel.Title>
-          </Panel.Heading>
-        </Panel>
-            <Panel eventkey="2" className="sidebarCollapse">
-                <Panel.Heading>
-                    <Panel.Title toggle className="panelTitle">By Portfolio</Panel.Title>
-                  </Panel.Heading>
-              <Panel.Body collapsible>
-                <Col>
-                    {portfolios}
-                </Col>
-              </Panel.Body>
-            </Panel>
-                <Panel eventkey={"3"} className="sidebarCollapse">
-                <Panel.Heading>
-                    <Panel.Title toggle className="panelTitle">By Major</Panel.Title>
-                    </Panel.Heading>
-                <Panel.Body collapsible>
-                    <Col>
-                        {majors}
-                    </Col>
-                </Panel.Body>
-                </Panel>
-             <Panel eventkey={"4"} className="sidebarCollapse">
-                <Panel.Heading>
-                    <Panel.Title toggle className="panelTitle">By Region</Panel.Title>
-                    </Panel.Heading>
-                <Panel.Body collapsible>
-                        <Row> <a href={""} className="collapseLinks"> Alberta </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Ontario </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> British Columbia </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Quebec </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Nova Scotia </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Manitoba </a> </Row>
-                        <Row> <a href={""} className="collapseLinks"> Saskatchewan </a> </Row>
-                </Panel.Body>
-                </Panel>
+            {labels}
         </PanelGroup>
       </Col>
     );
@@ -90,6 +109,9 @@ class Sidebar extends Component {
 }
 
 function mapStateToProps(state) {
-    return {profiles: state.profiles}
+    return {
+        profiles: state.profiles,
+        labels: state.labels
+    }
 }
-export default connect(mapStateToProps, {fetchProfiles})(Sidebar);
+export default connect(mapStateToProps, {fetchProfiles, fetchLabels})(Sidebar);

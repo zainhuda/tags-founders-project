@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {FETCH_PROFILES} from './types';
-import {FETCH_MY_PROFILE} from './types';
+import {FETCH_PROFILES, FETCH_MY_PROFILE, FETCH_LABELS} from './types';
+
 
 export const fetchProfiles = (query) => async dispatch => {
     if (query === "") {
@@ -20,3 +20,29 @@ export const fetchMyProfile = () => async dispatch => {
     console.log("in the fetchmyprofle method got", res);
     dispatch({type: FETCH_MY_PROFILE, payload: res.data});
 };
+
+export const fetchLabels = () => {
+    // no api created yet, lets just mimic it
+    const data = {
+        all: [],
+        portfolios: [
+            {label: "Operations", sort: "Operations"},
+            {label: "Finance", sort: "Finance"},
+            {label: "Marketing", sort: "Marketing"},
+            {label: "Industry", sort: "industry"},
+            {label: "Projects", sort: "Projects"},
+            {label: "Design", sort: "design"},
+            {label: "Community", sort: "community"},
+            {label: "Education", sort: "education"},
+            {label: "Publishing", sort: "publishing"},
+            {label: "Future View", sort: "future view"},
+        ],
+        majors: [
+            {label: "Computer Science", sort: ""},
+            {label: "Engineering", sort: ""},
+            {label: "Math", sort: ""},
+            {label: "Med Sci", sort: ""}
+        ]
+    }
+    return({type: FETCH_LABELS, payload: data});
+}
