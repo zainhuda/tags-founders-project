@@ -79,12 +79,6 @@ html {
 }
 
 
-
-
-.features {
-  background-color: #cccccc;
-}
-
 .headerLP {
   position: relative;
   display: block;
@@ -109,38 +103,86 @@ html {
 }
 
 
-.introduction {
-  position: relative;
-  display: block;
-  background-color: white;
-  color: black;
-  height: 75%;
+/* MAIN LANDING PAGE STUFF */
+.showcase {
+    height: 100vh;
+    background-image: url("./assets/images/showcase-background@2x.png");
+    background-repeat: no-repeat;
+    background-size: 100% 75%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
 }
-
-.middle { /*css for homepage second div (gray box)*/
-  position: relative;
-  display: block;
-  background-color: #eff1f4;
-  color: black;
-  height: 75%;
-}
-
-.aboutMe {
-  position: relative;
-  display: block;
-  background-color: black;
-  color: white;
-  height: 75%;
-}
-
 .slogan {
-  position: relative;
-  margin-left: 38%;
-  padding: 15% 0px;
-  color: red;
-  font-family: FaktProSoft,Helvetica Neue,helvetica,arial,sans-serif;
-  font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 75px;
 }
+.slogan > h1 {
+    font-size: 4em;
+    text-align: left;
+}
+.slogan > h3 {
+    text-align: left;
+    font-size: 2em;
+}
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.showcase-image {
+    width: 100%;
+    padding-right: 75px;
+}
+.showcase-image > img {
+    vertical-align: middle;
+}
+
+/* FEATURES OF TAGS */
+.features-transition {
+    width: 100vw;
+    transform: translateY(1px);
+}
+.features {
+    background-color: #E3EBF8;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-bottom: 100px;
+
+}
+.features-image-container {
+}
+.features-image {
+    width: 100%;
+}
+.features-text {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 2em;
+}
+.features-end {
+    width: 100vw;
+    transform: translateY(-1px);
+}
+
+.action {
+    padding-top: 50px;
+    height: 500px;
+    text-align: center;
+}
+.action > h1 {
+    font-size: 2em;
+}
+
+
 
 
 /* GOOGLE PRODUCT SANS */

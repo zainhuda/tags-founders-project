@@ -1,3 +1,5 @@
+// this is depreciated, content has been moved to showcase.jsx
+
 import React, { Component } from "react";
 import styles from "../App.css";
 import Button from "./button.jsx";

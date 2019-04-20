@@ -10,5 +10,4 @@ const userSchema = new Schema({
 
 });
 
-// FIX TSHI HARD CODE
 module.exports = mongoose.model('users', userSchema);

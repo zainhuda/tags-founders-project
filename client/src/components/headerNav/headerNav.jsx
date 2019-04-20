@@ -9,13 +9,13 @@ class HeaderNav extends Component {
         if (this.props.links) {
             return (
                 <ul>
-                    <li><a href="/auth/slack" className="nav-link">LOGIN</a></li>
+                    <li><a href="/auth/slack" className="nav-link">Login</a></li>
                     <li><a href="/auth/slack">
-                        <Button className={"ui primary button"} msg={"SIGNUP"}/>
+                        <Button className={"ui primary button"} msg={"Signup"}/>
                     </a></li>
-                    <li><a href="" className="nav-link">CONTACT</a></li>
-                    <li><a href="" className="nav-link">ABOUT</a></li>
-                    <li><a href="" className="nav-link">DEMO</a></li>
+                    <li><a href="" className="nav-link">Contact</a></li>
+                    <li><a href="" className="nav-link">About</a></li>
+                    <li><a href="" className="nav-link">Demo</a></li>
                 </ul>
             )
         }

@@ -5,37 +5,59 @@ import React, { Component } from 'react';
 import Button from "./button.jsx";
 import HeaderNav from "./headerNav/headerNav";
 import Footer from "./footer/footer.jsx";
-import HomePage from "./homePage.jsx"
 import styles from "../App.css";
-
+/*
+<Button className={"ui primary basic button"} msg={"VIEW DEMO"}/>
+  <Button className={"ui primary button"} msg={"LEARN MORE"}/>
+*/
 class Showcase extends Component {
 	render() {
 		return(
-			<div>
+			<>
 				<HeaderNav links={true}/>
-				<div className="landing">
-					<HomePage />
-				</div>
+				<div className="showcase">
+					<div className="slogan">
+						<h1>Tags</h1>
+						<h3>Meet, connect, and get to know your team.</h3>
+					</div>
+					<div className="">
+						<span class="helper"></span>
+						<img className="showcase-image" src={require('../assets/images/showcase-image1.png')}/>
 
+					</div>
+				</div>
+				<div className="">
+					<img className="features-transition" src={require('../assets/images/features-transition.png')}/>
+				</div>
 				<div className="features">
-
+					<div className="features-image-container">
+						<img className="features-image" src={require('../assets/images/features-image1@2x.png')}/>
+					</div>
+					<div className="features-text">
+					see people's faces
+					</div>
+					<div className="features-text">
+						find out what ur coworkesr are good at
+					</div>
+					<div className="features-image-container">
+						<img className="features-image" src={require('../assets/images/features-image2@2x.png')}/>
+					</div>
+					<div className="features-image-container">
+						<img className="features-image" src={require('../assets/images/features-image3@2x.png')}/>
+					</div>
+					<div className="features-text">
+						meet ppl and make new freinds
+					</div>
 				</div>
-
-				<div className="demo">
-
+				<div className="">
+					<img className="features-end" src={require('../assets/images/features-end.png')}/>
 				</div>
-
-				<div className="about">
-
+				<div className="action">
+					<h1>Interested in Tags?</h1>
+					maybe a button to send an email or sumting
 				</div>
-
-				<div className="footer">
-
-					<Footer />
-
-				</div>
-
-			</div>
+				<Footer />
+			</>
 		);
 	}
 }
