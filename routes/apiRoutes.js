@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slackServices = require("../services/slack_services");
+const WorkspaceConfig = mongoose.model('workspaceConfigs');
 
 module.exports = app => {
 
@@ -332,7 +333,16 @@ module.exports = app => {
         })
     });
 
+    app.get('/api/get_labels', (req, res) => {
+        let teamId = req.user.slackTeamId;
+        let labels;
+        WorkspaceConfig.findOne({slackTeamId: teamId}).then((configFile) => {
+            labels = configFile.labels;
+            console.log("The lables are:", labels);
+            res.json(labels);
+        });
 
+    })
 
 
 };

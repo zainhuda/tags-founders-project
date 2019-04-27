@@ -4,6 +4,9 @@ const keys = require("../config/keys");
 const GenerateSchema = require("generate-schema");
 const async = require("async");
 
+const WorkspaceConfig = mongoose.model('workspaceConfigs');
+const defaultLabels = require('../seeders/defaultLabels');
+
 const importSlackUsers = (accessToken, res) => {
   axios
     .get("https://slack.com/api/users.list?token=" + accessToken)
@@ -59,6 +62,28 @@ const importSlackUsers = (accessToken, res) => {
           }
         }
         console.log("done for teamid", team_id);
+
+
+        // create the config file
+        WorkspaceConfig.findOne({
+            slackTeamId: team_id
+        }).then((existingWorkspaceConfig) => {
+            if (existingWorkspaceConfig) {
+                // a config file already exists, lets not do anything
+                console.log("Config file already exists.");
+            }
+            else {
+                // create a new config file
+                console.log("No config file found. Creating new file...");
+                new WorkspaceConfig({
+                    slackTeamId: team_id,
+                    labels: defaultLabels
+                }).save().then((configFile) => {
+                    console.log("CONFIG FILE CREATED", configFile);
+                })
+            }
+        });
+
 
         mongoose.connection.db.collection(team_id)
           .find()

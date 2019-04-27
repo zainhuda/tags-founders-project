@@ -21,7 +21,7 @@ export const fetchMyProfile = () => async dispatch => {
     dispatch({type: FETCH_MY_PROFILE, payload: res.data});
 };
 
-export const fetchLabels = () => {
+export const fetchLabels = () => async dispatch => {
     // no api created yet, lets just mimic it
     const data = {
         all: [],
@@ -44,5 +44,7 @@ export const fetchLabels = () => {
             {label: "Med Sci", sort: ""}
         ]
     }
-    return({type: FETCH_LABELS, payload: data});
+    const res = await axios.get('/api/get_labels');
+    console.log("the fetchLabels method got", res);
+    dispatch({type: FETCH_LABELS, payload: res.data});
 }

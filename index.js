@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 require('./models/User');
+require('./models/WorkspaceConfig');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI, {
