@@ -19,6 +19,9 @@ class Showcase extends Component {
 					<div className="slogan">
 						<h1>Tags</h1>
 						<h3>Meet, connect, and get to know your team.</h3>
+						<div>
+							<button className="action-button">Get Started</button>
+						</div>
 					</div>
 					<div className="">
 						<span class="helper"></span>
@@ -54,7 +57,10 @@ class Showcase extends Component {
 				</div>
 				<div className="action">
 					<h1>Interested in Tags?</h1>
-					maybe a button to send an email or sumting
+					<br></br>
+					<div>
+						<button className="action-button">Get Started</button>
+					</div>
 				</div>
 				<Footer />
 			</>

@@ -15,6 +15,7 @@ import Header from "./components/header/header";
 import InactiveUserList from "./components/inactiveUsers/inactiveUserList";
 import {HashRouter} from "react-router-dom"
 import LinkWithSlack from "./components/onboardForm/linkWithSlack";
+import ConfigSettings from './components/configSettings/configSettings';
 
 import Loading from "./components/loading/loading";
 
@@ -38,6 +39,7 @@ class App extends Component {
           <Route path="/slack" component={LinkWithSlack} />
         <Route path="/my-profile" component={MyProfile}/>
         <Route path="/load" component={Loading}/>
+        <Route path="/config" component={ConfigSettings}/>
         </div>
       </BrowserRouter>
     );

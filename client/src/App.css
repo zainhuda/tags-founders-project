@@ -174,12 +174,28 @@ html {
 }
 
 .action {
-    padding-top: 50px;
-    height: 500px;
+    padding-top: 100px;
+    height: 400px;
     text-align: center;
 }
 .action > h1 {
     font-size: 2em;
+}
+.action-button {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #2185d0;
+    transition: ease 0.5s;
+    font-weight: bold;
+}
+.action-button:hover {
+    background-color: #3BB9FF;
 }
 
 

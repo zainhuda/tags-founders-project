@@ -333,15 +333,14 @@ module.exports = app => {
         })
     });
 
-    app.get('/api/get_labels', (req, res) => {
+    // workspace config api
+    app.get('/api/get_config', (req, res) => {
         let teamId = req.user.slackTeamId;
-        let labels;
+        let config;
         WorkspaceConfig.findOne({slackTeamId: teamId}).then((configFile) => {
-            labels = configFile.labels;
-            console.log("The lables are:", labels);
-            res.json(labels);
+            config = configFile;
+            res.json(config);
         });
-
     })
 
 

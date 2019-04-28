@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_PROFILES, FETCH_MY_PROFILE, FETCH_LABELS} from './types';
+import {FETCH_PROFILES, FETCH_MY_PROFILE, FETCH_LABELS, FETCH_CONFIG} from './types';
 
 
 export const fetchProfiles = (query) => async dispatch => {
@@ -44,7 +44,14 @@ export const fetchLabels = () => async dispatch => {
             {label: "Med Sci", sort: ""}
         ]
     }
-    const res = await axios.get('/api/get_labels');
+    const res = await axios.get('/api/get_config');
     console.log("the fetchLabels method got", res);
-    dispatch({type: FETCH_LABELS, payload: res.data});
+    dispatch({type: FETCH_LABELS, payload: res.data.labels});
+}
+
+
+export const fetchConfig = () => async dispatch => {
+    const res = await axios.get('./api/get_config');
+    console.log("the fetchConfig got", res);
+    dispatch({type: FETCH_CONFIG, payload: res.data});
 }
