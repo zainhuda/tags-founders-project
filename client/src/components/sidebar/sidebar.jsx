@@ -64,6 +64,7 @@ class Sidebar extends Component {
   render() {
 
       const labelsObject = this.props.labels;
+      console.log("labelsobject is", labelsObject);
 
       const labels = Object.keys(labelsObject).map((key, index) => {
           // lets get the secondary labels in a list
