@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const slackServices = require("../services/slack_services");
-const WorkspaceConfig = mongoose.model('workspaceConfigs');
 
 module.exports = app => {
 
@@ -337,10 +336,19 @@ module.exports = app => {
     app.get('/api/get_config', (req, res) => {
         let teamId = req.user.slackTeamId;
         let config;
-        WorkspaceConfig.findOne({slackTeamId: teamId}).then((configFile) => {
-            config = configFile;
-            res.json(config);
-        });
+
+        mongoose.connection.db.collection(workspaceconfig, (err, collection) => {
+            if (err) {
+                console.log("there was an err", err);
+            }
+            else {
+                collection.findOne({slackTeamId: teamId}).then((configFile) => {
+                    config = configFile;
+                    res.json(config);
+                })
+            }
+        })
+
     })
 
 
