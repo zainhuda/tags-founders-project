@@ -44,9 +44,10 @@ export const fetchLabels = () => async dispatch => {
             {label: "Med Sci", sort: ""}
         ]
     }
-    const res = await axios.get('/api/get_config');
-    console.log("the fetchLabels method got", res);
-    dispatch({type: FETCH_LABELS, payload: res.data.labels});
+    //const res = await axios.get('/api/get_config');
+    //console.log("the fetchLabels method got", res);
+    //dispatch({type: FETCH_LABELS, payload: res.data.labels});
+    dispatch({type: FETCH_LABELS, payload: data})
 }
 
 
