@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const slackServices = require("../services/slack_services");
 
+const workspaceConfig = mongoose.model('workspaceConfigs');
+
 module.exports = app => {
 
     // api to get profiles that belong to team with teamId
@@ -337,18 +339,12 @@ module.exports = app => {
         let teamId = req.user.slackTeamId;
         let config;
 
-        mongoose.connection.db.collection(workspaceconfig, (err, collection) => {
-            if (err) {
-                console.log("there was an err", err);
-            }
-            else {
-                collection.findOne({slackTeamId: teamId}).then((configFile) => {
-                    config = configFile;
-                    res.json(config);
-                })
-            }
+        workspaceConfig.findOne({slackTeamId: teamId}).then((configFile) => {
+            config = configFile;
+            res.json(config);
+        }).catch((err) => {
+            console.log("there was an err getting workspace config: ", err);
         })
-
     })
 
 

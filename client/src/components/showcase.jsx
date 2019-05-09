@@ -37,10 +37,10 @@ class Showcase extends Component {
 						<img className="features-image" src={require('../assets/images/features-image1@2x.png')}/>
 					</div>
 					<div className="features-text">
-					see people's faces
+						put a name to a face
 					</div>
 					<div className="features-text">
-						find out what ur coworkesr are good at
+						leverage ur cowroekrs skills
 					</div>
 					<div className="features-image-container">
 						<img className="features-image" src={require('../assets/images/features-image2@2x.png')}/>
@@ -49,7 +49,7 @@ class Showcase extends Component {
 						<img className="features-image" src={require('../assets/images/features-image3@2x.png')}/>
 					</div>
 					<div className="features-text">
-						meet ppl and make new freinds
+						make friends
 					</div>
 				</div>
 				<div className="">

@@ -12,10 +12,10 @@
     font-size: 1.5em;
 }
 .nav-link {
-    padding-top: 10px !important;
-    margin-left: 0 !important;
-    margin-right: 10px;
-
+    margin-left: 20px !important;
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: block;
 }
 ul {
@@ -28,8 +28,8 @@ ul {
 li {
   float: right;
 }
-.nav-button {
-    padding-top: 0px;
+.signup-btn {
+    margin-top: 7px !important;
 }
 
 li a {

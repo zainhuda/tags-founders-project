@@ -11,7 +11,7 @@ class HeaderNav extends Component {
                 <ul>
                     <li><a href="/auth/slack" className="nav-link">Login</a></li>
                     <li><a href="/auth/slack">
-                        <Button className={"ui primary button"} msg={"Signup"}/>
+                        <Button className={"ui primary button signup-btn"}  msg={"Signup"}/>
                     </a></li>
                     <li><a href="" className="nav-link">Contact</a></li>
                     <li><a href="" className="nav-link">About</a></li>
@@ -26,7 +26,7 @@ class HeaderNav extends Component {
             <div className="header-nav">
                 <div className="nav-logo">
                     <ul>
-                        <li><a href="">Tags</a></li>
+                        <li><a href="" className="nav-link">Tags</a></li>
                     </ul>
                 </div>
                 <div>
