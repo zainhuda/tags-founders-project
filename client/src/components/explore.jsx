@@ -18,13 +18,13 @@ class Explore extends Component {
 		return(
 			<div>
 				<LoggedInRedirect/>
-			<div className="explore-grid">
-				<Sidebar className="sidebar"/>
-				<div className="directory">
-					<Header/>
-					<EmployeeDirectory className="employee-directory"/>
+				<div className="explore-grid">
+					<Sidebar className="sidebar"/>
+					<div className="directory">
+						<Header/>
+						<EmployeeDirectory className="employee-directory"/>
+					</div>
 				</div>
-			</div>
 				<Footer/>
 			</div>
 		);

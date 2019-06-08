@@ -3,14 +3,21 @@
 // accessed through the path: /profile
 
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Button from "../button.jsx";
 import Sidebar from "../sidebar/sidebar.jsx";
 import styles from "./profile.css";
+import axios from "axios";
 
 // import constants to navigate between pages
 import {PROFILE_PAGE, SETTINGS_PAGE} from '../myProfile/myProfileNavPages';
 
 class Profile extends Component {
+
+
+    handleLogout = () => {
+        axios.get('/api/logout');
+    }
 
     render() {
 
@@ -48,13 +55,13 @@ class Profile extends Component {
                     </div>
                 </div>
                 <input className="submit-button" type="submit" value="Edit Profile" onClick={() => {changePage(SETTINGS_PAGE)}} />
+                <div></div>
+                    <Link to="/">
+                        <input className="submit-button" type="submit" value="Logout" onClick={() => this.handleLogout()} />
+                    </Link>
 
             </div>
-
-
-
         )
     }
-
 }
 export default Profile;

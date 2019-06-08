@@ -8,15 +8,25 @@ module.exports = app => {
     // api to get profiles that belong to team with teamId
     app.get('/api/profiles/', (req, res) => {
     let teamId = req.user.slackTeamId;
+    if (!req.user === undefined) {
+        res.status(401).send('You have to be logged in');
+    }
     mongoose.connection.db.collection(teamId, (err, collection) => {
         console.log(teamId);
         if (err) {
             console.log("err", err);
+            res.status(500).send(err);
         }
         console.log("collection is: ", collection);
         collection.find({}).toArray( (err, docs) => {
             //console.log("docs is", docs);
-            res.json(docs);
+            if (err) {
+                res.status(400).send(err);
+            }
+            else {
+                res.status(200).json(docs);
+
+            }
         })
         })
     });
@@ -24,11 +34,11 @@ module.exports = app => {
     //login/logout functions
     app.get("/api/logout", (req, res) => {
         req.logout();
-        res.send(req.user);
+        res.status(200).send(req.user);
     });
 
     app.get('/api/current_user', (req, res) => {
-        res.send(req.user);
+        res.status(200).send(req.user);
         console.log("current user is: ", req.user);
         console.log("api for current user called");
     });
@@ -40,7 +50,8 @@ module.exports = app => {
        mongoose.connection.db.collection(teamId, (err, collection) => {
            if (err) {
                // handle error
-               console.log("err boy: ", err)
+               console.log("err boy: ", err);
+               res.status(500).send(err);
            }
            else {
                // no error we good lets go find the user
@@ -49,8 +60,14 @@ module.exports = app => {
                    // we might want to serach by mongo id
                    "slackData.id": req.user.slackId
                }).toArray((err, docs) => {
-                   console.log("docs", docs);
-                   res.send(docs);
+                   if (err) {
+                    res.status(500).send(err);  // generic error, send the error message through
+                   }
+                   else {
+                    console.log("docs", docs);
+                    res.status(200).send(docs);
+                   }
+
                })
            }
        })
@@ -70,7 +87,8 @@ module.exports = app => {
             console.log("userdata inside collection", userData);
             if (err) {
                 // handle the error
-                console.log("error boy ", err)
+                console.log("error boy ", err);
+                res.status(500).send(err);
             }
             else {
                 // lets find the user and update their profile
@@ -94,11 +112,12 @@ module.exports = app => {
                         returnOriginal: false,
                     })
                     .then((user) => {
-                        res.send(user);
-                        console.log("user: ", user)
+                        console.log("user: ", user);
+                        res.status(200).send(user);
                     })
                     .catch((err) => {
                         console.log("big error", err);
+                        res.status(500).send(err);
                     })
             }
         })
@@ -115,7 +134,8 @@ module.exports = app => {
         mongoose.connection.db.collection(teamId, (err, collection) => {
             if (err) {
                 // handle the error
-                console.log("error boy ", err)
+                console.log("error boy ", err);
+                res.status(500).send(err);
             }
             else {
                 // lets find the user and update their profile
@@ -133,11 +153,12 @@ module.exports = app => {
                         returnOriginal: false,
                     })
                     .then((user) => {
-                        res.send(user);
+                        res.status(201).send(user);
                         //console.log("user: ", user)
                     })
                     .catch((err) => {
                         console.log("big error", err);
+                        res.status(500).send(err);
                     })
             }
         })
@@ -154,7 +175,8 @@ module.exports = app => {
         mongoose.connection.db.collection(teamId, (err, collection) => {
             if (err) {
                 // handle the error
-                console.log("error boy ", err)
+                console.log("error boy ", err);
+                res.status(500).send(err);
             }
             else {
                 // lets find the user and update their profile
@@ -171,11 +193,12 @@ module.exports = app => {
                         returnOriginal: false,
                     })
                     .then((user) => {
-                        res.send(user);
+                        res.status(201).send(user);
                         //console.log("user: ", user)
                     })
                     .catch((err) => {
                         console.log("big error", err);
+                        res.status(500).send(err);
                     })
             }
         })
@@ -193,7 +216,8 @@ module.exports = app => {
         mongoose.connection.db.collection(teamId, (err, collection) => {
             if (err) {
                 // handle the error
-                console.log("error boy ", err)
+                console.log("error boy ", err);
+                res.status(500).send(err);
             }
             else {
                 // lets find the user and update their profile
@@ -210,7 +234,7 @@ module.exports = app => {
                         returnOriginal: false,
                     })
                     .then((user) => {
-                        res.send(user);
+                        res.status(201).send(user);
                         //console.log("user: ", user)
                     })
                     .catch((err) => {
@@ -247,13 +271,14 @@ module.exports = app => {
         //search the collection
         mongoose.connection.db.collection(teamId, (err, collection) => {
             if (err) {
-                console.log("there was an error", err)
+                console.log("there was an error", err);
+                res.status(500).send(err);
             }
             else {
                 collection.find({"teamData.interests": interest})
                     .toArray((err, docs) => {
                         console.log("we found docs:", docs);
-                        res.json(docs);
+                        res..status(200).json(docs);
                     })
             }
         })
@@ -266,7 +291,7 @@ module.exports = app => {
         //search the collection
         mongoose.connection.db.collection(teamId, (err, collection) => {
             if (err) {
-                console.log("there was an error", err)
+                console.log("there was an error", err);
             }
             else {
                 // regex query to do a substring serach, options ix makes cases and spaces insensitive
@@ -282,7 +307,7 @@ module.exports = app => {
                     ]
                 }).toArray((err, docs) => {
                     console.log("we found these", docs);
-                    res.json(docs);
+                    res.status(200).json(docs);
                 })
             }
         })

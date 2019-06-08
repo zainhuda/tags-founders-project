@@ -91,7 +91,7 @@ module.exports = app => {
                   console.log("REQ LOGIN ERROR", err);
                 }
                 console.log("login done");
-                res.redirect("/explore");
+                res.redirect("/explore"); // redirects correctly in production
               });
             }
           );

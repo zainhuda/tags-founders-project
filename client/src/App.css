@@ -167,6 +167,7 @@ html {
     margin-top: auto;
     margin-bottom: auto;
     font-size: 2em;
+    line-height: 1.5;
 }
 .features-end {
     width: 100vw;
