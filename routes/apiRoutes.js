@@ -278,7 +278,7 @@ module.exports = app => {
                 collection.find({"teamData.interests": interest})
                     .toArray((err, docs) => {
                         console.log("we found docs:", docs);
-                        res..status(200).json(docs);
+                        res.status(200).json(docs);
                     })
             }
         })
