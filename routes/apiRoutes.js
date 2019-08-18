@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slackServices = require("../services/slack_services");
+const relate = require("../services/relate");
 
 const workspaceConfig = mongoose.model('workspaceConfigs');
 
@@ -268,6 +269,9 @@ module.exports = app => {
     app.get('/api/search/interest/:interest', (req, res) => {
         let teamId = req.user.slackTeamId;
         let interest = req.params.interest;
+
+        
+
         //search the collection
         mongoose.connection.db.collection(teamId, (err, collection) => {
             if (err) {
@@ -285,9 +289,22 @@ module.exports = app => {
     });
 
     // serach for users
-    app.get('/api/search/:query', (req, res) => {
+    app.get('/api/search/:query', async (req, res) => {
         let teamId = req.user.slackTeamId;
         let query = req.params.query;
+
+
+        // get related words
+        let relatedWords = await relate.getRelatedWords(query);
+
+        // turn list of related words into string 
+        let searchString = "";
+        searchString += query + " ";
+        relatedWords.forEach(word => {
+            searchString += (word + " ")
+        });
+        console.log(searchString);
+
         //search the collection
         mongoose.connection.db.collection(teamId, (err, collection) => {
             if (err) {
@@ -297,16 +314,19 @@ module.exports = app => {
                 // regex query to do a substring serach, options ix makes cases and spaces insensitive
                 collection.find({
                     $or: [
-                        {"teamData.interests": {"$regex": query, "$options": "ix"}},
-                        {"teamData.skills": {"$regex": query, "$options": "ix"}},
+                        {"teamData.interests": {"$regex": searchString, "$options": "ix"}},
+                        {"teamData.skills": {"$regex": searchString, "$options": "ix"}},
                         {"teamData.title": {"$regex": query, "$options": "ix"}},
                         {"teamData.firstName": {"$regex": query, "$options": "ix"}},
                         {"teamData.lastName": {"$regex": query, "$options": "ix"}},
                         {"teamData.email": {"$regex": query, "$options": "ix"}},
                         {"teamData.phone": {"$regex": query, "$options": "ix"}}
-                    ]
+                    ],
                 }).toArray((err, docs) => {
-                    console.log("we found these", docs);
+                    console.log("we found these");
+                    docs.forEach(doc => {
+                        console.log(doc.teamData.firstName, doc.teamData.interests, doc.teamData.skills);
+                    })
                     res.status(200).json(docs);
                 })
             }
