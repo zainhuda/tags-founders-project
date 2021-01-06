@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/zainhuda/founders-student-housing#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
